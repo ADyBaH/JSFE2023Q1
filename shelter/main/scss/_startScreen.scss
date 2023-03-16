@@ -1,0 +1,56 @@
+@import "./_variable";
+
+.main__start-screen {
+  display: flex;
+  height: 788px;
+  gap: 39px;
+  position: relative;
+  &_left-section {
+    display: flex;
+    height: 340px;
+    justify-content: start;
+    flex-direction: column;
+    align-self: center;
+    &_h2 {
+      font-family: $font-georgia;
+      width: 310px;
+      margin-left: -5px;
+      font-size: min(44px, 4vw);
+      line-height: 130%;
+      color: $white;
+    }
+    &_paragraph {
+      font-family: $font-arial;
+      color: $greyForTextAndButton;
+      width: 463px;
+      margin-left: -5px;
+      margin-top: 40px;
+      font-size: 15px;
+      line-height: 160%;
+    }
+    &_button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 207px;
+      margin-top: 43px;
+      margin-left: -5px;
+      @include button;
+      
+    }
+    @media (any-hover: hover) {
+      &_button:hover {
+        background-color: $buttonColorHover;
+        box-shadow: 1px 0 10px $buttonColorHover;
+      }
+    }
+  }
+  &_right-img {
+    align-self: end;
+  }
+}
+
+
+
+
+

@@ -1,0 +1,36 @@
+.main__about {
+  display: flex;
+  height: 588px;
+  align-items: center;
+  justify-content: start;
+  gap: 120px;
+  &_leftImg {
+    margin-left: 175px;
+    margin-bottom: 21px;
+  }
+  &__right-section {
+    display: flex;
+    flex-direction: column;
+    // width: 300px;
+    height: 380px;
+    margin-bottom: 21px;
+    &_h3 {
+      font-size: 35px;
+      color: $blackTextColor;
+      letter-spacing: 0.06em;
+      width: 330px;
+      line-height: 130%;
+    }
+    &_paragraph1 {
+      margin-top: 24px;
+      width: 424px;
+      @include paragraph1
+    }
+    &_paragraph2 {
+      margin-top: 25px;
+      width: 424px;
+      @include paragraph1
+    }
+  }
+
+}

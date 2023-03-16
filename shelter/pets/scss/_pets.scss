@@ -1,0 +1,122 @@
+@import "./variable";
+
+.main__section {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.main__pets {
+  display: flex;
+  // position: relative;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background-color: #F6F6F6;
+  // height: 877px;
+  &_h3 {
+    margin-top: 81px;
+    width: auto;
+    text-align: center;
+    font-size: 35px;
+    letter-spacing: 0.06em;
+    line-height: 130%;
+    color: #545454;
+  }
+  &__figure-block {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    align-items: center;
+    margin-top: 58px;
+    column-gap: 40px;
+    row-gap: 60px;
+  }
+  &_button {
+    width: 261px;
+    margin-top: 90px;
+    justify-self: center;
+    @include button;
+  }
+  @media (any-hover: hover) {
+    &__arrow-prev:hover,
+    &__arrow-next:hover {
+      background-color: $buttonColorHover;
+    }
+    &_button:hover {
+      background-color: $buttonColorHover;
+      box-shadow: 1px 0 5px $buttonColorHover;
+    }
+  }
+}
+
+.pets__figure {
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.3s;
+    &:hover {
+      transform: scale(1.1);
+    }
+  &_title {
+    margin-top: 28px;
+    color: #545454;
+    font-size: 20px;
+    letter-spacing: 0.06em;
+  }
+  &_button {
+    margin-top: 32px;
+    width: 187px;
+    @include button;
+    background-color: #f6f6f600;
+    border: 2px solid #F1CDB3;
+  }
+  @media (any-hover: hover) {
+    &_button:hover {
+      background-color: $buttonColorHover;
+    }
+  }
+}
+
+.pets__buttons-block {
+  display: flex;
+  margin-top: 90px;
+  gap: 20px
+}
+
+.button-block {
+  &__button {
+    @include petsButton;
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.4;
+      border: 2px solid #CDCDCD;
+      &:hover {
+        background-color: #54545400;
+      }
+    }
+  }
+  &_arrow-first {
+    transform: rotate(180deg);
+    background-image: url(../assets/icon/dablEqual.svg);
+  }
+  &_arrow-prew {
+    transform: rotate(180deg);
+    background-image: url(../assets/icon/equal.svg);
+  }
+  &_number {
+    font-size: 20px;
+    background-color: #F1CDB3;
+  }
+  &_arrow-next {
+    background-image: url(../assets/icon/equal.svg);
+  }
+  &_arrow-last {
+    background-image: url(../assets/icon/dablEqual.svg);
+  }
+  @media (any-hover: hover) {
+    &__button:hover {
+      background-color: $buttonColorHover;
+      box-shadow: 1px 0px 5px $buttonColorHover;
+    }
+  }
+}

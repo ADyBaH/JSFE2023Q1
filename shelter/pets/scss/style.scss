@@ -1,0 +1,19 @@
+@import "./_reset";
+@import "./_variable";
+@import "./_header";
+@import "./_main";
+@import "./_pets";
+@import "./footer";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-georgia;
+}
+
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}

@@ -1,0 +1,86 @@
+@import "./variable";
+
+.main__pets {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background-color: #F6F6F6;
+  height: 877px;
+  &_h3 {
+    margin-top: 81px;
+    width: auto;
+    text-align: center;
+    font-size: 35px;
+    letter-spacing: 0.06em;
+    line-height: 130%;
+    color: #545454;
+  }
+  &__figure-block {
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-top: 58px;
+    gap: 90px;
+  }
+  &__arrow-prev {
+    float: right;
+    left: -105px;
+    top: 192px;
+    @include buttonNextPrev;
+  }
+  &__arrow-next {
+    right: -105px;
+    top: 192px;
+    transform: rotate(180deg);
+    @include buttonNextPrev;
+  }
+  
+  &_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 261px;
+    margin-top: 90px;
+    @include button;
+
+  }
+  @media (any-hover: hover) {
+    &__arrow-prev:hover,
+    &__arrow-next:hover {
+      background-color: $buttonColorHover;
+    }
+    &_button:hover {
+      background-color: $buttonColorHover;
+      box-shadow: 1px 0 5px $buttonColorHover;
+    }
+  }
+}
+
+.pets__figure {
+  text-align: center;
+  transition: transform 0.3s;
+    &:hover {
+      transform: scale(1.1);
+    }
+  &_title {
+    margin-top: 28px;
+    color: #545454;
+    font-size: 20px;
+    letter-spacing: 0.06em;
+  }
+  &_button {
+    margin-top: 32px;
+    width: 187px;
+    @include button;
+    background-color: #f6f6f600;
+    border: 2px solid #F1CDB3;
+  }
+  @media (any-hover: hover) {
+    &_button:hover {
+      background-color: $buttonColorHover;
+    }
+  }
+}

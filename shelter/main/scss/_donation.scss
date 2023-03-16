@@ -1,0 +1,73 @@
+@import "./variable";
+
+.greyBg {
+  background-color: #F6F6F6;
+}
+.main__donation {
+  height: 463px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  &_img {
+    margin-left: 143px;
+    margin-bottom: 18px;
+    object-fit: contain;
+  }
+  &__donation-section {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -10px;
+    margin-left: 30px;
+    width: 311px;
+    // height: 297px;
+    &_h3 {
+      @include h3;
+    }
+    &_h5 {
+      margin-top: 19px;
+      font-size: 15px;
+      line-height: 110%;
+      letter-spacing: 0.06em;
+      color: #545454;
+    }
+    &__button {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-top: 21px;
+      // padding: 10px 10px;
+      width: 349px;
+      height: 43px;
+      background: #F1CDB3;
+      border-radius: 9px;
+      font-size: 20px;
+      line-height: 115%;
+      letter-spacing: 0.06em;
+      color: #545454;
+      transition: background-color 0.3s, box-shadow 0.3s;
+      &:hover {
+        background-color: $buttonColorHover;
+        box-shadow: 1px 0 5px $buttonColorHover;
+      }
+      &_icon {
+        display: inline-block;
+        width: 30px;
+        height: 23px;
+        background-image: url(../assets/icon/credit-card.svg);
+        background-position: center;
+        background-size: 100%;
+      }
+    }
+    &__paragraph {
+      font-family: $font-arial;
+      width: 365px;
+      margin-top: 18px;
+      font-size: 12px;
+      line-height: 18px;
+      color: #B2B2B2;
+    }
+  }
+}

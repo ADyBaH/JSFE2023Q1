@@ -144,9 +144,15 @@ table {
   font-size: min(32px, 3vw);
   letter-spacing: 0.06em;
   transition: transform 0.3s;
+  position: relative;
+  top: 4px;
 }
 .header__logo_h1 a {
   color: #545454;
+}
+.header__logo_h1 a > span {
+  position: relative;
+  top: -4px;
 }
 @media (any-hover: hover) {
   .header__logo_h1:hover {

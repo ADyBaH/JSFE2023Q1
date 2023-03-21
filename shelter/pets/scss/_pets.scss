@@ -12,7 +12,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   // height: 877px;
   &_h3 {
     margin-top: 81px;
@@ -54,9 +54,17 @@
   cursor: pointer;
   text-align: center;
   transition: transform 0.3s;
+  @media (any-hover: hover) {
     &:hover {
       transform: scale(1.1);
+      .pets__figure_button {
+        background-color: #f1cdb3;
+        &:hover {
+          background-color: #fddcc4;
+        }
+      }
     }
+  }
   &_title {
     margin-top: 28px;
     color: #545454;
@@ -68,7 +76,7 @@
     width: 187px;
     @include button;
     background-color: #f6f6f600;
-    border: 2px solid #F1CDB3;
+    border: 2px solid #f1cdb3;
   }
   @media (any-hover: hover) {
     &_button:hover {
@@ -80,7 +88,7 @@
 .pets__buttons-block {
   display: flex;
   margin-top: 90px;
-  gap: 20px
+  gap: 20px;
 }
 
 .button-block {
@@ -89,7 +97,7 @@
     &:disabled {
       cursor: not-allowed;
       opacity: 0.4;
-      border: 2px solid #CDCDCD;
+      border: 2px solid #cdcdcd;
       &:hover {
         background-color: #54545400;
       }
@@ -105,7 +113,7 @@
   }
   &_number {
     font-size: 20px;
-    background-color: #F1CDB3;
+    background-color: #f1cdb3;
   }
   &_arrow-next {
     background-image: url(../assets/icon/equal.svg);

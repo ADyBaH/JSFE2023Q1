@@ -216,7 +216,6 @@ table {
 .main__start-screen_left-section_h2 {
   font-family: Georgia, "Times New Roman", Times, sans-serif;
   width: 310px;
-  margin-left: -5px;
   font-size: min(44px, 4vw);
   line-height: 130%;
   color: #fff;
@@ -225,7 +224,6 @@ table {
   font-family: Arial, "Times New Roman", Times, sans-serif;
   color: #CDCDCD;
   width: 463px;
-  margin-left: -5px;
   margin-top: 40px;
   font-size: 15px;
   line-height: 160%;
@@ -236,7 +234,6 @@ table {
   justify-content: center;
   width: 207px;
   margin-top: 43px;
-  margin-left: -5px;
   font-family: Georgia, "Times New Roman", Times, sans-serif;
   color: #292929;
   height: 52px;

@@ -14,7 +14,6 @@
     &_h2 {
       font-family: $font-georgia;
       width: 310px;
-      margin-left: -5px;
       font-size: min(44px, 4vw);
       line-height: 130%;
       color: $white;
@@ -23,7 +22,6 @@
       font-family: $font-arial;
       color: $greyForTextAndButton;
       width: 463px;
-      margin-left: -5px;
       margin-top: 40px;
       font-size: 15px;
       line-height: 160%;
@@ -34,7 +32,6 @@
       justify-content: center;
       width: 207px;
       margin-top: 43px;
-      margin-left: -5px;
       @include button;
       
     }

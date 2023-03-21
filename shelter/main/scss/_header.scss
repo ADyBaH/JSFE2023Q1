@@ -9,6 +9,7 @@
   align-items: center;
   width: 100%;
   margin-top: 60px;
+  top: -30px;
   &__logo {
     display: flex;
     flex-direction: column;
@@ -19,8 +20,14 @@
       font-size: min(32px, 3vw);
       letter-spacing: 0.06em;
       transition: transform 0.3s;
+      position: relative;
+      top: 4px;
       & > a {
         color: $main-color;
+        & > span {
+          position: relative;
+          top: -4px;
+        }
       }
     }
     @media(any-hover: hover) {

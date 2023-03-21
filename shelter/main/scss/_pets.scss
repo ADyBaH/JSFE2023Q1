@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   height: 877px;
   &_h3 {
     margin-top: 81px;
@@ -37,7 +37,7 @@
     transform: rotate(180deg);
     @include buttonNextPrev;
   }
-  
+
   &_button {
     display: flex;
     justify-content: center;
@@ -45,7 +45,6 @@
     width: 261px;
     margin-top: 90px;
     @include button;
-
   }
   @media (any-hover: hover) {
     &__arrow-prev:hover,
@@ -62,9 +61,17 @@
 .pets__figure {
   text-align: center;
   transition: transform 0.3s;
+  @media (any-hover: hover) {
     &:hover {
       transform: scale(1.1);
+      .pets__figure_button {
+        background-color: #f1cdb3;
+        &:hover {
+          background-color: #FDDCC4;
+        }
+      }
     }
+  }
   &_title {
     margin-top: 28px;
     color: #545454;
@@ -76,7 +83,7 @@
     width: 187px;
     @include button;
     background-color: #f6f6f600;
-    border: 2px solid #F1CDB3;
+    border: 2px solid #f1cdb3;
   }
   @media (any-hover: hover) {
     &_button:hover {

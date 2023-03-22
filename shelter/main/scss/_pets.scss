@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  background-color: #F6F6F6;
+  background-color: #f6f6f6;
   height: 877px;
   &_h3 {
     margin-top: 81px;
@@ -37,15 +37,14 @@
     transform: rotate(180deg);
     @include buttonNextPrev;
   }
-  
+
   &_button {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 261px;
-    margin-top: 90px;
+    margin-top: 59px;
     @include button;
-
   }
   @media (any-hover: hover) {
     &__arrow-prev:hover,
@@ -60,11 +59,21 @@
 }
 
 .pets__figure {
+  height: 436px;
+  background-color: #FAFAFA;
   text-align: center;
   transition: transform 0.3s;
+  @media (any-hover: hover) {
     &:hover {
       transform: scale(1.1);
+      .pets__figure_button {
+        background-color: #f1cdb3;
+        &:hover {
+          background-color: #FDDCC4;
+        }
+      }
     }
+  }
   &_title {
     margin-top: 28px;
     color: #545454;
@@ -76,11 +85,74 @@
     width: 187px;
     @include button;
     background-color: #f6f6f600;
-    border: 2px solid #F1CDB3;
+    border: 2px solid #f1cdb3;
   }
   @media (any-hover: hover) {
     &_button:hover {
       background-color: $buttonColorHover;
     }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1279px) {
+  .main__pets__figure-block {
+    gap: 5.0367474589523065vw;
+  }
+  .main__pets__arrow-prev {
+    left: -5.209538702111024vw;
+  }
+  .main__pets__arrow-next {
+    right: -5.209538702111024vw;
+  }
+  .pets__figure_img {
+    width: 21.11024237685692vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .pets__figure:nth-last-child(2) {
+    display: none;
+  }
+  .pets__figure_img {
+    width: 35.15625vw;
+  }
+  .main__pets__figure-block {
+    gap: 5.208333333333334vw;
+  }
+  .main__pets__arrow-prev {
+    left: -9.6666666667vw;
+  }
+  .main__pets__arrow-next {
+    right: -9.6666666667vw;
+  }
+}
+@media (max-width: 540px) {
+  .main__pets {
+    height: 790px;
+}
+  .main__pets_h3 {
+    margin-top: 40px;
+    font-size: 25px;
+  }
+  .pets__figure:nth-last-child(3) {
+    display: none;
+  }
+  .main__pets__figure-block {
+    margin-top: 42px;
+    justify-content: center;
+  }
+  .pets__figure_img {
+    width: auto;
+  }
+  .main__pets__arrow-prev {
+    left: 51px;
+    top: 455px;
+  }
+  .main__pets__arrow-next {
+    right: 51px;
+    top: 455px
+  }
+  .main__pets_button {
+    margin-top: 114px;
   }
 }

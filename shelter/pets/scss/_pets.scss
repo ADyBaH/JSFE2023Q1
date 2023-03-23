@@ -8,12 +8,10 @@
 }
 .main__pets {
   display: flex;
-  // position: relative;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   background-color: #f6f6f6;
-  // height: 877px;
   &_h3 {
     margin-top: 81px;
     width: auto;
@@ -30,7 +28,7 @@
     align-items: center;
     margin-top: 58px;
     column-gap: 40px;
-    row-gap: 60px;
+    row-gap: 31px;
   }
   &_button {
     width: 261px;
@@ -54,6 +52,9 @@
   cursor: pointer;
   text-align: center;
   transition: transform 0.3s;
+  background-color: #FAFAFA;
+  height: 434px;
+  border-radius: 9px;
   @media (any-hover: hover) {
     &:hover {
       transform: scale(1.1);
@@ -87,7 +88,7 @@
 
 .pets__buttons-block {
   display: flex;
-  margin-top: 90px;
+  margin-top: 61px;
   gap: 20px;
 }
 

@@ -8,12 +8,10 @@
 }
 .main__pets {
   display: flex;
-  // position: relative;
   flex-direction: column;
   justify-content: start;
   align-items: center;
   background-color: #f6f6f6;
-  // height: 877px;
   &_h3 {
     margin-top: 81px;
     width: auto;

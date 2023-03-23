@@ -446,7 +446,7 @@ table {
   justify-content: center;
   align-items: center;
   width: 261px;
-  margin-top: 90px;
+  margin-top: 61px;
   font-family: "Georgia", "Times New Roman", Times, sans-serif;
   color: #292929;
   height: 52px;
@@ -469,6 +469,9 @@ table {
 .pets__figure {
   text-align: center;
   transition: transform 0.3s;
+  background-color: #FAFAFA;
+  height: 434px;
+  border-radius: 9px;
 }
 @media (any-hover: hover) {
   .pets__figure:hover {

@@ -43,7 +43,7 @@
     justify-content: center;
     align-items: center;
     width: 261px;
-    margin-top: 90px;
+    margin-top: 61px;
     @include button;
   }
   @media (any-hover: hover) {
@@ -61,6 +61,9 @@
 .pets__figure {
   text-align: center;
   transition: transform 0.3s;
+  background-color: #FAFAFA;
+  height: 434px;
+  border-radius: 9px;
   @media (any-hover: hover) {
     &:hover {
       transform: scale(1.1);

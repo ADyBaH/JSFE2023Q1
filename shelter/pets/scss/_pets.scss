@@ -55,6 +55,7 @@
   background-color: #FAFAFA;
   text-align: center;
   transition: transform 0.3s;
+  border-radius: 9px;
   @media (any-hover: hover) {
     &:hover {
       transform: scale(1.1);

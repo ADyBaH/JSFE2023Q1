@@ -234,7 +234,7 @@ table {
   .header .header__nav {
     display: flex;
     width: 320px;
-    height: 822px;
+    height: 100%;
     top: 0;
     right: 0;
     transform: translateX(330px);
@@ -242,7 +242,6 @@ table {
     align-items: center;
     justify-content: center;
     background-color: #292929;
-    z-index: 10;
     transition: all 0.3s;
     z-index: 11;
   }
@@ -1241,6 +1240,10 @@ html {
 
 body {
   font-family: Georgia, "Times New Roman", Times, sans-serif;
+}
+
+.noScroll {
+  overflow: hidden;
 }
 
 .bg-popup {

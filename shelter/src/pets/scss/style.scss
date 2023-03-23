@@ -12,10 +12,14 @@ html {
 body {
   font-family: $font-georgia;
 }
+
+.noScroll {
+  overflow: hidden;
+}
+
 .bg-popup {
   display: none;
   position: fixed;
-  // visibility: hidden;
   opacity: 0;
   top: 0;
   width: 100%;
@@ -29,7 +33,6 @@ body {
 }
 .bg-popup_visible {
   display: block;
-  // visibility: visible;
 }
 .wrap {
   max-width: 1200px;

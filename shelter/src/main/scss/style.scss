@@ -13,15 +13,15 @@ html {
 }
 
 body {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: space-between;
   font-family: $font-georgia;
+}
+
+.noScroll {
+  overflow: hidden;
 }
 .bg-popup {
   display: none;
   position: fixed;
-  // visibility: hidden;
   opacity: 0;
   top: 0;
   width: 100%;

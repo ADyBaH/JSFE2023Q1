@@ -2,24 +2,19 @@
 
 .bgImgFooter {
   position: absolute;
-  // bottom: 0;
   background-image: url(../assets/img/bdGradient.png),
     url(../assets/img/noise_transparent@2x.png);
-  // background-size: 100% 100%;
   background-position: center center;
   background-repeat: no-repeat, repeat;
   background-blend-mode: multiply;
-  // object-fit: fill;
   width: 100%;
   height: 350px;
-  // left: -5;
   z-index: 0;
 }
 .footer {
   display: flex;
   justify-content: space-between;
   position: relative;
-  // padding: 10px 20px;
   height: 350px;
   &__section-left {
     display: flex;
@@ -35,7 +30,6 @@
   display: flex;
   margin-top: 56px;
   flex-direction: column;
-  // align-items: start;
   &-h3 {
     width: 300px;
     color: #fff;
@@ -81,7 +75,6 @@
   display: flex;
   margin-top: 56px;
   flex-direction: column;
-  // align-items: start;
   &-h3 {
     width: 300px;
     color: #fff;

@@ -1,7 +1,6 @@
 @import "../../assets/scss/_reset";
 @import "./_variable";
 @import "./_header";
-@import "./_main";
 @import "./_pets";
 @import "../../assets/scss/_footer";
 
@@ -11,6 +10,9 @@ html {
 
 body {
   font-family: $font-georgia;
+}
+.main {
+  background-color: #F6F6F6;
 }
 
 .noScroll {

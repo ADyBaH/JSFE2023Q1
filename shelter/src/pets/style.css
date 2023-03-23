@@ -174,7 +174,7 @@ table {
   gap: 36px;
 }
 .nav__list_li > a {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, "Times New Roman", Times, sans-serif;
   font-size: min(15px, 2vw);
   color: #545454;
 }
@@ -275,10 +275,6 @@ table {
     transform: rotate(90deg) scale(1.1);
   }
 }
-.main {
-  background-color: #F6F6F6;
-}
-
 .main__section {
   display: flex;
   justify-content: center;
@@ -722,7 +718,11 @@ html {
 }
 
 body {
-  font-family: Georgia, "Times New Roman", Times, sans-serif;
+  font-family: "Georgia", "Times New Roman", Times, sans-serif;
+}
+
+.main {
+  background-color: #F6F6F6;
 }
 
 .noScroll {

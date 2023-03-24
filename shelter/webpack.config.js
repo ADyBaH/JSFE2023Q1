@@ -43,7 +43,13 @@ const config = {
     new MiniCssExtractPlugin(),
     new CopyPlugin({
         patterns: [
-          { from: "src/assets", to: "assets" },
+          { 
+            from: "src/assets",
+            to: "assets",
+            globOptions: {
+              ignore: ["**/fonts/**"]
+            },
+           },
         //   { from: "src/js", to: "js" },
         ],
       }),
@@ -69,7 +75,6 @@ const config = {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
         type: "asset",
       },
-
       // Add your rules for custom modules here
       // Learn more about loaders from https://webpack.js.org/loaders/
     ],

@@ -1,4 +1,5 @@
-@import "./variable";
+@import "../../assets/scss/variable";
+@import "../../assets/scss/petsFigure";
 
 .main__section {
   display: flex;
@@ -49,42 +50,42 @@
   }
 }
 
-.pets__figure {
-  cursor: pointer;
-  height: 436px;
-  background-color: #FAFAFA;
-  text-align: center;
-  transition: transform 0.3s;
-  @media (any-hover: hover) {
-    &:hover {
-      transform: scale(1.1);
-      .pets__figure_button {
-        background-color: #f1cdb3;
-        &:hover {
-          background-color: #FDDCC4;
-        }
-      }
-    }
-  }
-  &_title {
-    margin-top: 28px;
-    color: #545454;
-    font-size: 20px;
-    letter-spacing: 0.06em;
-  }
-  &_button {
-    margin-top: 32px;
-    width: 187px;
-    @include button;
-    background-color: #f6f6f600;
-    border: 2px solid #F1CDB3;
-  }
-  @media (any-hover: hover) {
-    &_button:hover {
-      background-color: $buttonColorHover;
-    }
-  }
-}
+// .pets__figure {
+//   cursor: pointer;
+//   height: 436px;
+//   background-color: #FAFAFA;
+//   text-align: center;
+//   transition: transform 0.3s;
+//   @media (any-hover: hover) {
+//     &:hover {
+//       transform: scale(1.1);
+//       .pets__figure_button {
+//         background-color: #f1cdb3;
+//         &:hover {
+//           background-color: #FDDCC4;
+//         }
+//       }
+//     }
+//   }
+//   &_title {
+//     margin-top: 28px;
+//     color: #545454;
+//     font-size: 20px;
+//     letter-spacing: 0.06em;
+//   }
+//   &_button {
+//     margin-top: 32px;
+//     width: 187px;
+//     @include button;
+//     background-color: #f6f6f600;
+//     border: 2px solid #F1CDB3;
+//   }
+//   @media (any-hover: hover) {
+//     &_button:hover {
+//       background-color: $buttonColorHover;
+//     }
+//   }
+// }
 
 .pets__buttons-block {
   display: flex;
@@ -107,21 +108,21 @@
   }
   &_arrow-first {
     transform: rotate(180deg);
-    background-image: url(../assets/icon/dablEqual.svg);
+    background-image: url(../../assets/icon/dablEqual.svg);
   }
   &_arrow-prew {
     transform: rotate(180deg);
-    background-image: url(../assets/icon/equal.svg);
+    background-image: url(../../assets/icon/equal.svg);
   }
   &_number {
     font-size: 20px;
     background-color: #F1CDB3;
   }
   &_arrow-next {
-    background-image: url(../assets/icon/equal.svg);
+    background-image: url(../../assets/icon/equal.svg);
   }
   &_arrow-last {
-    background-image: url(../assets/icon/dablEqual.svg);
+    background-image: url(../../assets/icon/dablEqual.svg);
   }
   @media (any-hover: hover) {
     &__button:hover {

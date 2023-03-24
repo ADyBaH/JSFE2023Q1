@@ -1,0 +1,88 @@
+@import "./variable";
+
+.modal-box {
+  .crossButton {
+    cursor: pointer;
+    position: absolute;
+    top: -52px;
+    right: -42px;
+    width: min(4.0625vw, 52px);
+    height: min(4.0625vw, 52px);
+    border: 2px solid $main-color;
+    border-radius: 50%;
+    background-image: url(../../assets/icon/cross.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background-color 0.3s;
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: $main-color;
+      }
+    }
+  }
+  display: flex;
+  align-items: center;
+  position: absolute;
+  font-family: $font-georgia;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(70.3125vw, 900px);
+  height: min(39.0625vw,500px);
+  border-radius: 9px;
+  background-color: #FAFAFA;
+  z-index: 15;
+
+  &__img {
+    width: min(39.0625vw,500px);
+    height: min(39.0625vw,500px);
+    border-radius: 9px;
+  } 
+  &__right-section {
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    height: 100%;
+    margin-left: 30px;
+    &_h3 {
+      font-size: min(2.734375vw, 35px);
+      margin-top: 56px;
+      letter-spacing: 0.06em;
+    }
+    &_h4 {
+      font-size: min(1.5625vw, 20px);
+      letter-spacing: 0.06em;
+      margin-top: 15px;
+    }
+    &_paragraph {
+      width: 351px;
+      font-size: min(1.171875vw, 15px);
+      letter-spacing: 0.06em;
+      line-height: 17px;
+      margin-top: 42px;
+    }
+    &_ul {
+      display: flex;
+      flex-direction: column;
+      margin-top: 40px;
+      margin-left: 15px;
+      row-gap: 11px;
+    }
+    &_li {
+      list-style-type: disc;
+      font-size: min(1.171875vw, 15px);
+      letter-spacing: 0.06em;
+      line-height: 17px;
+      &::marker {
+        color: $main-color;
+      }
+      &_span {
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.modal-box_display-none {
+  display: none;
+}

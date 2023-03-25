@@ -1,6 +1,8 @@
 @import "./variable";
 
 .modal-box {
+  opacity: 0;
+  transition: opacity 0.3s;
   .crossButton {
     cursor: pointer;
     position: absolute;
@@ -24,15 +26,14 @@
   align-items: center;
   position: absolute;
   font-family: $font-georgia;
-  top: 50%;
-  left: 50%;
+  top: 49.9%;
+  left: 50.7%;
   transform: translate(-50%, -50%);
   width: min(70.3125vw, 900px);
   height: min(39.0625vw,500px);
   border-radius: 9px;
   background-color: #FAFAFA;
   z-index: 15;
-
   &__img {
     width: min(39.0625vw,500px);
     height: min(39.0625vw,500px);
@@ -85,4 +86,5 @@
 
 .modal-box_display-none {
   display: none;
+  opacity: 0;
 }

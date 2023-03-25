@@ -38,6 +38,7 @@ $colorDarkM: #B2B2B2;
 }
 
 @mixin buttonNextPrev {
+  cursor: pointer;
   position: absolute;
   width: 52px;
   height: 52px;

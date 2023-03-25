@@ -1,4 +1,5 @@
 import { deactivateScroll } from "./modal";
+
 const burger = document.querySelector(".header__nav_burger");
 const bg = document.querySelector(".bg-popup");
 const navBar = document.querySelector(".header__nav");

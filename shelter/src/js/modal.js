@@ -9,7 +9,14 @@ export function activeBackgroundForPopUp() {
 }
 
 export function deactivateScroll() {
-  document.body.classList.toggle("noScroll");
+  if (!document.body.classList.contains("noScroll")) {
+    document.body.classList.add("noScroll");
+    return;
+  }
+  setTimeout(() => {
+    document.body.classList.remove("noScroll");
+  }, 300);
+  
 }
 function closeAllModal(event) {
   if(

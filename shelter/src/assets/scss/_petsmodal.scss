@@ -27,7 +27,7 @@
   position: fixed;
   font-family: $font-georgia;
   top: 49.9%;
-  left: 50.7%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: min(70.3125vw, 900px);
   // height: min(39.0625vw, 500px);
@@ -148,11 +148,9 @@
   .modal-box__right-section_h3 {
     margin-top: 10px;
     text-align: center;
-    margin-right: 10px;
   }
   .modal-box__right-section_h4 {
     text-align: center;
-    margin-right: 15px;
   }
   .modal-box__right-section {
     margin-left: 0px;

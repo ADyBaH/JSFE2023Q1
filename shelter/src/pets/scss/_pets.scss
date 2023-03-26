@@ -10,6 +10,7 @@
 .main__pets {
   display: flex;
   flex-direction: column;
+  position: relative;
   justify-content: start;
   align-items: center;
   background-color: #F6F6F6;
@@ -49,43 +50,6 @@
     }
   }
 }
-
-// .pets__figure {
-//   cursor: pointer;
-//   height: 436px;
-//   background-color: #FAFAFA;
-//   text-align: center;
-//   transition: transform 0.3s;
-//   @media (any-hover: hover) {
-//     &:hover {
-//       transform: scale(1.1);
-//       .pets__figure_button {
-//         background-color: #f1cdb3;
-//         &:hover {
-//           background-color: #FDDCC4;
-//         }
-//       }
-//     }
-//   }
-//   &_title {
-//     margin-top: 28px;
-//     color: #545454;
-//     font-size: 20px;
-//     letter-spacing: 0.06em;
-//   }
-//   &_button {
-//     margin-top: 32px;
-//     width: 187px;
-//     @include button;
-//     background-color: #f6f6f600;
-//     border: 2px solid #F1CDB3;
-//   }
-//   @media (any-hover: hover) {
-//     &_button:hover {
-//       background-color: $buttonColorHover;
-//     }
-//   }
-// }
 
 .pets__buttons-block {
   display: flex;

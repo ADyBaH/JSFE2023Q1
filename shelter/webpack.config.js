@@ -80,6 +80,11 @@ const config = {
       // Learn more about loaders from https://webpack.js.org/loaders/
     ],
   },
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, './src'),
+    },
+  },
 };
 
 module.exports = () => {

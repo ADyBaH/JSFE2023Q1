@@ -3,15 +3,12 @@
 .bgImgHeader {
   position: absolute;
   top: 0;
-  background-image: url(../../assets/img/bdGradient.png),
+  background: radial-gradient(100% 215.42% at 0% 0%, #5B483A 0%, #262425 100%), 
     url(../../assets/img/noise_transparent@2x.png);
-  // background-size: 100% 100%;
   background-position: center center;
   background-blend-mode: multiply;
-  // object-fit: fill;
   width: 100%;
   height: 908px;
-  // left: -5;
   z-index: 0;
 }
 

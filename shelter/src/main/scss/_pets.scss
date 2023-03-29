@@ -20,10 +20,18 @@
   }
   &__figure-block {
     display: flex;
+    height: 436px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    gap: 90px;
+  }
+  .main__pets__block {
+    display: flex;
     position: relative;
     align-items: center;
     margin-top: 58px;
-    gap: 90px;
   }
   &__arrow-prev {
     float: right;
@@ -57,42 +65,6 @@
     }
   }
 }
-
-// .pets__figure {
-//   height: 436px;
-//   background-color: #FAFAFA;
-//   text-align: center;
-//   transition: transform 0.3s;
-//   @media (any-hover: hover) {
-//     &:hover {
-//       transform: scale(1.1);
-//       .pets__figure_button {
-//         background-color: #f1cdb3;
-//         &:hover {
-//           background-color: #FDDCC4;
-//         }
-//       }
-//     }
-//   }
-//   &_title {
-//     margin-top: 28px;
-//     color: #545454;
-//     font-size: 20px;
-//     letter-spacing: 0.06em;
-//   }
-//   &_button {
-//     margin-top: 32px;
-//     width: 187px;
-//     @include button;
-//     background-color: #f6f6f600;
-//     border: 2px solid #f1cdb3;
-//   }
-//   @media (any-hover: hover) {
-//     &_button:hover {
-//       background-color: $buttonColorHover;
-//     }
-//   }
-// }
 
 @media (min-width: 769px) and (max-width: 1279px) {
   .main__pets__figure-block {

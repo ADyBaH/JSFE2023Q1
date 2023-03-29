@@ -1,13 +1,16 @@
+@import "./animated";
+
 .pets__figure {
   cursor: pointer;
-  height: 436px;
-  background-color: #FAFAFA;
+  background-color: #fafafa;
   text-align: center;
   transition: transform 0.3s;
   border-radius: 9px;
+  height: 100%;
   @media (any-hover: hover) {
     &:hover {
       transform: scale(1.1);
+      box-shadow: 1px 1px 10px 5px #545454;
       .pets__figure_button {
         background-color: #f1cdb3;
         &:hover {

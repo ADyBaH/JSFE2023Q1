@@ -6,28 +6,33 @@ const figureAll = document.querySelectorAll(".pets__figure");
 
 
 function addCloneNode(node, number, side) {
-  const reverseSide = side === "1500" ? "-1500" : "1500";
+  const reverseSide = side === "slideRight" ? "slideLeft" : "slideRight";
   for (let i = 0; i < number; i += 1) {
     const cloneNode = node.cloneNode(true);
-    cloneNode.style.transform = `translate(${reverseSide}px)`
-    setTimeout( () => cloneNode.style.transform = `translate(0px)`, 300 )
+
+    cloneNode.classList.add(`${reverseSide}Back`)
+    setTimeout( () => cloneNode.classList.remove(`${reverseSide}Back`), 700 )
+
     figureSection.append(cloneNode);
   }
-  setTimeout( () => { figureBlock.addEventListener("click", flipSlider) }, 500);
+
+  setTimeout( () => {
+    figureBlock.addEventListener("click", flipSlider);
+    figureSection.classList.remove("overflowHidden");
+  }, 500);
 }
 
 function removeAddNode(side) {
   const figureAll = document.querySelectorAll(".pets__figure");
+  figureAll[0].classList.remove(side)
   figureAll.forEach((v) => v.remove());
   addCloneNode(figureAll[0], 3, side);
 }
 
 function animateFlip(side) {
   const figureAll = document.querySelectorAll(".pets__figure");
-  const getSide = { transform: `translate(${side}px)` };
-  figureAll.forEach((v) => v.animate(getSide, { duration: 310 }));
-
-  setTimeout( () => { removeAddNode(side) }, 300);
+  figureAll.forEach((v) => v.classList.add(`slide${side}`));
+  setTimeout( () => { removeAddNode(`slide${side}`) }, 600);
 }
 
 function flipSlider(event) {
@@ -35,8 +40,9 @@ function flipSlider(event) {
   if (target.localName !== "span") return;
   figureBlock.removeEventListener("click", flipSlider);
   const arrowClass = "main__pets__arrow-";
-  if (target.classList.contains(`${arrowClass}next`)) animateFlip("1500");
-  if (target.classList.contains(`${arrowClass}prev`)) animateFlip("-1500");
+  figureSection.classList.add("overflowHidden");
+  if (target.classList.contains(`${arrowClass}next`)) animateFlip("Right");
+  if (target.classList.contains(`${arrowClass}prev`)) animateFlip("Left");
 }
 
 figureBlock.addEventListener("click", flipSlider);

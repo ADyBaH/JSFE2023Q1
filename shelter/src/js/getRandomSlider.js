@@ -1,6 +1,6 @@
 import dateJson from "@/assets/pets.json"
 
-export function getRandomArray() {
+export function getRandom2Arrays() {
   const arr = [[], []];
 
   arr.forEach(v => {

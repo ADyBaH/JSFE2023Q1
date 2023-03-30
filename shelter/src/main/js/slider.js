@@ -8,34 +8,32 @@ const figureBlock = document.querySelector(".main__pets__block");
 const figureSection = document.querySelector(".main__pets__figure-block");
 let counter = 0;
 let sideNow;
-const cashArr = [getRandomDataJson()];
-let [randomNumbers, randomDataJson] = cashArr[counter];
-
+const cacheArr = [getRandomDataJson()];
+let [randomNumbers, randomDataJson] = cacheArr[counter];
 
 (function randomPetsCardOnStart() {
   const figureAll = document.querySelectorAll(".pets__figure");
   figureAll.forEach((v, i) => initialPetsNode(v, i))
 })();
 
-function saveCash(side) {
+function saveCache(side) {
   if(sideNow === undefined) {
-    cashArr.push(getRandomDataJson(randomNumbers));
+    cacheArr.push(getRandomDataJson(randomNumbers));
     sideNow = side;
     counter = 1;
-    if(cashArr.length > 2) cashArr.shift();
-    [randomNumbers, randomDataJson] = cashArr[counter];
+    [randomNumbers, randomDataJson] = cacheArr[counter];
     return
   } 
   if(side === sideNow) {
-    cashArr.pop();
-    cashArr.push(getRandomDataJson(randomNumbers));
+    cacheArr.pop();
+    cacheArr.push(getRandomDataJson(randomNumbers));
     counter = 1;
-    [randomNumbers, randomDataJson] = cashArr[counter];
+    [randomNumbers, randomDataJson] = cacheArr[counter];
     return
   }
   counter = 0;
   sideNow = side;
-  [randomNumbers, randomDataJson] = cashArr[counter];
+  [randomNumbers, randomDataJson] = cacheArr[counter];
 }
 
 function initialPetsNode(node, number) {
@@ -72,7 +70,7 @@ function removeAddNode(side) {
 }
 
 function animateFlip(side) {
-  saveCash(side);
+  saveCache(side);
   const figureAll = document.querySelectorAll(".pets__figure");
   figureAll.forEach((v) => v.classList.add(`slide${side}`));
   setTimeout( () => { removeAddNode(`slide${side}`) }, 500);

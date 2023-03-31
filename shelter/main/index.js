@@ -1,1 +1,3 @@
-console.log("Hello World from index!");
+import "./js/console.js";
+import "../js/modal.js";
+import "../js/burger.js";

@@ -11,7 +11,7 @@ let sideNow;
 const cacheArr = [getRandomDataJson()];
 let [randomNumbers, randomDataJson] = cacheArr[counter];
 
-(function randomPetsCardOnStart() {
+(function generatePetsCardOnStart() {
   const figureAll = document.querySelectorAll(".pets__figure");
   figureAll.forEach((v, i) => initialPetsNode(v, i))
 })();

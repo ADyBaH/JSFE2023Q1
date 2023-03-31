@@ -47,7 +47,7 @@ $colorDarkM: #B2B2B2;
   background-image: url(../assets/icon/Arrow.svg);
   background-repeat: no-repeat;
   background-position: center;
-  transition: all 0.5s;
+  transition: color 0.5s, background-color 0.5s, box-shadow 0.3s;
 }
 
 @mixin h3 {

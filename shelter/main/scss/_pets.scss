@@ -63,6 +63,8 @@
   background-color: #FAFAFA;
   text-align: center;
   transition: transform 0.3s;
+  background-color: #FAFAFA;
+  height: 434px;
   border-radius: 9px;
   @media (any-hover: hover) {
     &:hover {
@@ -94,7 +96,6 @@
     }
   }
 }
-
 @media (min-width: 769px) and (max-width: 1279px) {
   .main__pets__figure-block {
     gap: 5.0367474589523065vw;

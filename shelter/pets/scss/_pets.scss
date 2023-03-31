@@ -78,7 +78,7 @@
     width: 187px;
     @include button;
     background-color: #f6f6f600;
-    border: 2px solid #F1CDB3;
+    border: 2px solid #f1cdb3;
   }
   @media (any-hover: hover) {
     &_button:hover {
@@ -100,7 +100,7 @@
     &:disabled {
       cursor: not-allowed;
       opacity: 0.4;
-      border: 2px solid #CDCDCD;
+      border: 2px solid #cdcdcd;
       &:hover {
         background-color: #54545400;
       }
@@ -116,7 +116,7 @@
   }
   &_number {
     font-size: 20px;
-    background-color: #F1CDB3;
+    background-color: #f1cdb3;
   }
   &_arrow-next {
     background-image: url(../assets/icon/equal.svg);

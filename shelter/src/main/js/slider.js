@@ -69,7 +69,7 @@ function removeAddNode(side) {
   addCloneNode(figureAll[0], 3, side);
 }
 
-function animateFlip(side) {
+function swapSlide(side) {
   saveCache(side);
   const figureAll = document.querySelectorAll(".pets__figure");
   figureAll.forEach((v) => v.classList.add(`slide${side}`));
@@ -82,8 +82,8 @@ function flipSlider(event) {
   figureBlock.removeEventListener("click", flipSlider);
   const arrowClass = "main__pets__arrow-";
   figureSection.classList.add("overflowHidden");
-  if (target.classList.contains(`${arrowClass}next`)) animateFlip("Right");
-  if (target.classList.contains(`${arrowClass}prev`)) animateFlip("Left");
+  if (target.classList.contains(`${arrowClass}next`)) swapSlide("Right");
+  if (target.classList.contains(`${arrowClass}prev`)) swapSlide("Left");
 }
 
 figureBlock.addEventListener("click", flipSlider);

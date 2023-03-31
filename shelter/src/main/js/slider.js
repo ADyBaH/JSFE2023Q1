@@ -6,34 +6,52 @@ import { getRandomDataJson } from "@/js/getRandomSlider.js";
 // const prevButton = document.querySelector(".main__pets__arrow-prev");
 const figureBlock = document.querySelector(".main__pets__block");
 const figureSection = document.querySelector(".main__pets__figure-block");
-let counter = 0;
-let sideNow;
-const cacheArr = [getRandomDataJson()];
-let [randomNumbers, randomDataJson] = cacheArr[counter];
+let numberForMassive = 0;
+let counterPress = 0;
+let counterForSlider = 1;
+let cacheSide;
+let cacheArr = [getRandomDataJson()];
+let [randomNumbers, randomDataJson] = cacheArr[numberForMassive];
 
 (function generatePetsCardOnStart() {
   const figureAll = document.querySelectorAll(".pets__figure");
   figureAll.forEach((v, i) => initialPetsNode(v, i))
+  cacheArr.push(getRandomDataJson(randomNumbers));
+  console.log(counterForSlider, randomNumbers)
 })();
 
 function saveCache(side) {
-  if(sideNow === undefined) {
-    cacheArr.push(getRandomDataJson(randomNumbers));
-    sideNow = side;
-    counter = 1;
-    [randomNumbers, randomDataJson] = cacheArr[counter];
-    return
-  } 
-  if(side === sideNow) {
-    cacheArr.pop();
-    cacheArr.push(getRandomDataJson(randomNumbers));
-    counter = 1;
-    [randomNumbers, randomDataJson] = cacheArr[counter];
+  side === "Right" ? counterForSlider += 1 : counterForSlider -= 1;
+  // не показывать Егору, желательно переписать.
+  if(counterForSlider === 2 || counterForSlider === 0) {
+    console.log("одно нажатие")
+    if(side === cacheSide) {
+      console.log("одно нажатие с другой стороной")
+      cacheArr.pop();
+      cacheArr.push(getRandomDataJson(randomNumbers));
+    }
+    cacheSide = side
+    numberForMassive = 1;
+    [randomNumbers, randomDataJson] = cacheArr[numberForMassive];
+    console.log(counterForSlider, randomNumbers)
     return
   }
-  counter = 0;
-  sideNow = side;
-  [randomNumbers, randomDataJson] = cacheArr[counter];
+  if(counterForSlider === 3 || counterForSlider === -1) {
+    cacheSide = side
+    console.log("второе нажатие")
+    cacheArr.shift();
+    cacheArr.push(getRandomDataJson(randomNumbers));
+    [randomNumbers, randomDataJson] = cacheArr[numberForMassive];
+    console.log(counterForSlider, randomNumbers)
+    counterForSlider = undefined;
+    return
+  }
+  cacheSide = side
+  console.log("возвращаем кэш")
+  numberForMassive = 0;
+  [randomNumbers, randomDataJson] = cacheArr[numberForMassive];
+  counterForSlider = 1;
+  console.log(counterForSlider, randomNumbers)
 }
 
 function initialPetsNode(node, number) {
@@ -45,7 +63,6 @@ function initialPetsNode(node, number) {
 
 function addCloneNode(node, number, side) {
   const reverseSide = side === "slideRight" ? "slideLeft" : "slideRight";
-  // const arrSide = side === "slideRight" ? rightArr : lefftArr;
 
   for (let i = 0; i < number; i += 1) {
     const cloneNode = node.cloneNode(true);

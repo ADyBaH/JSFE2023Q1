@@ -16,18 +16,11 @@ import dataJson from "@/assets/pets.json"
 //   return arr;
 // }
 
-export function getRandomDataJson(arr) {
+export function getRandomDataJson(arr = [], number = 3) {
   const newArr = [];
-  while(newArr.length !== 3) {
+  while(newArr.length !== number) {
     const randomValue = Math.floor(Math.random() * 7);
-    
-    // шо это за говно
-    if(!arr) {
-      if(!newArr.includes(randomValue)) {
-        newArr.push(randomValue);
-      }
-      continue;
-    }
+
     const checkValue = !arr.includes(randomValue) && !newArr.includes(randomValue);
     if(checkValue) {
       newArr.push(randomValue);
@@ -35,7 +28,3 @@ export function getRandomDataJson(arr) {
   }
   return [newArr, newArr.map(v => dataJson[v])];
 }
-
-// const r = getRandomDataJson();
-// console.log(r)
-// console.log(getRandomDataJson(r));

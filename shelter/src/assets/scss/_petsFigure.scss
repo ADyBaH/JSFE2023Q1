@@ -32,6 +32,9 @@
     background-color: #f6f6f600;
     border: 2px solid #f1cdb3;
   }
+  &_img {
+    border-radius: 9px 9px 0 0;
+  }
   @media (any-hover: hover) {
     &_button:hover {
       background-color: $buttonColorHover;

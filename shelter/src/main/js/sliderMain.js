@@ -1,9 +1,5 @@
-import dataJson from "@/assets/pets.json";
 import { getRandomDataJson } from "@/js/getRandomSlider.js";
 
-
-// const nextButton = document.querySelector(".main__pets__arrow-next");
-// const prevButton = document.querySelector(".main__pets__arrow-prev");
 const figureBlock = document.querySelector(".main__pets__block");
 const figureSection = document.querySelector(".main__pets__figure-block");
 let numberForMassive = 0;
@@ -42,7 +38,6 @@ function changeSlide(side) {
     cacheArr.push(getRandomDataJson(randomNumbers));
     [randomNumbers, randomDataJson] = cacheArr[numberForMassive];
     console.log(counterForSlider, randomNumbers)
-  
 }
 
 function initialPetsNode(node, number) {

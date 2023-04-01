@@ -27,6 +27,10 @@ paginationState["maxPages"] = paginationArr.length / paginationState.chunkSize;
 
 //"logic"//
 console.log(paginationArr)
+
+//загружаем карточки на старте:
+changeCard(petCards, paginationArr.slice(0, 8), false);
+
 function getChank() {
   const start = paginationState.chunkSize * (paginationState.currentPage - 1);
   const end = start + paginationState.chunkSize;
@@ -37,7 +41,6 @@ function getChank() {
   paginationArr.slice(start, end)
 }
 
-getChank();
 
 function disableButton(...arr) {
   arr.forEach(v => v.disabled = true);

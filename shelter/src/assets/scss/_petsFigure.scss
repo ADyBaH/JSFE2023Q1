@@ -4,7 +4,7 @@
   cursor: pointer;
   background-color: #fafafa;
   text-align: center;
-  transition: transform 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
   border-radius: 9px;
   height: 100%;
   @media (any-hover: hover) {

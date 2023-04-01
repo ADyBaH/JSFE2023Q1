@@ -7,9 +7,8 @@ import { getRandomDataJson } from "@/js/getRandomSlider.js";
 const figureBlock = document.querySelector(".main__pets__block");
 const figureSection = document.querySelector(".main__pets__figure-block");
 let numberForMassive = 0;
-let counterPress = 0;
-let counterForSlider = 1;
-let cacheSide;
+let counterForSlider = 0;
+let cacheSide = "Start";
 let cacheArr = [getRandomDataJson()];
 let [randomNumbers, randomDataJson] = cacheArr[numberForMassive];
 
@@ -17,41 +16,33 @@ let [randomNumbers, randomDataJson] = cacheArr[numberForMassive];
   const figureAll = document.querySelectorAll(".pets__figure");
   figureAll.forEach((v, i) => initialPetsNode(v, i))
   cacheArr.push(getRandomDataJson(randomNumbers));
-  console.log(counterForSlider, randomNumbers)
+  console.log(cacheArr, randomNumbers)
 })();
 
-function saveCache(side) {
-  side === "Right" ? counterForSlider += 1 : counterForSlider -= 1;
+function changeSlide(side) {
+  counterForSlider += 1;
   // не показывать Егору, желательно переписать.
-  if(counterForSlider === 2 || counterForSlider === 0) {
-    console.log("одно нажатие")
-    if(side === cacheSide) {
-      console.log("одно нажатие с другой стороной")
-      cacheArr.pop();
-      cacheArr.push(getRandomDataJson(randomNumbers));
-    }
-    cacheSide = side
-    numberForMassive = 1;
-    [randomNumbers, randomDataJson] = cacheArr[numberForMassive];
-    console.log(counterForSlider, randomNumbers)
-    return
+  if(cacheSide !== "Start" && cacheSide !== side) {
+    console.log("возвращаем кэш");
+    cacheSide = "Start";
+    numberForMassive = 0;
+    counterForSlider = 0;
   }
-  if(counterForSlider === 3 || counterForSlider === -1) {
-    cacheSide = side
+  if(counterForSlider === 1) {
+    console.log("одно нажатие")
+    cacheArr.pop();
+    numberForMassive = 1;
+  }
+  if(counterForSlider === 2) {
     console.log("второе нажатие")
     cacheArr.shift();
+    counterForSlider = 1;
+  }
+    cacheSide = side
     cacheArr.push(getRandomDataJson(randomNumbers));
     [randomNumbers, randomDataJson] = cacheArr[numberForMassive];
     console.log(counterForSlider, randomNumbers)
-    counterForSlider = undefined;
-    return
-  }
-  cacheSide = side
-  console.log("возвращаем кэш")
-  numberForMassive = 0;
-  [randomNumbers, randomDataJson] = cacheArr[numberForMassive];
-  counterForSlider = 1;
-  console.log(counterForSlider, randomNumbers)
+  
 }
 
 function initialPetsNode(node, number) {
@@ -87,7 +78,7 @@ function removeAddNode(side) {
 }
 
 function swapSlide(side) {
-  saveCache(side);
+  changeSlide(side);
   const figureAll = document.querySelectorAll(".pets__figure");
   figureAll.forEach((v) => v.classList.add(`slide${side}`));
   setTimeout( () => { removeAddNode(`slide${side}`) }, 500);

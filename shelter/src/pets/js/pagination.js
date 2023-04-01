@@ -1,4 +1,5 @@
 import { getRandomDataJson } from "@/js/getRandomSlider.js";
+import { changeCard } from "./changeCards.js";
 // main
 const paginationWrapper = document.querySelector(".main__section");
 // arr figure and button
@@ -25,6 +26,18 @@ const paginationState = {
 paginationState["maxPages"] = paginationArr.length / paginationState.chunkSize;
 
 //"logic"//
+console.log(paginationArr)
+function getChank() {
+  const start = paginationState.chunkSize * (paginationState.currentPage - 1);
+  const end = start + paginationState.chunkSize;
+  changeCard(petCards, paginationArr.slice(start, end))
+  // console.log(start, end)
+
+  // console.log(paginationArr.slice(start, end))
+  paginationArr.slice(start, end)
+}
+
+getChank();
 
 function disableButton(...arr) {
   arr.forEach(v => v.disabled = true);
@@ -52,7 +65,7 @@ function changePage(direction) {
   };
   checkDisableButton()
   currentPageButton.textContent = paginationState.currentPage;
-
+  getChank()
 }
 function changeOnLastPage(direction) {
   console.log(1)
@@ -64,6 +77,7 @@ function changeOnLastPage(direction) {
   }
   checkDisableButton()
   currentPageButton.textContent = paginationState.currentPage;
+  getChank()
 }
 
 buttonNextPage.addEventListener("click", () => changePage("next"));

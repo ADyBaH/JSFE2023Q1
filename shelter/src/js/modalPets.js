@@ -35,8 +35,8 @@ export function closeModalPets() {
 
 async function activePetsModal(event) {
   if(event.target.parentNode.className !== "pets__figure") return;
+  const name = event.target.parentNode.querySelector("h4").textContent;
 
-  const name = event.target.parentNode.querySelector("p").textContent;
   await generatePetsModal(name);
   petsModal.classList.remove("modal-box_display-none");
   petsModal.animate([{ opacity: 0, opacity: 1 }], { duration: 310 });

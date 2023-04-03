@@ -12,32 +12,36 @@ let [randomNumbers, randomDataJson] = cacheArr[numberForMassive];
   const figureAll = document.querySelectorAll(".pets__figure");
   figureAll.forEach((v, i) => initialPetsNode(v, i))
   cacheArr.push(getRandomDataJson(randomNumbers));
-  console.log(cacheArr, randomNumbers)
 })();
 
 function changeSlide(side) {
   counterForSlider += 1;
   // не показывать Егору, желательно переписать.
+
   if(cacheSide !== "Start" && cacheSide !== side) {
     console.log("возвращаем кэш");
     cacheSide = "Start";
     numberForMassive = 0;
     counterForSlider = 0;
   }
+
   if(counterForSlider === 1) {
     console.log("одно нажатие")
-    cacheArr.pop();
+    cacheSide = side
     numberForMassive = 1;
+    cacheArr.pop();
+    cacheArr.push(getRandomDataJson(randomNumbers));
   }
+
   if(counterForSlider === 2) {
     console.log("второе нажатие")
+    cacheSide = side
     cacheArr.shift();
     counterForSlider = 1;
-  }
-    cacheSide = side
     cacheArr.push(getRandomDataJson(randomNumbers));
-    [randomNumbers, randomDataJson] = cacheArr[numberForMassive];
-    console.log(counterForSlider, randomNumbers)
+  }
+
+  [randomNumbers, randomDataJson] = cacheArr[numberForMassive];
 }
 
 function initialPetsNode(node, number) {

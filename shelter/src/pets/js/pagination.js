@@ -5,7 +5,7 @@ const paginationWrapper = document.querySelector(".main__section");
 // arr figure and button
 const petCards = paginationWrapper.getElementsByClassName("pets__figure");
 const buttonsBlock = paginationWrapper.querySelector(".pets__buttons-block");
-//button
+// button
 const buttonFirtsPage = buttonsBlock.firstElementChild;
 const buttonPrevPage = buttonsBlock.querySelector(".button-block_arrow-prew");
 
@@ -26,7 +26,7 @@ const paginationState = {
 paginationState["maxPages"] = paginationArr.length / paginationState.chunkSize;
 
 //"logic"//
-console.log(paginationArr)
+
 
 //загружаем карточки на старте:
 changeCard(petCards, paginationArr.slice(0, 8), false);
@@ -35,9 +35,6 @@ function getChank() {
   const start = paginationState.chunkSize * (paginationState.currentPage - 1);
   const end = start + paginationState.chunkSize;
   changeCard(petCards, paginationArr.slice(start, end))
-  // console.log(start, end)
-
-  // console.log(paginationArr.slice(start, end))
   paginationArr.slice(start, end)
 }
 
@@ -46,6 +43,7 @@ function disableButton(...arr) {
   arr.forEach(v => v.disabled = true);
 }
 function checkDisableButton() {
+  currentPageButton.textContent = paginationState.currentPage;
   buttonsBlock.querySelectorAll("button").forEach(v => v.disabled = false);
 
   if(paginationState.currentPage === paginationState.maxPages) {
@@ -67,20 +65,19 @@ function changePage(direction) {
       paginationState.currentPage : paginationState.currentPage--;
   };
   checkDisableButton()
-  currentPageButton.textContent = paginationState.currentPage;
+
   getChank()
 }
 function changeOnLastPage(direction) {
-  console.log(1)
   if(direction === "next") {
     paginationState.currentPage = paginationState.maxPages;
   }
   if(direction === "prev") {
     paginationState.currentPage = 1;
   }
-  checkDisableButton()
+  checkDisableButton();
   currentPageButton.textContent = paginationState.currentPage;
-  getChank()
+  getChank();
 }
 
 buttonNextPage.addEventListener("click", () => changePage("next"));
@@ -88,4 +85,39 @@ buttonPrevPage.addEventListener("click", () => changePage("prev"));
 
 buttonFirtsPage.addEventListener("click", () => changeOnLastPage("prev"))
 buttonLastPage.addEventListener("click", () => changeOnLastPage("next"))
-// console.log(paginationArr);
+
+
+function changeState(number) {
+  const arrLength = paginationArr.length;
+  const changeOnLast = paginationState.currentPage > arrLength / number;
+
+  paginationState.chunkSize = number;
+  paginationState["maxPages"] = paginationArr.length / paginationState.chunkSize;
+  if(changeOnLast) {
+    paginationState.currentPage = arrLength / number;
+  };
+  checkDisableButton();
+  getChank();
+}
+
+function checkSize() {
+  if(window.matchMedia("(min-width: 769px)").matches &&
+     paginationState.chunkSize !== 8
+   ) {
+    changeState(8)
+    return;
+  }
+  if(
+    window.matchMedia("((min-width: 400px) and (max-width: 768px))").matches &&
+    paginationState.chunkSize !== 6
+    ) {
+      changeState(6);
+    return;
+  }
+  if(
+    window.matchMedia("(max-width: 400px)").matches &&
+    paginationState.chunkSize !== 3
+    ) changeState(3);
+}
+
+window.addEventListener("resize", checkSize);

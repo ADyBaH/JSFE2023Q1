@@ -30,8 +30,8 @@
     display: flex;
     position: relative;
     align-items: center;
-    // margin-top: 58px;
-    margin-top: 42px;
+    margin-top: 58px;
+    // margin-top: 42px;
   }
   &__arrow-prev {
     float: right;
@@ -71,10 +71,10 @@
     gap: 5.0367474589523065vw;
   }
   .main__pets__arrow-prev {
-    left: -5.209538702111024vw;
+    left: -7.209538702099998vw
   }
   .main__pets__arrow-next {
-    right: -5.209538702111024vw;
+    right: -7.209538702099998vw
   }
   .pets__figure_img {
     width: 21.11024237685692vw;

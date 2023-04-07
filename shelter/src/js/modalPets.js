@@ -34,7 +34,6 @@ export function closeModalPets() {
 }
 
 async function activePetsModal(event) {
-  console.log(event.target.parentNode.className)
   if(
     event.target.parentNode.className === "pets__figure" ||
     event.target.parentNode.className === "main__pets__figure-block"
@@ -49,7 +48,6 @@ async function activePetsModal(event) {
     }, 300);
     activeBackgroundForPopUp();
   }
-  
 }
 
 petsBlock.addEventListener("click", activePetsModal);

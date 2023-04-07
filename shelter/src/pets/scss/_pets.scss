@@ -1,5 +1,4 @@
-@import "../../assets/scss/variable";
-@import "../../assets/scss/petsFigure";
+@import "./variable";
 
 .main__section {
   display: flex;
@@ -10,7 +9,6 @@
 .main__pets {
   display: flex;
   flex-direction: column;
-  position: relative;
   justify-content: start;
   align-items: center;
   background-color: #F6F6F6;
@@ -32,9 +30,6 @@
     margin-top: 58px;
     column-gap: 40px;
     row-gap: 29px;
-    .pets__figure {
-      height: 436px;
-    }
   }
   &_button {
     width: 261px;
@@ -53,8 +48,42 @@
     }
   }
 }
-.pets__figure_opacity0 {
-  opacity: 0;
+
+.pets__figure {
+  cursor: pointer;
+  height: 436px;
+  background-color: #FAFAFA;
+  text-align: center;
+  transition: transform 0.3s;
+  @media (any-hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+      .pets__figure_button {
+        background-color: #f1cdb3;
+        &:hover {
+          background-color: #FDDCC4;
+        }
+      }
+    }
+  }
+  &_title {
+    margin-top: 28px;
+    color: #545454;
+    font-size: 20px;
+    letter-spacing: 0.06em;
+  }
+  &_button {
+    margin-top: 32px;
+    width: 187px;
+    @include button;
+    background-color: #f6f6f600;
+    border: 2px solid #F1CDB3;
+  }
+  @media (any-hover: hover) {
+    &_button:hover {
+      background-color: $buttonColorHover;
+    }
+  }
 }
 
 .pets__buttons-block {
@@ -78,21 +107,21 @@
   }
   &_arrow-first {
     transform: rotate(180deg);
-    background-image: url(../../assets/icon/dablEqual.svg);
+    background-image: url(../assets/icon/dablEqual.svg);
   }
   &_arrow-prew {
     transform: rotate(180deg);
-    background-image: url(../../assets/icon/equal.svg);
+    background-image: url(../assets/icon/equal.svg);
   }
   &_number {
     font-size: 20px;
     background-color: #F1CDB3;
   }
   &_arrow-next {
-    background-image: url(../../assets/icon/equal.svg);
+    background-image: url(../assets/icon/equal.svg);
   }
   &_arrow-last {
-    background-image: url(../../assets/icon/dablEqual.svg);
+    background-image: url(../assets/icon/dablEqual.svg);
   }
   @media (any-hover: hover) {
     &__button:hover {
@@ -117,31 +146,5 @@
   }
   .pets__figure:nth-last-child(2) {
     display: none;
-  }
-}
-
-@media (max-width: 399px) {
-  .main__pets {
-    &_h3 {
-      margin-top: 41px;
-      font-size: 25px;
-    }
-    &__figure-block {
-      margin-top: 42px;
-    }
-  }
-  .pets__figure:nth-last-child(3) {
-    display: none;
-  }
-  .pets__figure:nth-last-child(4) {
-    display: none;
-  }
-  .pets__figure:nth-last-child(5) {
-    display: none;
-  }
-  .pets__buttons-block {
-    margin-top: 41px;
-    gap:10px;
-    margin-bottom: 42px;
   }
 }

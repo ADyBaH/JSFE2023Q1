@@ -1,0 +1,71 @@
+@import "../../assets/fonts/stylesheet";
+@import "../../assets/scss/_reset";
+@import "../../assets/scss/stylesheet";
+@import "../../assets/scss/_variable";
+@import "./_header";
+@import "./_startScreen";
+@import "./_about";
+@import "./_pets";
+@import "./_help";
+@import "./_donation";
+@import "../../assets/scss/_footer";
+@import "../../assets/scss/_petsmodal";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-georgia;
+}
+
+.noScroll {
+  overflow: hidden;
+  @media (any-hover: hover) {
+    padding-right: 17px;
+  }
+  
+}
+.bg-popup {
+  display: none;
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(41, 41, 41, 0.6);
+  z-index: 7;
+  transition: opacity 0.3s;
+}
+.bg-popup_opacity {
+  opacity: 1;
+}
+.bg-popup_visible {
+  display: block;
+  // visibility: visible;
+
+}
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 769px) and (max-width: 1279px) {
+  .wrap {
+    max-width: 93.75vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    max-width: 708px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 410px) {
+  .wrap {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}

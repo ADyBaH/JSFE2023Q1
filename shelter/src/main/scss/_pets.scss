@@ -1,0 +1,131 @@
+@import "../../assets/scss/variable";
+@import "../../assets/scss/petsFigure";
+
+.main__pets {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background-color: #f6f6f6;
+  height: 877px;
+  &_h3 {
+    margin-top: 81px;
+    width: auto;
+    text-align: center;
+    font-size: 35px;
+    letter-spacing: 0.06em;
+    line-height: 130%;
+    color: #545454;
+  }
+  &__figure-block {
+    display: flex;
+    height: 436px;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
+  }
+  .main__pets__block {
+    display: flex;
+    position: relative;
+    align-items: center;
+    margin-top: 58px;
+    // margin-top: 42px;
+  }
+  &__arrow-prev {
+    float: right;
+    left: -105px;
+    top: 192px;
+    @include buttonNextPrev;
+  }
+  &__arrow-next {
+    right: -105px;
+    top: 192px;
+    transform: rotate(180deg);
+    @include buttonNextPrev;
+  }
+
+  &_button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 261px;
+    margin-top: 59px;
+    @include button;
+  }
+  @media (any-hover: hover) {
+    &__arrow-prev:hover,
+    &__arrow-next:hover {
+      background-color: $buttonColorHover;
+    }
+    &_button:hover {
+      background-color: $buttonColorHover;
+      box-shadow: 1px 0 5px $buttonColorHover;
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1279px) {
+  .main__pets__figure-block {
+    gap: 5.0367474589523065vw;
+  }
+  .main__pets__arrow-prev {
+    left: -7.209538702099998vw
+  }
+  .main__pets__arrow-next {
+    right: -7.209538702099998vw
+  }
+  .pets__figure_img {
+    width: 21.11024237685692vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .pets__figure:nth-last-child(2) {
+    display: none;
+  }
+  .pets__figure_img {
+    width: 35.15625vw;
+  }
+  .main__pets__figure-block {
+    gap: 5.208333333333334vw;
+  }
+  .main__pets__arrow-prev {
+    left: -9.6666666667vw;
+  }
+  .main__pets__arrow-next {
+    right: -9.6666666667vw;
+  }
+}
+@media (max-width: 540px) {
+  .main__pets {
+    height: 790px;
+}
+  .main__pets_h3 {
+    margin-top: 40px;
+    font-size: 25px;
+  }
+  .pets__figure:nth-last-child(3) {
+    display: none;
+  }
+  .main__pets__figure-block {
+    justify-content: center;
+    position: relative;
+    left: 8px;
+  }
+  .pets__figure_img {
+    width: auto;
+  }
+  .main__pets__arrow-prev {
+    left: 51px;
+    top: 455px;
+  }
+  .main__pets__arrow-next {
+    right: 51px;
+    top: 455px
+  }
+  .main__pets_button {
+    margin-top: 114px;
+  }
+}

@@ -1,0 +1,154 @@
+@import "../../assets/scss/_variable";
+
+.header {
+  height: 120px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: relative;
+  align-items: center;
+  width: 100%;
+  &__logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    &_h1 {
+      position: relative;
+      top: 4px;
+      font-size: 32px;
+      letter-spacing: 0.06em;
+      transition: all 0.3s;
+      z-index: 11;
+      & a {
+        color: $blackTextColor;
+        & > span {
+          position: relative;
+          bottom: 4px;
+        }
+      }
+    }
+    @media(any-hover: hover) {
+      &_h1:hover {
+        transform: scale(1.1);
+      }
+    }
+    &_paragraph {
+      font-family: $font-arial;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      margin-left: 5px;
+      color: $colorDark3xl;
+    }
+  }
+}
+
+.nav__list {
+  display: flex;
+  margin-bottom: 5px;
+  gap: 36px;
+  &_li > a{
+    font-family: $font-arial;
+    font-size: min(15px, 2vw);
+    color: $blackTextColor;
+  }
+  &_liActive > a{
+    color: $blackTextColor;
+    border-bottom: 3px $main-color solid;
+    padding-bottom: 4px;
+  }
+}
+
+@media(any-hover: hover) {
+  .nav__list_li > a:hover {
+    color: $blackTextColor;
+    border-bottom: 3px $main-color solid;
+    padding-bottom: 4px;
+    transition: all 0.2s;
+  }
+}
+
+@media (max-width: 767px) {
+  .header {
+    position: relative;
+    &__nav_burger {
+      cursor: pointer;
+      display: flex;
+      width: 30px;
+      height: 22px;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s;
+      z-index: 11;
+      &:hover {
+        transform: scale(1.1);
+      }
+      & > hr {
+        width: 100%;
+        border: 1px solid black;
+      }
+    }
+    .header__nav {
+      display: flex;
+      width: 320px;
+      height: 100%;
+      top: 0;
+      right: 0;
+      transform: translateX(330px);
+      position: fixed;
+      align-items: center;
+      justify-content: center;
+      background-color: #FAFAFA;
+      z-index: 10;
+      transition: all 0.3s;
+      z-index: 6;
+      .nav__list {
+        gap: 60px;
+        text-align: center;
+        flex-direction: column;
+        &_li > a {
+          font-size: 32px;
+        }
+      }
+    }
+    .burger__nav_active {
+      transform: translateX(0px);
+    }
+  }
+  .header_active {
+    justify-content: end;
+    gap: 30px;
+  }
+  .burger_active {
+    transform: rotate(90deg);
+  }
+  .burger_active:hover {
+    transform: rotate(90deg) scale(1.1);
+  }
+}
+
+@media (max-width: 410px) {
+  .header {
+    width: auto;
+    margin-left: 20px;
+    &__nav_burger {
+      margin-right: 20px;
+      &:hover {
+        transform: scale(1.1);
+      }
+      & > hr {
+        width: 100%;
+        border: 1px solid black;
+      }
+    }
+    .burger__nav_active {
+      transform: translateX(0px);
+    }
+  }
+  .burger_active {
+    transform: rotate(90deg);
+  }
+  .burger_active:hover {
+    transform: rotate(90deg) scale(1.1);
+  }
+}

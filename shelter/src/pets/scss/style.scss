@@ -1,0 +1,58 @@
+@import "../../assets/fonts/stylesheet";
+@import "../../assets/scss/_reset";
+@import "../../assets/scss/stylesheet";
+@import "../../assets/scss/_variable";
+@import "./_header";
+@import "./_pets";
+@import "../../assets/scss/_footer";
+@import "../../assets/scss/_petsmodal";
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-georgia;
+}
+.main {
+  background-color: #F6F6F6;
+}
+
+.noScroll {
+  overflow: hidden;
+}
+
+.bg-popup {
+  display: none;
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.716);
+  z-index: 5;
+  transition: opacity 0.3s;
+}
+.bg-popup_opacity {
+  opacity: 1;
+}
+.bg-popup_visible {
+  display: block;
+}
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 769px) and (max-width: 1279px) {
+  .wrap {
+    max-width: 93.75vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    max-width: 708px;
+    margin: 0 auto;
+  }
+}

@@ -1,0 +1,43 @@
+@import "./animated";
+
+.pets__figure {
+  cursor: pointer;
+  background-color: #fafafa;
+  text-align: center;
+  transition: transform 0.3s, opacity 0.3s;
+  border-radius: 9px;
+  height: 100%;
+  @media (any-hover: hover) {
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 2px 35px 14px rgba(13, 13, 13, 0.04);
+      .pets__figure_button {
+        background-color: #f1cdb3;
+        &:hover {
+          background-color: #FDDCC4;
+        }
+      }
+    }
+  }
+  &_title {
+    margin-top: 28px;
+    color: #545454;
+    font-size: 20px;
+    letter-spacing: 0.06em;
+  }
+  &_button {
+    margin-top: 32px;
+    width: 187px;
+    @include button;
+    background-color: #f6f6f600;
+    border: 2px solid #f1cdb3;
+  }
+  &_img {
+    border-radius: 9px 9px 0 0;
+  }
+  @media (any-hover: hover) {
+    &_button:hover {
+      background-color: $buttonColorHover;
+    }
+  }
+}

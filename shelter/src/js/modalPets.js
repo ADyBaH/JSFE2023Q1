@@ -34,16 +34,22 @@ export function closeModalPets() {
 }
 
 async function activePetsModal(event) {
-  if(event.target.parentNode.className !== "pets__figure") return;
-  const name = event.target.parentNode.querySelector("h4").textContent;
+  console.log(event.target.parentNode.className)
+  if(
+    event.target.parentNode.className === "pets__figure" ||
+    event.target.parentNode.className === "main__pets__figure-block"
+  ) {
+    const name = event.target.parentNode.querySelector("h4").textContent;
 
-  await generatePetsModal(name);
-  petsModal.classList.remove("modal-box_display-none");
-  petsModal.animate([{ opacity: 0, opacity: 1 }], { duration: 310 });
-  setTimeout(() => {
-    petsModal.style.opacity = 1;
-  }, 300);
-  activeBackgroundForPopUp();
+    await generatePetsModal(name);
+    petsModal.classList.remove("modal-box_display-none");
+    petsModal.animate([{ opacity: 0, opacity: 1 }], { duration: 310 });
+    setTimeout(() => {
+      petsModal.style.opacity = 1;
+    }, 300);
+    activeBackgroundForPopUp();
+  }
+  
 }
 
 petsBlock.addEventListener("click", activePetsModal);

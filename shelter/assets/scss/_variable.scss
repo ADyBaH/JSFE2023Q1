@@ -38,15 +38,16 @@ $colorDarkM: #B2B2B2;
 }
 
 @mixin buttonNextPrev {
+  cursor: pointer;
   position: absolute;
   width: 52px;
   height: 52px;
   border: 2px solid $main-color;
   border-radius: 50%;
-  background-image: url(../assets/icon/Arrow.svg);
+  background-image: url(../../assets/icon/Arrow.svg);
   background-repeat: no-repeat;
   background-position: center;
-  transition: all 0.5s;
+  transition: background-color 0.5s;
 }
 @mixin petsButton {
   width: 52px;

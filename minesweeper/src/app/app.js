@@ -1,15 +1,17 @@
 import { BaseComponent } from './components/base-component';
+import { Footer } from './components/footer';
 import { Header } from './components/header';
+import { Main } from './components/main';
 
 class App extends BaseComponent {
   constructor() {
-    super({ className: 'root' });
-
+    super({ attr: { className: 'root' }, parent: document.body });
   }
 
   init() {
-    document.body.append(this.element);
     this.header = new Header(this.element);
+    this.main = new Main(this.element);
+    this.footer = new Footer(this.element);
   }
 }
-const a = new App().init();
+new App().init();

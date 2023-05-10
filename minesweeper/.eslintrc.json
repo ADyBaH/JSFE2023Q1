@@ -1,0 +1,29 @@
+{
+  "env": { "browser": true, "es2021": true, "node": true },
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base",
+    "prettier"
+  ],
+  "root": true,
+  "rules": {
+    "block-spacing": ["warn", "always"],
+    "curly": ["warn", "all"],
+    "eol-last": "error",
+    "import/prefer-default-export": 0,
+    "max-len": ["error", { "code": 120, "ignoreComments": true, "tabWidth": 2 }],
+    "max-lines-per-function": ["error", 40],
+    "no-console": 0,
+    "no-debugger": 0,
+    "no-multiple-empty-lines": ["error", { "max": 2, "maxBOF": 0, "maxEOF": 1 }],
+    "no-param-reassign": 1,
+    "no-plusplus": 0,
+    "no-return-assign": 1,
+    "no-template-curly-in-string": "warn",
+    "no-unused-vars": 0,
+    "object-curly-spacing": ["warn", "always"],
+    "spaced-comment": ["error", "always", { "markers": ["!", "?", "//", "todo", "*"] }],
+    "class-methods-use-this": "off"
+  },
+  "ignorePatterns": ["webpack.prod.js", "webpack.common.js", "webpack.dev.js"]
+}

@@ -4,12 +4,12 @@
   "description": "js-minesweeper-project",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
     "deploy-root": "npm run build && npx gh-pages -d dist",
     "deploy-folder": "npm run build && npx gh-pages -d dist -e folder",
     "clean": "rmdir /s /q dist",
-    "build": "webpack --config webpack.prod.js",
-    "start": "webpack serve --config webpack.dev.js"
+    "l": "eslint .",
+    "b": "webpack --config webpack.prod.js",
+    "s": "webpack serve --config webpack.dev.js"
   },
   "author": "ADyBaH",
   "devDependencies": {

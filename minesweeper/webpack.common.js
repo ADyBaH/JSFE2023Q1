@@ -44,7 +44,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       templateContent: getTemplate(),
       fileName: 'index.html',
-      favicon: './src/assets/images/favicon.webp',
+      favicon: './src/assets/favicon.ico',
       chunks: ['app'],
     }),
     /* new CopyPlugin({ patterns: [{ from: './src/assets/folder', to: './assets/folder' }] }), */

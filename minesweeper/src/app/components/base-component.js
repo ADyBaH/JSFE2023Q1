@@ -1,6 +1,5 @@
 export class BaseComponent {
-  constructor(props) {
-    const { tag, attr, parent } = props;
+  constructor({ tag, attr, parent }) {
     const element = document.createElement(tag || 'div');
     Object.assign(element, attr);
     this.element = element;

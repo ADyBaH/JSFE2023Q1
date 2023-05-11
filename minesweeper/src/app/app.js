@@ -1,13 +1,8 @@
-import { BaseComponent } from './utils/base-component'
-import { Layout } from './layout/layout'
+import { Layout } from './components/layout'
 
-class App extends BaseComponent {
-  constructor() {
-    super({ attr: { className: 'root' }, parent: document.body })
-  }
-
+class App {
   init() {
-    const layout = new Layout(this.element)
+    const layout = new Layout()
   }
 }
 new App().init()

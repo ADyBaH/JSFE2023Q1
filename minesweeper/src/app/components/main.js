@@ -1,5 +1,5 @@
 import { BaseComponent } from '../utils/base-component'
-import { Game } from '../components/game'
+import { Game } from './game'
 // убрать врапы
 export class Main extends BaseComponent {
   constructor(root) {

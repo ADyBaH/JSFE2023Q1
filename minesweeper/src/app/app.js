@@ -1,4 +1,4 @@
-import { BaseComponent } from './components/base-component'
+import { BaseComponent } from './utils/base-component'
 import { Layout } from './layout/layout'
 
 class App extends BaseComponent {

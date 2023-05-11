@@ -1,4 +1,4 @@
-import { BaseComponent } from '../components/base-component'
+import { BaseComponent } from '../utils/base-component'
 import { Game } from '../components/game'
 // убрать врапы
 export class Main extends BaseComponent {

@@ -1,4 +1,4 @@
-import { BaseComponent } from './base-component'
+import { BaseComponent } from '../components/base-component'
 // убрать this
 export class Footer extends BaseComponent {
   constructor(root) {

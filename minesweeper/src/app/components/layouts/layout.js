@@ -1,4 +1,4 @@
-import { BaseComponent } from '../utils/base-component'
+import { BaseComponent } from '../../../utils/base-component'
 import { Footer } from './footer'
 import { Header } from './header'
 import { Main } from './main'

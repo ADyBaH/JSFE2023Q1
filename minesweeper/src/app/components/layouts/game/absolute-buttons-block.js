@@ -42,9 +42,9 @@ export class AbsoluteButtonsBlock extends BaseComponent {
   }
 
   toggleTheme() {
-    this.theme.element.textContent = this.theme.element.textContent === '☀️' ? '🌒' : '☀️'
-    this.state.theme = this.theme.element.textContent === '☀️' ? 'white' : 'dark'
+    this.state.theme = this.theme.element.textContent === '☀️' ? 'light-theme' : 'dark-theme'
     document.body.className = this.state.theme
+    this.theme.element.textContent = this.theme.element.textContent === '☀️' ? '🌒' : '☀️'
   }
 
   toggleSound() {

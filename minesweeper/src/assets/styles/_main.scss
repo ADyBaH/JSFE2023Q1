@@ -1,0 +1,248 @@
+@import 'variables';
+
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game {
+  position: relative;
+
+  &__modal {
+    position: absolute;
+    z-index: 10;
+    top: -0.5rem;
+
+    overflow: auto;
+
+    width: 110%;
+    height: 102%;
+    
+    opacity: 1;
+    background-color: #00000080;
+    border-radius: 1rem;
+    
+    transition: visibility 0.5s, opacity 0.5s;
+
+    &_logo {
+      overflow: auto;
+
+      margin-top: 20%;
+
+      font-size: 1rem;
+      color: #fff;
+      text-align: center;
+    }
+
+    .logo {
+      &_win {
+        color: #01ff01;
+      }
+
+      &_lose {
+        color: #ff2c2c;
+      }
+    }
+  }
+
+  .button{
+    @extend %button-style;
+
+    color: #fff;
+
+    &_activeButton {
+      color: #007DC1;
+      text-shadow: 0 0 2px #fff, 0 0 2px #fff;
+      background: linear-gradient(#2f2e2e, #2f2f2f, #2a2a2a);
+      box-shadow: inset 10px 15px 25px #00000059;
+    }
+
+    &_easy {
+      width: 6vw;
+      max-width: 4rem;
+      height: 6vw;
+      max-height: 4rem;
+
+      font-size: 2vw;
+    }
+
+    &_medium {
+      width: 5vw;
+      max-width: 2.5rem;
+      height: 5vw;
+      max-height: 2.5rem;
+
+      @media (min-width: 780px) {
+        font-size: 1.2rem;
+      }
+    }
+
+    &_hard {
+      width: 3rem;
+      max-width: 1.5rem;
+      height: 3rem;
+      max-height: 1.5rem;
+
+      transition: none;
+
+      @media (max-width: 780px) {
+        width: 3vw;
+        height: 3vw;
+        font-size: 0.6rem;
+      }
+    }
+  }
+
+  &__header {
+    margin-bottom: 1rem;
+
+    .number-of-move {
+      @extend %text-logo-with-shadow;
+
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .timer-game {
+      @extend %text-logo-with-shadow;
+
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+  }
+
+  &__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+
+    width: 311px;
+    margin-bottom: 1rem;
+
+    opacity: 1;
+
+    transition: visibility 0.5s, opacity 0.5s;
+
+    .label-for-input-mine {
+      @extend %text-logo-with-shadow;
+    }
+  }
+
+  &__modal_hide,
+  &__options_hide {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .button-new-game {
+    position: relative;
+    z-index: 11;
+
+    width: 2rem;
+    height: 2rem;
+    margin: 0 1rem;
+    
+    background-image: url('../icons/face_unpressed.svg');
+    background-position: center;
+    background-size: cover;
+  }
+
+  .button-new-game-win {
+    background-image: url('../icons/face_active.svg');
+  }
+
+  .button-new-game-lose {
+    background-image: url('../icons/face_lose.svg');
+  }
+
+  &__playground {
+    display: grid;
+    gap: 0.1rem;
+
+    &_easy {
+      grid-template-columns: repeat(10, 1fr);
+      grid-template-rows: repeat(10, 1fr);
+    }
+
+    &_medium {
+      grid-template-columns: repeat(15, 1fr);
+      grid-template-rows: repeat(15, 1fr);
+    }
+
+    &_hard {
+      grid-template-columns: repeat(25, 1fr);
+      grid-template-rows: repeat(25, 1fr);
+    }
+  }
+
+  .blue {
+    color: #0084ff;
+  }
+
+  .green {
+    color: #01ff01;
+  }
+
+  .red {
+    color: #ff5959;
+  }
+
+  .dark-blue {
+    color: blue
+  }
+
+  .dark-green {
+    color: green
+  }
+
+  .dark-red {
+    color: red
+  }
+
+  .orange {
+    color: orange
+  }
+
+  .orange-red {
+    color: orangered;
+  }
+}
+
+.absolute-button-block {
+  position: absolute;
+  z-index: 12;
+  top: 4.5rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  &__theme {
+    @extend %button-options;
+  }
+
+  &__sound {
+    @extend %button-options;
+
+    margin: 0 1rem;
+  }
+
+  &__score {
+    @extend %button-options;
+  }
+}
+
+.options {
+  &__button {
+    @extend %button-style;
+
+    color: #feffff;
+    text-shadow: 0 0 5px var(--bg-shadow-article-color), 0 0 8px var(--bg-shadow-article-color);
+  }
+}

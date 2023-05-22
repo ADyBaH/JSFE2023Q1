@@ -10,7 +10,6 @@ export class ButtonForPlayground extends BaseComponent {
     })
     this.matrixIndex = index
     this.element.dataset.matrixIndex = index
-    // переписать на объект и брать гетером
     this.isMine = isMine
     this.isChecked = isChecked
     this.isOpen = isOpen

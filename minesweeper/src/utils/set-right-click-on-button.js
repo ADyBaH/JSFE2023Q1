@@ -1,7 +1,11 @@
 export function setRightClickOnButton(buttonInstance) {
-  const { isChecked } = buttonInstance
-  buttonInstance.setStateButton({
-    state: { isChecked: !isChecked },
-    text: { textContent: buttonInstance.element.textContent === '' ? '🚩' : '' },
-  })
+  if (buttonInstance.isChecked) {
+    Object.assign(buttonInstance.element, { textContent: '' })
+    Object.assign(buttonInstance, { isChecked: false })
+    console.log(buttonInstance)
+    return
+  }
+  Object.assign(buttonInstance.element, { textContent: '🚩' })
+  Object.assign(buttonInstance, { isChecked: true })
+  console.log(buttonInstance)
 }

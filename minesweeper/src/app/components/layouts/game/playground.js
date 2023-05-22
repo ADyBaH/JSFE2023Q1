@@ -97,6 +97,9 @@ export class Playground extends BaseComponent {
     }
     const tupleIndexFromButton = target.dataset.matrixIndex.split(',').map(Number)
     const clickButtonInstance = this.playground[tupleIndexFromButton[0]][tupleIndexFromButton[1]]
+    if (mouseButton === 2) {
+      setRightClickOnButton(clickButtonInstance)
+    }
     if (clickButtonInstance.isOpen || clickButtonInstance.isChecked) {
       return
     }
@@ -112,9 +115,6 @@ export class Playground extends BaseComponent {
     if (mouseButton === 0) {
       setLeftClickOnButton(clickButtonInstance)
       this.gameState.numberOfOpenCeil += 1
-    }
-    if (mouseButton === 2) {
-      setRightClickOnButton(clickButtonInstance)
     }
     if (!clickButtonInstance.numberOfMineAround && mouseButton === 0) {
       openButtonAround(this.playground, tupleIndexFromButton, this.gameState)

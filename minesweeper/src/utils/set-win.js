@@ -1,6 +1,6 @@
 import { setToLocalStorage } from './set-to-localstorage'
 
-export function setWin(state, header, modal, options, soundWin) {
+export function setWin(state, header, modal, options, soundWins, arrayButtons) {
   Object.assign(options.element, { className: 'game__options game__options_hide' })
   Object.assign(modal.text.element, {
     textContent: `Hooray! You found all mines in ${state.timer} seconds and ${state.countOfMove} moves!`,
@@ -10,7 +10,12 @@ export function setWin(state, header, modal, options, soundWin) {
   Object.assign(header.buttonNewGame.element, { className: 'button-new-game button-new-game-win' })
   setToLocalStorage(`Win: difficult: ${state.difficult}, count of mine: ${state.countOfMine}, seconds: ${state.timer}`)
   if (state.isSound) {
-    soundWin.play()
+    soundWins.play()
   }
   header.timer.stopTimer()
+  arrayButtons.forEach((buttonInstance) => {
+    if (buttonInstance.isMine) {
+      Object.assign(buttonInstance.element, { textContent: '💣' })
+    }
+  })
 }

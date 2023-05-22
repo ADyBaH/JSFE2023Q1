@@ -105,7 +105,7 @@ export class Playground extends BaseComponent {
       startGame(this.gameState, this.header, this.options)
     }
     if (clickButtonInstance.isMine && mouseButton === 0) {
-      setLose(this.gameState, this.header, this.modal, this.options, target, this.soundLose)
+      setLose(this.gameState, this.header, this.modal, this.options, target, this.soundLose, this.flatPlayground)
       return
     }
     this.header.increaseCountOfMove()
@@ -120,7 +120,8 @@ export class Playground extends BaseComponent {
       openButtonAround(this.playground, tupleIndexFromButton, this.gameState)
     }
     if (isWin(this.gameState)) {
-      setWin(this.gameState, this.header, this.modal, this.options, this.soundWIn)
+      console.log(this.soundWin)
+      setWin(this.gameState, this.header, this.modal, this.options, this.soundWin, this.flatPlayground)
     }
   }
 }

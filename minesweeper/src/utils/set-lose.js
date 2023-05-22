@@ -1,6 +1,6 @@
 import { setToLocalStorage } from './set-to-localstorage'
 
-export function setLose(state, header, modal, options, target, soundLose) {
+export function setLose(state, header, modal, options, target, soundLose, arrayButtons) {
   Object.assign(target, { textContent: '💥' })
   Object.assign(options.element, { className: 'game__options game__options_hide' })
   Object.assign(modal.text.element, { textContent: 'Game over. Try again', className: 'game__modal_logo logo_lose' })
@@ -11,4 +11,9 @@ export function setLose(state, header, modal, options, target, soundLose) {
     soundLose.play()
   }
   header.timer.stopTimer()
+  arrayButtons.forEach((buttonInstance) => {
+    if (buttonInstance.isMine) {
+      Object.assign(buttonInstance.element, { textContent: '💣' })
+    }
+  })
 }

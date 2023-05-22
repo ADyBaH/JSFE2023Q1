@@ -156,7 +156,7 @@
     height: 2rem;
     margin: 0 1rem;
     
-    background-image: url('../icons/face_unpressed.svg');
+    background-image: url('../assets/icons/face_unpressed.svg');
     background-position: center;
     background-size: cover;
 
@@ -170,11 +170,11 @@
   }
 
   .button-new-game-win {
-    background-image: url('../icons/face_active.svg');
+    background-image: url('../assets/icons/face_active.svg');
   }
 
   .button-new-game-lose {
-    background-image: url('../icons/face_lose.svg');
+    background-image: url('../assets/icons/face_lose.svg');
   }
 
   &__playground {

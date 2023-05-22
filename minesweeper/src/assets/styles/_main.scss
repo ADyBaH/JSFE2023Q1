@@ -147,6 +147,8 @@
   }
 
   .button-new-game {
+    cursor: pointer;
+
     position: relative;
     z-index: 11;
 
@@ -157,6 +159,14 @@
     background-image: url('../icons/face_unpressed.svg');
     background-position: center;
     background-size: cover;
+
+    transition: transform 0.3s;
+    
+    @media (any-hover: hover) {
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
   }
 
   .button-new-game-win {

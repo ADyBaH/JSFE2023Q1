@@ -56,10 +56,10 @@
     @extend %button-style;
 
     color: #fff;
+    text-shadow: 0 0 2px #fff, 0 0 2px #fff;
 
     &_activeButton {
       color: #007DC1;
-      text-shadow: 0 0 2px #fff, 0 0 2px #fff;
       background: linear-gradient(#2f2e2e, #2f2f2f, #2a2a2a);
       box-shadow: inset 10px 15px 25px #00000059;
     }
@@ -244,5 +244,17 @@
 
     color: #feffff;
     text-shadow: 0 0 5px var(--bg-shadow-article-color), 0 0 8px var(--bg-shadow-article-color);
+
+    &_easy {
+      box-shadow: inset 0 3px 1px #00000059,
+      0 5px 5px #00000080,
+      0 15px 25px #62ff0070;
+    }
+    
+    &_hard {
+      box-shadow: inset 0 3px 1px #00000059,
+      0 5px 5px #00000080,
+      0 15px 25px #ff000070;
+    }
   }
 }

@@ -133,6 +133,10 @@
 
     .label-for-input-mine {
       @extend %text-logo-with-shadow;
+      
+      .number-of-mine {
+        width: 3rem;
+      }
     }
   }
 

@@ -10,13 +10,13 @@ class Loader {
     this.options = options
   }
 
-  private static getIsResponseError(response: Response): boolean {
+  private getIsResponseError(response: Response): boolean {
     return response.status === ResponseCodes.Unauthorized || response.status === ResponseCodes.NotFound
   }
 
   protected getResp<Type extends DrawNews | DrawSources>(
     { endpoint, options }: Resp,
-    callback: (data: Type) => void = () => {
+    callback: (data: Type) => void = (): void => {
       console.error('No callback for GET response')
       // throw new Error('No callback for GET response');
     },
@@ -24,8 +24,8 @@ class Loader {
     this.load('GET', endpoint, callback, options)
   }
 
-  protected static errorHandler(response: Response): Response {
-    if (Loader.getIsResponseError(response)) {
+  protected errorHandler(response: Response): Response {
+    if (this.getIsResponseError(response)) {
       throw Error(response.statusText)
     }
     return response
@@ -51,7 +51,7 @@ class Loader {
     options?: Options,
   ): void {
     fetch(this.makeUrl(options, endpoint), { method })
-      .then(Loader.errorHandler)
+      .then(this.errorHandler)
       .then((res) => res.json())
       .then((data) => callback(data))
       .catch((err) => console.error(err))

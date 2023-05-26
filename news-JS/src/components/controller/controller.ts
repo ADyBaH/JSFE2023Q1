@@ -3,7 +3,7 @@ import { DrawSources, DrawNews } from '../types/appTypes'
 import { EnumController } from '../types/enumAll'
 
 class AppController extends AppLoader {
-  getSources(callback: (data: DrawSources) => void): void {
+  public getSources(callback: (data: DrawSources) => void): void {
     super.getResp(
       {
         endpoint: EnumController.endpointSources,
@@ -12,7 +12,7 @@ class AppController extends AppLoader {
     )
   }
 
-  getNews(e: MouseEvent, callback: (data: DrawNews) => void): void {
+  public getNews(e: MouseEvent, callback: (data: DrawNews) => void): void {
     let target = e.target as HTMLDivElement
     const newsContainer = e.currentTarget as HTMLSpanElement
 

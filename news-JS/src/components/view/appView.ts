@@ -1,6 +1,6 @@
 import News from './news/news'
 import Sources from './sources/sources'
-import { ViewData, ArrayPost } from '../types/viewTypes'
+import { ViewData, ArrayPost } from '../types/interface'
 
 export class AppView {
   public readonly news: News
@@ -12,12 +12,12 @@ export class AppView {
 
   public drawNews(data: ViewData): void {
     const values = data?.articles ? data?.articles : []
-    News.draw(values)
+    this.news.draw(values)
   }
 
   public drawSources(data: ArrayPost): void {
     const values = data?.sources ? data?.sources : []
-    Sources.draw(values)
+    this.sources.draw(values)
   }
 }
 

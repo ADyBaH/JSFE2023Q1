@@ -1,40 +1,60 @@
-import { EnumNews } from '../../types/enumAll'
-import { Post } from '../../types/viewTypes'
+import { isHTMLElement } from '../../../utils/isHTMLelement'
+import { Post } from '../../types/interface'
 import './news.css'
 
 class News {
-  public static draw(data: Post[]): void {
+  private readonly placeholderUrl: string =
+    'https://www.industry.gov.au/sites/default/files/August%202018/image/news-placeholder-738.png'
+
+  private reverseString = (string: string): string => string.slice(0, 10).split('-').reverse().join('-')
+
+  private setTextContent = (element: HTMLElement | null, text: string): void => {
+    if (isHTMLElement(element)) {
+      Object.assign(element, { textContent: text })
+    }
+  }
+  private setUrl = <E, O>(element: E, attr: O): void => {
+    if (element instanceof HTMLAnchorElement) {
+      Object.assign(element, attr)
+    }
+  }
+
+  public draw(data: Post[]): void {
     const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data
-
     const fragment = document.createDocumentFragment()
+    const newsItemTemp = document.querySelector('#newsItemTemp')
 
-    const newsItemTemp = document.querySelector(EnumNews.idNewsItemTemp) as HTMLTemplateElement
+    if (newsItemTemp instanceof HTMLTemplateElement) {
+      news.forEach((item, index) => {
+        const newsClone = newsItemTemp.content.cloneNode(true)
+        if (newsClone instanceof DocumentFragment) {
+          const newsMetaPhoto = newsClone.querySelector<HTMLElement>('.news__meta-photo')
+          if (index % 2) {
+            newsClone.querySelector<HTMLElement>('.news__item')?.classList.add('alt')
+          }
+          if (isHTMLElement(newsMetaPhoto)) {
+            newsMetaPhoto.style.backgroundImage = `url(${item.urlToImage || this.placeholderUrl})`
+          }
+          const arrayOfTuples: [HTMLElement | null, string][] = [
+            [newsClone.querySelector<HTMLElement>('.news__meta-author'), item.author || item.source.name],
+            [newsClone.querySelector<HTMLElement>('.news__meta-date'), this.reverseString(item.publishedAt)],
+            [newsClone.querySelector<HTMLElement>('.news__description-title'), item.title],
+            [newsClone.querySelector<HTMLElement>('.news__description-source'), item.source.name],
+            [newsClone.querySelector<HTMLElement>('.news__description-content'), item.description],
+          ]
+          arrayOfTuples.forEach(([element, string]) => this.setTextContent(element, string))
 
-    news.forEach((item, idx: number): void => {
-      const newsClone = newsItemTemp.content.cloneNode(true) as HTMLElement
+          this.setUrl(newsClone.querySelector<HTMLAnchorElement>('.news__read-more a'), { href: item.url })
 
-      if (idx % 2) {
-        ;(newsClone.querySelector(EnumNews.classNewsItem) as HTMLElement).classList.add('alt')
+          fragment.append(newsClone)
+        }
+      })
+      const newsElement = document.querySelector<HTMLElement>('.news')
+      if (isHTMLElement(newsElement)) {
+        Object.assign(newsElement, { innerHTML: '' })
+        newsElement?.appendChild(fragment)
       }
-      ;(newsClone.querySelector(EnumNews.classNewsMetaPhoto) as HTMLElement).style.backgroundImage = `url(${
-        item.urlToImage || EnumNews.imgPlaceHolder
-      })`
-      ;(newsClone.querySelector(EnumNews.classNewsMetaAuthor) as HTMLElement).textContent =
-        item.author || item.source.name
-      ;(newsClone.querySelector(EnumNews.classNewsMetaDate) as HTMLElement).textContent = item.publishedAt
-        .slice(0, 10)
-        .split('-')
-        .reverse()
-        .join('-')
-      ;(newsClone.querySelector(EnumNews.classNewsDescriptionTitle) as HTMLElement).textContent = item.title
-      ;(newsClone.querySelector(EnumNews.classNewsDescriptionSource) as HTMLElement).textContent = item.source.name
-      ;(newsClone.querySelector(EnumNews.classNewsDescriptionContent) as HTMLElement).textContent = item.description
-      ;(newsClone.querySelector(EnumNews.classNewsReadMore) as HTMLElement).setAttribute('href', item.url)
-
-      fragment.append(newsClone)
-    })
-    ;(document.querySelector(EnumNews.classNews) as HTMLElement).innerHTML = ''
-    ;(document.querySelector(EnumNews.classNews) as HTMLElement).appendChild(fragment)
+    }
   }
 }
 

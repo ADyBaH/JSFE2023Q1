@@ -1,7 +1,7 @@
-import { BaseComponent } from '../../../utils/base-component'
-import { Editor } from './main/editor/editor'
-import { Levels } from './main/levels'
-import { TableBlock } from './main/table-block'
+import { BaseComponent } from '../../../../utils/base-component'
+import { Editor } from './editor/editor'
+import { Levels } from './levels/levels'
+import { TableBlock } from './table/table-block'
 
 export class Main extends BaseComponent {
   public table = new TableBlock(this.element)

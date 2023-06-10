@@ -1,6 +1,6 @@
 import { Footer } from './footer'
 import { Header } from './header'
-import { Main } from './main'
+import { Main } from './main/main'
 
 export class Layout {
   public create(root: HTMLElement): [Header, Main, Footer] {

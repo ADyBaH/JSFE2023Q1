@@ -1,13 +1,24 @@
 import { BaseComponent } from '../../../../../utils/base-component'
 
 export class Levels extends BaseComponent {
+  public arrayButtons: HTMLButtonElement[] = []
   constructor(root: HTMLElement) {
-    super({ attribute: { className: 'section' }, parent: root })
+    super({ attribute: { className: 'levels-block' }, parent: root })
+    this.createButtons()
+  }
 
-    this.element.innerHTML = `
-      <div class= "container"  style="position: absolute;top: 0; right: 0;">
-        Levels
-      </div>
-    `
+  public createButtons(): HTMLButtonElement[] | void {
+    // return Array.from({ length: 11 }, )
+    console.log(
+      Array.from(
+        { length: 11 },
+        (_, index) =>
+          new BaseComponent({
+            tag: 'button',
+            attribute: { className: `levels-block__button level${index + 1}`, textContent: `level ${index + 1}` },
+            parent: this.element,
+          }),
+      ),
+    )
   }
 }

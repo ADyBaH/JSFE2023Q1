@@ -1,0 +1,23 @@
+{
+  "levelsData": {
+    "Level 1": {
+      "id": "1",
+      "task": "Select the plates",
+      "layout": [
+        { "attribute": { "textContent": "<plate />", "className": "plate" }, "child": null },
+        { "attribute": { "textContent": "<plate />", "className": "plate" }, "child": null }
+      ],
+      "answers": ["plate"]
+    },
+    "Level 2": {
+      "id": "2",
+      "task": "Select the bento boxes",
+      "layout": [
+        { "attribute": { "textContent": "<bento />", "className": "bento" }, "child": null },
+        { "attribute": { "textContent": "<plate />", "className": "plate" }, "child": null },
+        { "attribute": { "textContent": "<bento />", "className": "bento" }, "child": null }
+      ],
+      "answers": ["bento"]
+    }
+  }
+}

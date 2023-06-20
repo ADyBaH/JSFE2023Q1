@@ -1,31 +1,32 @@
-import { LevelsEnum } from '../../enums/levels-enums'
+import { LevelsEnum } from '../shared/enums/levels-enums'
+import { LocalStorageEnum } from '../shared/enums/local-storage-enum'
 
 class LocalStorage {
+  public setToLocalStorage(key: string, value: string): void {
+    localStorage.setItem(key, value)
+  }
+
   public get lastTask(): string {
-    const lastTask = localStorage.getItem('lastTaskADyBaH')
+    const lastTaskKey = LocalStorageEnum.lastTask
+    const lastTask = localStorage.getItem(lastTaskKey)
+
     if (lastTask) {
       return lastTask
     }
 
     const level = LevelsEnum[0]
-    this.lastTask = level
+    this.setToLocalStorage(lastTaskKey, level)
     return level
-  }
-  public set lastTask(value: string) {
-    localStorage.setItem('lastTaskADyBaH', value)
-  }
-
-  public set completedTask(value: string[]) {
-    localStorage.setItem('completedTaskADyBaH', JSON.stringify(value))
   }
 
   public get completedTask(): string[] {
-    const completedTask = localStorage.getItem('completedTaskADyBaH')
-    console.log(completedTask)
+    const completedTaskKey = LocalStorageEnum.completedTask
+    const completedTask = localStorage.getItem(completedTaskKey)
+
     if (completedTask) {
       return JSON.parse(completedTask)
     }
-    this.completedTask = []
+    this.setToLocalStorage(completedTaskKey, JSON.stringify([]))
     return []
   }
 }

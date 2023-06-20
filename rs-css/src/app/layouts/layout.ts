@@ -1,5 +1,5 @@
-import { Footer } from './footer'
-import { Header } from './header'
+import { Footer } from './components/footer'
+import { Header } from './components/header'
 import { Main } from './main/main'
 
 export class Layout {

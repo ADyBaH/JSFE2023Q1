@@ -1,4 +1,4 @@
-import { Layout } from './components/layouts/layout'
+import { Layout } from './layouts/layout'
 
 class App {
   public layout = new Layout()

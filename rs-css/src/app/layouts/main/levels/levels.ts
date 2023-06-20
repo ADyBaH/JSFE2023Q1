@@ -18,7 +18,7 @@ export class Levels extends BaseComponent {
   private levelList = new LevelsList(this.element, this.completedTask)
   constructor(root: HTMLElement) {
     super({ attribute: { className: 'levels-block' }, parent: root })
-    this.buttonToggleClose.setEventListener('click', this.toggleCloseLevels)
+    this.buttonToggleClose.setEventListener('click', () => this.toggleCloseLevels())
   }
 
   private toggleCloseLevels(): void {

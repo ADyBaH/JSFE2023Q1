@@ -1,8 +1,92 @@
+@import 'variables';
+
 .levels-block {
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   
   display: flex;
   flex-direction: column;
+  
+  box-sizing: border-box;
+  width: 25rem;
+  padding: 1rem;
+
+  transition: all 0.5s;
+
+  &_hidden {
+    right: -25rem;
+  }
+
+  &__button {
+    &_completed {
+      background-color: green;
+    }
+  }
+
+  &__close-open-button {
+    @extend %arrow-button;
+    @extend %rotate-arrow-right;
+
+    position: absolute;
+    top: 1rem;
+    left: -1.5rem;
+
+    &_rotate {
+      @extend %rotate-arrow-left;
+    }
+  }
+}
+
+.header-levels-block {
+  display: flex;
+  align-items: center;
+
+  &__logo {
+    margin: 0;
+  }
+
+  &__prev-button,
+  &__next-button {
+    @extend %arrow-button;
+  }
+
+  &__prev-button {
+    @extend %rotate-arrow-left;
+
+    margin-left: auto;
+  }
+
+  &__next-button {
+    @extend %rotate-arrow-right;
+
+    margin-right: 1rem;
+  }
+
+  &__burger-button {
+    @extend %burger-line;
+
+    cursor: pointer;
+    transition: transform .3s;
+
+    &::after {
+      @extend %burger-line;
+      @extend %burger-after-before-line;
+
+      bottom: .6rem;
+    }
+
+    &::before {
+      @extend %burger-line;
+      @extend %burger-after-before-line;
+
+      top: .5rem;
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
 }

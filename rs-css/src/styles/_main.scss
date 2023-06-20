@@ -1,1 +1,51 @@
 @import 'variables';
+
+.tab {
+  margin-left: 1rem;
+}
+
+.double-tab {
+  margin-left: 2rem;
+}
+
+.editor-block {
+  display: flex;
+}
+
+.file-block {
+  display: flex;
+
+  &__number {
+    margin: 0;
+    text-align: end;
+  }
+}
+
+.active {
+  height: 10px;
+  box-shadow: 2px 2px 5px red;
+}
+
+.active-text {
+  text-shadow: 2px 2px 5px red;
+}
+
+.table {
+  &__element {
+    cursor: pointer;
+
+    display: inline-block;
+
+    width: 10px;
+    height: 10px;
+
+    border-radius: 50%;
+  }
+}
+
+.html-text {
+  &__element {
+    cursor: pointer;
+    margin-left: 1rem;
+  }
+}

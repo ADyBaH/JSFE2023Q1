@@ -1,4 +1,4 @@
-import { FileNameDictionaryType } from '../../types/file-name-dictionary-type'
+import { FileNameDictionaryType } from '../../types/file-names-dictionary-type'
 
 export const fileNamesDictionary: FileNameDictionaryType = {
   css: {

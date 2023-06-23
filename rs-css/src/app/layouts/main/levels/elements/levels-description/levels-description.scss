@@ -1,0 +1,55 @@
+@import '../../../../../../styles/variables';
+
+.levels-block {
+  &__description {
+    position: relative;
+    right: -2rem;
+    
+    align-self: self-end;
+
+    box-sizing: border-box;
+    width: 21rem;
+    height: auto;
+    padding: 1rem;
+
+    line-height: 1.5rem;
+    
+    background-color: var(--bg-color);
+    border: 0.2rem solid;
+    border-radius: 0.5rem;
+
+    transition: right 0.2s;
+
+    &_hidden {
+      right: -22rem;
+    }
+
+  }
+}
+
+.description-block {
+  &_logo {
+    margin: .2rem 0;
+  }
+
+  &_logo-grey {
+    margin-bottom: .2rem;
+    color: var(--description-white-logo);
+  }
+
+  &_marker {
+    padding: .1rem .2rem;
+    background-color: var(--bg-shadow-article-color);
+    border-radius: .2rem;
+  }
+
+  &_big-space {
+    margin: 2rem 0 .1rem;
+  }
+
+  &_bottom-border {
+    margin-top: .5rem;
+    padding-bottom: .5rem;
+    border-bottom: .1rem solid;
+  }
+}

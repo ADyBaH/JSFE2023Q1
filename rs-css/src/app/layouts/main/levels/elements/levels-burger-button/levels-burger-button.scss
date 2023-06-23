@@ -1,0 +1,48 @@
+@import '../../../../../../styles/variables';
+
+.header-levels-block {
+  &__burger-block {
+    cursor: pointer;
+    z-index: 15;
+    height: 2rem;
+    transition: transform 0.3s;
+
+    &_rotate {
+      transform: rotate(89deg);
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &_rotate {
+        @media (any-hover: hover) {
+          &:hover {
+            transform: scale(1.1) rotate(89deg);
+          }
+        }
+      }
+    }
+  }
+
+  &__burger-button {
+    @extend %burger-line;
+
+    margin-top: 60%;
+
+    &::after {
+      @extend %burger-line;
+      @extend %burger-after-before-line;
+
+      bottom: .6rem;
+    }
+
+    &::before {
+      @extend %burger-line;
+      @extend %burger-after-before-line;
+
+      top: .5rem;
+    }
+  }
+}

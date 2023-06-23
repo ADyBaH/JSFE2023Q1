@@ -1,0 +1,37 @@
+@import '../../../../../../styles/variables';
+
+.header-levels-block {
+  display: flex;
+  align-items: center;
+
+  &__logo {
+    margin: 0;
+    
+    &::before {
+      content: '✓ ';
+    }
+
+    &_completed::before {
+      content: '✓ ';
+      color: var(--completed);
+    }
+
+  }
+
+  &__prev-button,
+  &__next-button {
+    @extend %arrow-button;
+  }
+
+  &__prev-button {
+    @extend %rotate-arrow-left;
+
+    margin-left: auto;
+  }
+
+  &__next-button {
+    @extend %rotate-arrow-right;
+
+    margin-right: 1rem;
+  }
+}

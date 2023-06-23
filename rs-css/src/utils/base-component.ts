@@ -1,4 +1,4 @@
-import { BaseComponentInterface } from '../modules/base-component-interface'
+import { BaseComponentInterface } from '../app/modules/base-component-interface'
 
 export class BaseComponent {
   public element
@@ -18,12 +18,28 @@ export class BaseComponent {
     return this.element.innerText
   }
 
+  public set innerHTML(content: string) {
+    this.element.innerHTML = content
+  }
+
+  public get innerHTML(): string {
+    return this.element.innerHTML
+  }
+
   public removeAllChields(): void {
     while (this.element.firstChild !== null) {
       if (this.element.firstChild !== null) {
         this.element.removeChild(this.element.firstChild)
       }
     }
+  }
+
+  public addClass(className: string): void {
+    this.element.classList.add(className)
+  }
+
+  public removeClass(className: string): void {
+    this.element.classList.remove(className)
   }
 
   public toggle(className: string): void {

@@ -1,28 +1,30 @@
-import { BaseComponent } from '../../../components/base-component'
+import { LevelsDescription } from './elements/levels-description/levels-description'
 import { levelsData } from '../../../../assets/data/levels-data.json'
+import { LevelsHeader } from './elements/levels-header/levels-header'
 import { localStorageADyBaH } from '../../../services/local-storage'
-import { LevelsHeader } from './levels-header'
-import { LevelsList } from './levels-list'
+import { BaseComponent } from '../../../../utils/base-component'
+import { LevelsList } from './elements/levels-list/levels-list'
+import './levels.scss'
 
 export class Levels extends BaseComponent {
   public levelsData = levelsData
   private completedTask = localStorageADyBaH.completedTask
-
-  public buttonToggleClose = new BaseComponent({
-    tag: 'button',
-    attribute: { className: 'levels-block__close-open-button' },
-    parent: this.element,
-  })
-
-  private levelsHeader = new LevelsHeader(this.element, this.completedTask)
   private levelList = new LevelsList(this.element, this.completedTask)
+  public progressBar: BaseComponent
+  private levelsHeader: LevelsHeader
+  private description: LevelsDescription
   constructor(root: HTMLElement) {
     super({ attribute: { className: 'levels-block' }, parent: root })
-    this.buttonToggleClose.setEventListener('click', () => this.toggleCloseLevels())
-  }
-
-  private toggleCloseLevels(): void {
-    this.buttonToggleClose.toggle('levels-block__close-open-button_rotate')
-    this.toggle('levels-block_hidden')
+    this.progressBar = new BaseComponent({
+      tag: 'progress',
+      attribute: { className: 'levels-block__progress-bar', value: '1', max: '10' },
+    })
+    this.levelsHeader = new LevelsHeader(this.element, this.completedTask, this.levelList, this.progressBar)
+    this.element.append(this.progressBar.element)
+    this.description = new LevelsDescription(this.element)
+    this.progressBar.element.insertAdjacentHTML(
+      'afterend',
+      '<h3 class="levels-block__description-text">Description:</h3>',
+    )
   }
 }

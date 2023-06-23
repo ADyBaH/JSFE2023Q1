@@ -1,0 +1,83 @@
+@import '../../../../styles/variables';
+
+.levels-block {
+  position: fixed;
+  top: 0;
+  right: 0;
+  
+  display: flex;
+  flex-direction: column;
+  
+  box-sizing: border-box;
+  width: 20rem;
+  padding: 1rem;
+
+  &__description-text {
+    margin: .5rem 0 0;
+    text-align: end
+  }
+
+  &__close-open-button {
+    @extend %arrow-button;
+    @extend %rotate-arrow-right;
+
+    position: absolute;
+    top: 1rem;
+    left: -1.5rem;
+
+    &_rotate {
+      @extend %rotate-arrow-left;
+    }
+  }
+
+  &__progress-bar {
+    width: 80%;
+    height: 0.5rem;
+    margin: .5rem auto 0;
+
+    accent-color: var(--completed);
+    background: grey;
+    border-radius: 0.5rem;
+
+    &::-webkit-progress-bar {
+      height: 0.5rem;
+      background-color: none;
+      border-radius: 0.5rem;
+
+    }
+
+    &::-webkit-progress-value {
+      background-color: #000;
+      border-radius: 0.5rem;
+
+    }
+
+    &::-moz-progress-bar {
+      background-color: #000;
+      border-radius: 0.5rem;
+    }
+  }
+}
+
+.levels-list-block {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: -1rem;
+
+  display: flex;
+  flex-direction: column;
+
+  box-sizing: border-box;
+  width: 21rem;
+
+  background-color: var(--bg-color);
+  border: 0.2rem solid black;
+  border-radius: 0.5rem;
+
+  transition: right .2s;
+  
+  &_hidden {
+    right: -21rem;
+  }
+}

@@ -1,0 +1,52 @@
+.levels-block {
+  &__logo {
+    margin: .9rem 0;
+  }
+
+  &__button {
+    cursor: pointer;
+
+    text-align: start;
+
+    background: none;
+    border: none;
+
+    transition: background-color .5s;
+
+    &::before {
+      content: '✓ ';
+      font-weight: 700;
+    }
+
+    &_completed::before {
+      content: '✓ ';
+      color: var(--completed);
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: var(--bg-shadow-article-color);
+      }
+    }
+  }
+
+  &__reset-button {
+    cursor: pointer;
+
+    align-self: center;
+
+    width: 80%;
+    margin: 1rem 0;
+    
+    background: none;
+    border-radius: .5rem;
+
+    transition: background-color .5s;
+    
+    @media (any-hover: hover) {
+      &:hover {
+        background-color: var(--bg-shadow-article-color);
+      }
+    }
+  }
+}

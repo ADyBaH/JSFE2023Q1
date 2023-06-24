@@ -4,7 +4,7 @@ import { LevelsBurgerBlock } from '../levels-burger-button/levels-burger-button'
 import { BaseComponent } from '../../../../../../utils/base-component'
 import { MainStateType } from '../../../../../types/main-state-type'
 import { emitter } from '../../../../../services/event-emitter'
-import { MaxMinLevelEnum } from './enum/max-min-level-enum'
+import { MaxMinLevelEnum } from '../../../enum/max-min-level-enum'
 import { mainState } from '../../../main-state'
 import './levels-header.scss'
 

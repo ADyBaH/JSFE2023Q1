@@ -4,7 +4,7 @@ import { LevelsBurgerBlock } from '../levels-burger-button/levels-burger-button'
 import { BaseComponent } from '../../../../../../utils/base-component'
 import { MainStateType } from '../../../../../types/main-state-type'
 import { emitter } from '../../../../../services/event-emitter'
-import { MaxMinLevel } from '../../enum/max-min-level'
+import { MaxMinLevelEnum } from './enum/max-min-level-enum'
 import { mainState } from '../../../main-state'
 import './levels-header.scss'
 
@@ -55,7 +55,7 @@ export class LevelsHeader extends BaseComponent {
 
   public changeLogo(): void {
     this.changeProgressBar()
-    this.logo.innerText = `Levels ${this.mainState.levelId} of ${MaxMinLevel.max}`
+    this.logo.innerText = `Levels ${this.mainState.levelId} of ${MaxMinLevelEnum.max}`
 
     if (this.completedTask.includes(this.mainState.levelId)) {
       this.logo.addClass('header-levels-block__logo_completed')
@@ -72,7 +72,7 @@ export class LevelsHeader extends BaseComponent {
 
   public incrementLevels(): boolean {
     const value = +this.mainState.levelId + 1
-    if (value > MaxMinLevel.max) {
+    if (value > MaxMinLevelEnum.max) {
       return false
     }
     this.emitChangeLevel(`${value}`)
@@ -83,7 +83,7 @@ export class LevelsHeader extends BaseComponent {
 
   public decrementsLevels(): boolean {
     const value = +this.mainState.levelId - 1
-    if (value < MaxMinLevel.min) {
+    if (value < MaxMinLevelEnum.min) {
       return false
     }
     this.emitChangeLevel(`${value}`)

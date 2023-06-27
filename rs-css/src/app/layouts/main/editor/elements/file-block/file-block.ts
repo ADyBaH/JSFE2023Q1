@@ -1,5 +1,6 @@
-import { BaseComponent } from '../../../components/base-component'
-import { fileNamesDictionary } from '../../../shared/constants/file-names-dictionary'
+import { fileNamesDictionary } from '../../../../../dictionary/file-names-dictionary'
+import { BaseComponent } from '../../../../../../utils/base-component'
+import './file-block.scss'
 
 export class FileBlock extends BaseComponent {
   public fileBlock: BaseComponent

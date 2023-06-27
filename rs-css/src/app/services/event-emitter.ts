@@ -19,7 +19,7 @@ class EventEmitter<Str, Arguments> {
     return true
   }
 
-  public emit<StringName, Argument>(eventName: StringName, eventArgument: Argument): boolean {
+  public emit<StringName, Argument>(eventName: StringName, eventArgument?: Argument): boolean {
     const eventsArray = this.listeners.get(eventName)
     if (!eventsArray) {
       return false

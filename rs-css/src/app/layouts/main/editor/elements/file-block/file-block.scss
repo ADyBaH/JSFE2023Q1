@@ -1,0 +1,23 @@
+@import '../../../../../../styles/variables';
+
+.logo-block {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+  background-color: #605b5b;
+
+  &_logo {
+    color: var(--bg-article-color);
+  }
+
+  &_file-name {
+    @extend %text-logo-with-shadow;
+  }
+}
+
+.file-block {
+  &_numbers {
+    padding: .5rem;
+    border: .1px solid #ffffff28;
+  }
+}

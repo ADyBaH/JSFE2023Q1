@@ -1,7 +1,8 @@
-import { LevelInterface } from '../../../modules/interface-for-levels'
+import { LevelInterface } from '../../../models/interface-for-levels'
 import { MainStateType } from '../../../types/main-state-type'
-import { BaseComponent } from '../../../components/base-component'
+import { BaseComponent } from '../../../../utils/base-component'
 import { emitter } from '../../../services/event-emitter'
+import './table-block.scss'
 
 export class TableBlock extends BaseComponent {
   public logo: BaseComponent

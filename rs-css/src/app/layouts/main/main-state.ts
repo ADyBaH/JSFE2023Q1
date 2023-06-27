@@ -1,14 +1,15 @@
-import { MainStateType } from '../../types/main-state-type'
+import { LevelsDataInterface } from '../../models/interface-for-levels'
 import { levelsData } from '../../../assets/data/levels-data.json'
-import { LevelsEnum } from '../../shared/enums/levels-enums'
-import { LevelsDataInterface } from '../../modules/interface-for-levels'
+import { MainStateType } from '../../types/main-state-type'
+import { MaxMinLevelEnum } from '../../enum/max-min-level-enum'
 
 const levelsDataConst: LevelsDataInterface = levelsData
 
 export const mainState: MainStateType = {
-  levelId: '1',
-  task: levelsDataConst[LevelsEnum[0]].task,
-  tableComponents: [],
+  answer: levelsDataConst[`${MaxMinLevelEnum.min}`].answer,
+  task: levelsDataConst[`${MaxMinLevelEnum.min}`].task,
   editorComponents: [],
-  answers: levelsDataConst[LevelsEnum[0]].answers,
+  tableComponents: [],
+  maximumLevels: MaxMinLevelEnum.max,
+  levelId: `${MaxMinLevelEnum.min}`,
 }

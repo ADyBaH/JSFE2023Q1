@@ -5,11 +5,19 @@ export interface LevelsDataInterface {
 export interface LevelInterface {
   id: string
   task: string
+  nameTask: string
   layout: NodeSetup[]
-  answers: string[]
+  answer: string
+  description: string
 }
 
 export interface NodeSetup {
-  attribute: Record<string, string>
+  innerHTML: string
+  tag: string
+  attribute: {
+    className?: string
+    id?: string
+  }
+  animated?: boolean
   child: NodeSetup | null
 }

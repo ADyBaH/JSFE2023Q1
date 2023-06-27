@@ -1,0 +1,30 @@
+.css-editor {
+  position: relative;
+  width: 80%;
+
+  &__pre {
+    margin: 0;
+
+    .hljs {
+      overflow: hidden;
+      
+      width: 100%;
+      height: auto;
+      min-height: 1.2rem;
+      padding: 0;
+    }
+  }
+
+  &__input {
+    position: absolute;
+    top: 9px;
+    
+    width: 100%;
+
+    font-family: monospace;
+    font-size: 1em;
+    color: #fff0;
+    
+    caret-color: black;
+  }
+}

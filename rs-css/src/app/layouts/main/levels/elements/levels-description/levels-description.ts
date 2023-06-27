@@ -1,7 +1,7 @@
-import './levels-description.scss'
+import { LevelInterface } from '../../../../../models/interface-for-levels'
 import { BaseComponent } from '../../../../../../utils/base-component'
-import { LevelInterface } from '../../../../../modules/interface-for-levels'
 import { emitter } from '../../../../../services/event-emitter'
+import './levels-description.scss'
 
 export class LevelsDescription extends BaseComponent {
   public buttonToggleClose = new BaseComponent({

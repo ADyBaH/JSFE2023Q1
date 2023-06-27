@@ -1,3 +1,4 @@
+import 'highlight.js/styles/atom-one-light.css'
 import { Layout } from './layouts/layout'
 
 class App {

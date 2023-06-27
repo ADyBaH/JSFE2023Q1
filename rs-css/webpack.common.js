@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin')
 const StylelintPlugin = require('stylelint-webpack-plugin')
 
 const PROJECT = {
-  title: 'TStemplate',
+  title: 'RSS-CSS-Selectors',
   lang: 'en',
   isEmptyBodyRequired: false,
 }

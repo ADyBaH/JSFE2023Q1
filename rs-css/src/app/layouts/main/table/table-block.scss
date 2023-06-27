@@ -1,0 +1,11 @@
+.table-block {
+  &__table {
+    display: flex;
+  }
+}
+
+.custom-element {
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+}

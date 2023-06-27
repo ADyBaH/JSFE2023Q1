@@ -1,10 +1,11 @@
-import { LevelsDataInterface } from '../../../../../modules/interface-for-levels'
-import { levelsData } from '../../../../../../assets/data/levels-data.json'
+import { LevelsDataInterface } from '../../../../../models/interface-for-levels'
 import { LevelsBurgerBlock } from '../levels-burger-button/levels-burger-button'
+import { levelsData } from '../../../../../../assets/data/levels-data.json'
+import { localStorageADyBaH } from '../../../../../services/local-storage'
+import { MaxMinLevelEnum } from '../../../../../enum/max-min-level-enum'
 import { BaseComponent } from '../../../../../../utils/base-component'
 import { MainStateType } from '../../../../../types/main-state-type'
 import { emitter } from '../../../../../services/event-emitter'
-import { MaxMinLevelEnum } from '../../../enum/max-min-level-enum'
 import { mainState } from '../../../main-state'
 import './levels-header.scss'
 
@@ -49,6 +50,7 @@ export class LevelsHeader extends BaseComponent {
     this.nextLevelButton.setEventListener('click', () => this.incrementLevels())
     emitter.subscribe('changeElementsOnState', () => this.changeLogo())
     emitter.subscribe('resetLevels', () => this.resetCompletedLogo())
+    emitter.subscribe('setupWin', () => this.updateCompletedTask())
     this.completedTask = completedTask
     this.changeLogo()
   }
@@ -101,6 +103,12 @@ export class LevelsHeader extends BaseComponent {
   }
 
   private resetCompletedLogo(): void {
+    this.completedTask = localStorageADyBaH.completedTask
     this.logo.removeClass('header-levels-block__logo_completed')
+  }
+
+  private updateCompletedTask(): void {
+    this.logo.addClass('header-levels-block__logo_completed')
+    this.completedTask = localStorageADyBaH.completedTask
   }
 }

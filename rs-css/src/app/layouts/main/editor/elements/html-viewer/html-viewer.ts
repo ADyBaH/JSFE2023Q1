@@ -1,6 +1,6 @@
-import { MainStateType } from '../../../types/main-state-type'
-import { BaseComponent } from '../../../components/base-component'
-import { emitter } from '../../../services/event-emitter'
+import { MainStateType } from '../../../../../types/main-state-type'
+import { BaseComponent } from '../../../../../../utils/base-component'
+import { emitter } from '../../../../../services/event-emitter'
 
 export class HtmlViewer extends BaseComponent {
   private markup = new BaseComponent({
@@ -14,13 +14,21 @@ export class HtmlViewer extends BaseComponent {
 
   public changeMarkup(args: MainStateType): void {
     this.markup.removeAllChields()
-    this.markup.element.append('<div class="table">')
+    this.markup.element.insertAdjacentHTML(
+      'afterbegin',
+      `<span class="hljs-tag">
+      &lt;<span class="hljs-name">div</span> 
+      <span class="hljs-attr">class</span>=<span class="hljs-string">"table"</span>&gt;</span>`,
+    )
 
     if (Array.isArray(args.editorComponents)) {
       args.editorComponents.forEach((baseComponent) => {
         this.markup.element.append(baseComponent.element)
       })
-      this.markup.element.append('</div>')
+      this.markup.element.insertAdjacentHTML(
+        'beforeend',
+        `<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>`,
+      )
     }
   }
 }

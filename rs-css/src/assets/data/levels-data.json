@@ -5,10 +5,22 @@
       "nameTask": "A",
       "task": "Select the plates",
       "layout": [
-        { "attribute": { "textContent": "<plate />", "className": "plate", "animated": true }, "child": null },
-        { "attribute": { "textContent": "<plate />", "className": "plate", "animated": true }, "child": null }
+        {
+          "tag": "plate",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span> /&gt;</span>",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        },
+        {
+          "tag": "plate",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span> /&gt;</span>",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        }
       ],
-      "answers": ["plate"],
+      "answer": "plate",
       "description": "<h3 class=\"description-block_logo-grey\"><b>Type Selector</b></h3><h4 class=\"description-block_logo\">Select elements by their type</h4><h2 class=\"description-block_marker\">A</h2><p>Selects all elements of type <span class=\"description-block_marker\">A</span>. Type refers to the type of tag, so <span class=\"description-block_marker\">< div ></span>, <span class=\"description-block_marker\">< p ></span> and <span class=\"description-block_marker\">< ul ></span> are all different element types.</p> <h5 class=\"description-block_logo-grey\">Examples</h5><p class=\"description-block_bottom-border\"> <span class=\"description-block_marker\">div</span>selects all <span class=\"description-block_marker\">< div ></span> elements.</p> <p><span class=\"description-block_marker\">p</span> selects all <span class=\"description-block_marker\">< p ></span> elements.</p>"
     },
     "2": {
@@ -16,11 +28,28 @@
       "nameTask": "A",
       "task": "Select the bento boxes",
       "layout": [
-        { "attribute": { "textContent": "<bento />", "className": "bento", "animated": true }, "child": null },
-        { "attribute": { "textContent": "<plate />", "className": "plate" }, "child": null },
-        { "attribute": { "textContent": "<bento />", "className": "bento", "animated": true }, "child": null }
+        {
+          "tag": "bento",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span> /&gt;</span>",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        },
+        {
+          "tag": "plate",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span> /&gt;</span>",
+          "attribute": {},
+          "child": null
+        },
+        {
+          "tag": "bento",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span> /&gt;</span>",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        }
       ],
-      "answers": ["bento"],
+      "answer": "bento",
       "description": "<h3 class=\"description-block_logo-grey\"><b>Type Selector</b></h3><h4 class=\"description-block_logo\">Select elements by their type</h4><h2 class=\"description-block_marker\">A</h2><p>Selects all elements of type <span class=\"description-block_marker\">A</span>. Type refers to the type of tag, so <span class=\"description-block_marker\">< div ></span>, <span class=\"description-block_marker\">< p ></span> and <span class=\"description-block_marker\">< ul ></span> are all different element types.</p> <h5 class=\"description-block_logo-grey\">Examples</h5><p class=\"description-block_bottom-border\"> <span class=\"description-block_marker\">div</span>selects all <span class=\"description-block_marker\">< div ></span> elements.</p> <p><span class=\"description-block_marker\">p</span> selects all <span class=\"description-block_marker\">< p ></span> elements.</p>"
     },
     "3": {
@@ -29,13 +58,28 @@
       "task": "Select the fancy plate",
       "layout": [
         {
-          "attribute": { "textContent": "<plate id=\"fancy\" />", "className": "plate fancy", "animated": true },
+          "tag": "plate",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"fancy\"</span> /&gt;</span>",
+          "attribute": {
+            "id": "fancy"
+          },
+          "animated": true,
           "child": null
         },
-        { "attribute": { "textContent": "<plate />", "className": "plate" }, "child": null },
-        { "attribute": { "textContent": "<bento />", "className": "bento" }, "child": null }
+        {
+          "tag": "plate",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span> /&gt;</span>",
+          "attribute": {},
+          "child": null
+        },
+        {
+          "tag": "bento",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span> /&gt;</span>",
+          "attribute": {},
+          "child": null
+        }
       ],
-      "answers": ["#fancy"],
+      "answer": "#fancy",
       "description": "<h3 class=\"description-block_logo-grey\"><b>ID Selector</b></h3><h4 class=\"description-block_logo\">Select elements with an ID</h4><h2 class=\"description-block_marker\">#id</h2><p>Selects the element with a specific <span class=\"description-block_marker\"> id </span>.You can also combine the ID selector with the type selector.</p><h5 class=\"description-block_logo-grey\">Examples</h5><p class=\"description-block_bottom-border\"><span class=\"description-block_marker\"> #cool </span> selects any element with <span class=\"description-block_marker\"> id=\"cool\" </span></p><p><span class=\"description-block_marker\"> ul#long </span> selects <span class=\"description-block_marker\"> < ul id=\"long\" > </span></p>"
     },
     "4": {
@@ -43,17 +87,32 @@
       "nameTask": "A B",
       "task": "Select the apple on the plate",
       "layout": [
-        { "attribute": { "textContent": "<bento />", "className": "bento" }, "child": null },
         {
-          "attribute": { "textContent": "<plate>", "className": "plate" },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span> /&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
           "child": {
-            "attribute": { "textContent": "<apple />", "className": "apple", "animated": true },
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">apple</span> /&gt;</span>",
+            "tag": "apple",
+            "attribute": {},
+            "animated": true,
             "child": null
           }
         },
-        { "attribute": { "textContent": "<apple />", "className": "apple" }, "child": null }
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">apple</span> /&gt;</span>",
+          "tag": "apple",
+          "attribute": {},
+          "child": null
+        }
       ],
-      "answers": ["plate > apple"],
+      "answer": "plate > apple",
       "description": "<h3 class=\"description-block_logo-grey\"><b>Descendant Selector</b></h3><h4 class=\"description-block_logo\">Select an element inside another element</h4><h2 class=\"description-block_marker\">A  B</h2><p>Selects all <span class=\"description-block_marker\">B</span> inside of <span class=\"description-block_marker\">A</span>. <span class=\"description-block_marker\">B</span> is called a descendant because it is inside of another element.</p><h5 class=\"description-block_logo-grey\">Examples</h5><p class=\"description-block_bottom-border\"><span class=\"description-block_marker\">p  strong</span> selects all <span class=\"description-block_marker\">< strong ></span> elements that are inside of any <span class=\"description-block_marker\">< p ></span></p><p><span class=\"description-block_marker\"> #fancy  span </span> selects any <span class=\"description-block_marker\">< span ></span> elements that are inside of the element with <span class=\"description-block_marker\">id=\"fancy\"</span></p>"
     },
     "5": {
@@ -62,22 +121,43 @@
       "task": "Select the pickle on the fancy plate",
       "layout": [
         {
-          "attribute": { "textContent": "<bento>", "className": "bento" },
-          "child": { "attribute": { "textContent": "<orange />", "className": "orange" }, "child": null }
-        },
-        {
-          "attribute": { "textContent": "<plate id=\"fancy\" >", "className": "plate fancy" },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
           "child": {
-            "attribute": { "textContent": "<pickle />", "className": "pickle", "animated": true },
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> /&gt;</span>",
+            "tag": "orange",
+            "attribute": {},
             "child": null
           }
         },
         {
-          "attribute": { "textContent": "<plate>", "className": "plate" },
-          "child": { "attribute": { "textContent": "<pickle />", "className": "pickle" }, "child": null }
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"fancy\"</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {
+            "id": "fancy"
+          },
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "animated": true,
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
         }
       ],
-      "answers": ["#fancy > pickle"],
+      "answer": "#fancy > pickle",
       "description": "<h4 class=\"description-block_logo\">Combine the Descendant & ID Selectors</h4><h2 class=\"description-block_marker\">#id  A</h2><p>You can combine any selector with the descendent selector.</p><h5 class=\"description-block_logo-grey\">Examples</h5><p><span class=\"description-block_marker\">#cool span </span> selects all <span class=\"description-block_marker\">< span ></span> elements that are inside of elements with <span class=\"description-block_marker\">id=\"cool\"</span></p>"
     },
     "6": {
@@ -86,26 +166,42 @@
       "task": "Select the small apples",
       "layout": [
         {
-          "attribute": { "textContent": "<apple />", "className": "apple" },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">apple</span> /&gt;</span>",
+          "tag": "apple",
+          "attribute": {},
           "child": null
         },
         {
-          "attribute": { "textContent": "<apple class=\"small\" />", "className": "apple small", "animated": true },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">apple</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+          "tag": "apple",
+          "attribute": {
+            "className": "small"
+          },
+          "animated": true,
           "child": null
         },
         {
-          "attribute": { "textContent": "<plate>", "className": "plate" },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
           "child": {
-            "attribute": { "textContent": "<apple class=\"small\" />", "className": "apple small", "animated": true },
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">apple</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+            "tag": "apple",
+            "attribute": {
+              "className": "small"
+            },
+            "animated": true,
             "child": null
           }
         },
         {
-          "attribute": { "textContent": "<plate />", "className": "plate" },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
           "child": null
         }
       ],
-      "answers": [".small"],
+      "answer": ".small",
       "description": "<h3 class=\"description-block_logo-grey\"><b>Class Selector</b></h3><h4 class=\"description-block_logo\">Select elements by their class</h4><h2 class=\"description-block_marker\">.classname</h2><p>The class selector selects all elements with that class attribute. Elements can only have one ID, but many classes.</p> <h5 class=\"description-block_logo-grey\">Examples</h5><p><span class=\"description-block_marker\">.neato</span> selects all elements with<span class=\"description-block_marker\">class=\"neato\"</span> elements.</p>"
     },
     "7": {
@@ -114,33 +210,60 @@
       "task": "Select the small oranges",
       "layout": [
         {
-          "attribute": { "textContent": "<apple />", "className": "apple" },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">apple</span> /&gt;</span>",
+          "tag": "apple",
+          "attribute": {},
           "child": null
         },
         {
-          "attribute": { "textContent": "<apple class=\"small\" />", "className": "apple small" },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">apple</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+          "tag": "apple",
+          "attribute": {
+            "className": "small"
+          },
           "child": null
         },
         {
-          "attribute": { "textContent": "<bento>", "className": "bento" },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
           "child": {
-            "attribute": { "textContent": "<orange class=\"small\" />", "className": "orange small", "animated": true },
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+            "tag": "orange",
+            "attribute": {
+              "className": "small"
+            },
+            "animated": true,
             "child": null
           }
         },
         {
-          "attribute": { "textContent": "<plate>", "className": "plate" },
-          "child": { "attribute": { "textContent": "<orange />", "className": "orange" }, "child": null }
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> /&gt;</span>",
+            "tag": "orange",
+            "attribute": {},
+            "child": null
+          }
         },
         {
-          "attribute": { "textContent": "<plate>", "className": "plate" },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
           "child": {
-            "attribute": { "textContent": "<orange class=\"small\" />", "className": "orange small", "animated": true },
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+            "tag": "orange",
+            "attribute": {
+              "className": "small"
+            },
+            "animated": true,
             "child": null
           }
         }
       ],
-      "answers": ["orange.small"],
+      "answer": "orange.small",
       "description": "<h4 class=\"description-block_logo\">Combine the Class Selector</h4><h2 class=\"description-block_marker\">A.className</h2><p>You can combine the class selector with other selectors, like the type selector.</p> <h5 class=\"description-block_logo-grey\">Examples</h5><p class=\"description-block_bottom-border\"> <span class=\"description-block_marker\">ul.important</span> selects all<span class=\"description-block_marker\">< ul ></span> elements that have<span class=\"description-block_marker\">class=\"important\"</span>.</p><p><span class=\"description-block_marker\">#big.wide</span> selects all elements with<span class=\"description-block_marker\">id=\"big\"</span> that also have<span class=\"description-block_marker\">class=\"wide\"</span>.</p>"
     },
     "8": {
@@ -149,36 +272,67 @@
       "task": "Select the small oranges in the bentos",
       "layout": [
         {
-          "attribute": { "textContent": "<bento />", "className": "bento" },
-          "child": { "attribute": { "textContent": "<orange />", "className": "orange" }, "child": null }
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> /&gt;</span>",
+            "tag": "orange",
+            "attribute": {},
+            "child": null
+          }
         },
         {
-          "attribute": { "textContent": "<orange class=\"small\" />", "className": "orange small" },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+          "tag": "orange",
+          "attribute": {
+            "className": "small"
+          },
           "child": null
         },
         {
-          "attribute": { "textContent": "<bento>", "className": "bento" },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
           "child": {
-            "attribute": { "textContent": "<orange class=\"small\" />", "className": "orange small", "animated": true },
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+            "tag": "orange",
+            "attribute": {
+              "className": "small"
+            },
+            "animated": true,
             "child": null
           }
         },
         {
-          "attribute": { "textContent": "<bento>", "className": "bento" },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
           "child": {
-            "attribute": { "textContent": "<apple class=\"small\" />", "className": "apple small" },
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">apple</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+            "tag": "apple",
+            "attribute": {
+              "className": "small"
+            },
             "child": null
           }
         },
         {
-          "attribute": { "textContent": "<bento>", "className": "bento" },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
           "child": {
-            "attribute": { "textContent": "<orange class=\"small\" />", "className": "orange small", "animated": true },
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+            "tag": "orange",
+            "attribute": {
+              "className": "small"
+            },
+            "animated": true,
             "child": null
           }
         }
       ],
-      "answers": ["bento > orange.small"],
+      "answer": "bento > orange.small",
       "description": "<h4 class=\"description-block_logo\">You can do it...</h4><h2 class=\"description-block_marker\">Put your back into it!</h2><p>Combine what you learned in the last few levels to solve this one!</p>"
     },
     "9": {
@@ -186,24 +340,72 @@
       "nameTask": "A, B",
       "task": "Select all the plates and bentos",
       "layout": [
-        { "attribute": { "textContent": "<pickle class=\"small\" />", "className": "pickle small" }, "child": null },
-        { "attribute": { "textContent": "<pickle />", "className": "pickle" }, "child": null },
         {
-          "attribute": { "textContent": "<plate>", "className": "plate", "animated": true },
-          "child": { "attribute": { "textContent": "<pickle />", "className": "pickle" }, "child": null }
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+          "tag": "pickle",
+          "attribute": {
+            "className": "small"
+          },
+          "child": null
         },
         {
-          "attribute": { "textContent": "<bento>", "className": "bento", "animated": true },
-          "child": { "attribute": { "textContent": "<pickle />", "className": "pickle" }, "child": null }
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+          "tag": "pickle",
+          "attribute": {},
+          "child": null
         },
         {
-          "attribute": { "textContent": "<plate>", "className": "plate", "animated": true },
-          "child": { "attribute": { "textContent": "<pickle />", "className": "pickle" }, "child": null }
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "animated": true,
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
         },
-        { "attribute": { "textContent": "<pickle />", "className": "pickle" }, "child": null },
-        { "attribute": { "textContent": "<pickle class=\"small\" />", "className": "pickle small" }, "child": null }
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
+          "animated": true,
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "animated": true,
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+          "tag": "pickle",
+          "attribute": {},
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+          "tag": "pickle",
+          "attribute": {
+            "className": "small"
+          },
+          "child": null
+        }
       ],
-      "answers": ["bento, plate"],
+      "answer": "bento, plate",
       "description": "<h3 class=\"description-block_logo-grey\"><b>Comma Combinator</b></h3><h4 class=\"description-block_logo\">Combine, selectors, with... commas!</h4><h2 class=\"description-block_marker\">A, B</h2><p>Thanks to Shatner technology, this selects all <span class=\"description-block_marker\">A</span> and <span class=\"description-block_marker\">B</span> elements. You can combine any selectors this way, and you can specify more than two.</p><h5 class=\"description-block_logo-grey\">Examples</h5><p class=\"description-block_bottom-border\"> <span class=\"description-block_marker\">p, .fun</span> selects all <span class=\"description-block_marker\">< p ></span> elements as well as all elements with <span class=\"description-block_marker\">class=\"fun\"</span>elements.</p><p><span class=\"description-block_marker\">a, p, div</span> selects all <span class=\"description-block_marker\">< a ></span>, <span class=\"description-block_marker\">< p ></span> and <span class=\"description-block_marker\">< div ></span>elements</p>"
     },
     "10": {
@@ -211,28 +413,57 @@
       "nameTask": "*",
       "task": "Select all the things!",
       "layout": [
-        { "attribute": { "textContent": "<apple />", "className": "apple", "animated": true }, "child": null },
         {
-          "attribute": { "textContent": "<plate>", "className": "plate", "animated": true },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">apple</span> /&gt;</span>",
+          "tag": "apple",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "animated": true,
           "child": {
-            "attribute": { "textContent": "<orange class=\"small\" />", "className": "orange small" },
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+            "tag": "orange",
+            "attribute": {
+              "className": "small"
+            },
             "child": null
           }
         },
         {
-          "attribute": { "textContent": "<bento>", "className": "bento", "animated": true },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span> /&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
+          "animated": true,
           "child": null
         },
         {
-          "attribute": { "textContent": "<bento>", "className": "bento", "animated": true },
-          "child": { "attribute": { "textContent": "<orange />", "className": "orange" }, "child": null }
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
+          "animated": true,
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> /&gt;</span>",
+            "tag": "orange",
+            "attribute": {},
+            "child": null
+          }
         },
         {
-          "attribute": { "textContent": "<plate id=\"fancy\" />", "className": "plate fancy", "animated": true },
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span> <span class=\"hljs-attr\">id</span>=<span class=\"hljs-string\">\"fancy\"</span> /&gt;</span>",
+          "tag": "plate",
+          "attribute": {
+            "id": "fancy"
+          },
+          "animated": true,
           "child": null
         }
       ],
-      "answers": ["*"],
+      "answer": "*",
       "description": "<h3 class=\"description-block_logo-grey\"><b>The Universal Selector</b></h3><h4 class=\"description-block_logo\">You can select everything!</h4><h2 class=\"description-block_marker\">*</h2><p>You can select all elements with the universal selector!</p><h5 class=\"description-block_logo-grey\">Examples</h5><p><span class=\"description-block_marker\">p *</span> selects any element inside all <span class=\"description-block_marker\">< p ></span>elements.</p>"
     }
   }

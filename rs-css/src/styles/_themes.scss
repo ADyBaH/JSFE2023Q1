@@ -1,4 +1,5 @@
 .dark-theme {
+  --description-white-logo: #505050;
   --bg-color: #17171a;
   --logo-color: #f5f8ff;
   --bg-article-color: #1f2025;
@@ -6,7 +7,7 @@
   --text-color: #beb8b8;
   --skill-bar-color-percent: #506363;
   --skill-bar-color: #fff;
-  --meth: #00ff08;
+  --completed: #00ff08;
   --func: #20a3cb;
   --red: #ff5252;
   --orang: #ffc400;
@@ -14,6 +15,7 @@
 }
 
 .light-theme {
+  --description-white-logo: #505050;
   --bg-color: #ccc;
   --logo-color: #373737;
   --bg-article-color: #feffff;
@@ -21,7 +23,7 @@
   --text-color: #373737;
   --skill-bar-color-percent: #6e7d7d;
   --skill-bar-color: #373737;
-  --meth: #107f13;
+  --completed: #107f13;
   --func: #007da3;
   --orang: #8d7011;
   --red: #e00000;

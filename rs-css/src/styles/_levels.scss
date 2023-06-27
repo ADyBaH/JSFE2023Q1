@@ -9,14 +9,8 @@
   flex-direction: column;
   
   box-sizing: border-box;
-  width: 25rem;
+  width: 18rem;
   padding: 1rem;
-
-  transition: all 0.5s;
-
-  &_hidden {
-    right: -25rem;
-  }
 
   &__button {
     &_completed {
@@ -35,6 +29,42 @@
     &_rotate {
       @extend %rotate-arrow-left;
     }
+  }
+
+  &__description {
+    position: relative;
+    right: -1rem;
+    
+    align-self: self-end;
+
+    width: 25rem;
+    height: 100px;
+
+    background-color: black;
+
+    transition: right 0.5s;
+
+    &_hidden {
+      right: -26rem;
+      background-color: aliceblue;
+    }
+  }
+}
+
+.levels-list-block {
+  position: fixed;
+  top: 4rem;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 10rem;
+
+  transition: right .3s;
+  
+  &_hidden {
+    right: -10rem;
   }
 }
 
@@ -63,11 +93,36 @@
     margin-right: 1rem;
   }
 
+  &__burger-block {
+    cursor: pointer;
+    height: 2rem;
+    transition: transform .3s;
+
+    &_rotate {
+      transform: rotate(89deg);
+
+    }
+    
+    @media (any-hover: hover) {
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      &_rotate {
+        @media (any-hover: hover) {
+          &:hover {
+            transform: scale(1.1) rotate(89deg);
+          }
+        }
+      }
+    }
+
+  }
+
   &__burger-button {
     @extend %burger-line;
 
-    cursor: pointer;
-    transition: transform .3s;
+    margin-top: 60%;
 
     &::after {
       @extend %burger-line;
@@ -83,10 +138,5 @@
       top: .5rem;
     }
 
-    @media (any-hover: hover) {
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
   }
 }

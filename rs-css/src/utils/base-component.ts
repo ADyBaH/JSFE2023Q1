@@ -1,4 +1,4 @@
-import { BaseComponentInterface } from '../app/modules/base-component-interface'
+import { BaseComponentInterface } from '../app/models/base-component-interface'
 
 export class BaseComponent {
   public element
@@ -26,6 +26,19 @@ export class BaseComponent {
     return this.element.innerHTML
   }
 
+  public get inputValue(): string {
+    if (this.element instanceof HTMLInputElement) {
+      return this.element.value
+    }
+    return ''
+  }
+
+  public set inputValue(value: string) {
+    if (this.element instanceof HTMLInputElement) {
+      this.element.value = value
+    }
+  }
+
   public removeAllChields(): void {
     while (this.element.firstChild !== null) {
       if (this.element.firstChild !== null) {
@@ -46,7 +59,7 @@ export class BaseComponent {
     this.element.classList.toggle(className)
   }
 
-  public setEventListener(name: string, callback: (event: Event) => void): void {
+  public setEventListener(name: string, callback: (event: KeyboardEvent | Event) => void): void {
     this.element.addEventListener(name, callback)
   }
 }

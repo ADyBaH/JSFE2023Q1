@@ -1,31 +1,32 @@
-import { NodeSetup } from '../../modules/interface-for-levels'
-import { BaseComponent } from '../../components/base-component'
+import { NodeSetup } from '../../models/interface-for-levels'
+import { BaseComponent } from '../../../utils/base-component'
 
 export class TableAndEditorElement {
   public tableElement: BaseComponent
   public editorElement: BaseComponent
-  public tupleElements: BaseComponent[]
-  constructor({ attribute }: NodeSetup, parent?: HTMLElement) {
+  constructor({ tag, attribute, innerHTML }: NodeSetup, parent?: HTMLElement) {
     this.tableElement = new BaseComponent({
-      attribute: { className: `table__${attribute.className} table__element` },
+      tag,
+      attribute,
       parent,
     })
+    this.tableElement.addClass('custom-element')
+    this.tableElement.addClass(tag)
     this.editorElement = new BaseComponent({
       attribute: {
-        className: `html-text__${attribute.className} html-text__element`,
-        textContent: attribute.textContent,
+        className: 'html-text__element',
+        innerHTML,
       },
       parent,
     })
-    this.tupleElements = [this.editorElement, this.tableElement]
-    this.tupleElements.forEach((baseComponent) => {
-      baseComponent.element.addEventListener('mouseover', () => this.toggleHoverClassName())
-      baseComponent.element.addEventListener('mouseout', () => this.toggleHoverClassName())
-    })
+
+    this.editorElement.setEventListener('mouseover', (event) => this.toggleHoverClassName(event))
+    this.tableElement.setEventListener('mouseout', (event) => this.toggleHoverClassName(event))
   }
 
-  private toggleHoverClassName(): void {
-    this.tupleElements[0].toggle('active-text')
-    this.tupleElements[1].toggle('active')
+  private toggleHoverClassName(event: Event): void {
+    event.stopPropagation()
+    this.editorElement.toggle('active-text')
+    this.tableElement.toggle('active')
   }
 }

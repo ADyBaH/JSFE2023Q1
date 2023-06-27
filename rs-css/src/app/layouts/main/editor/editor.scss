@@ -1,0 +1,45 @@
+@import '../../../../styles/variables';
+
+.editor-block {
+  @extend %background;
+
+  border: .7rem solid #000;
+  border-radius: .7rem;
+}
+
+.css-block {
+  width: 50%;
+  background-color: #fff;
+
+  .file-block {
+    &_numbers{
+      color: #0000006b;
+      background-color: #efefef;
+    }
+  }
+
+  .css-editor {
+    padding: .5rem;
+    color: #0000006b;
+  }
+}
+
+.html-block {
+  width: 50%;
+  color: #ffffff6b;
+  background-color: var(--skill-bar-color);
+
+  .html-text {
+    padding: .5rem;
+  }
+}
+
+.active {
+  height: 10px;
+  box-shadow: 2px 2px 5px red;
+}
+
+.active-text {
+  color: #ffffffb6;
+  text-shadow: 2px 2px 5px #ffffffb6;
+}

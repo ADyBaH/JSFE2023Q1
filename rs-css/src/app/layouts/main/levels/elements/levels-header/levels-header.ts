@@ -1,5 +1,5 @@
-import { LevelsBurgerBlock } from './element/levels-burger-button/levels-burger-button'
 import { LevelsDataInterface } from '../../../../../models/interface-for-levels'
+import { LevelsBurgerBlock } from './element/levels-burger-button/levels-burger-button'
 import { levelsData } from '../../../../../../assets/data/levels-data.json'
 import { localStorageADyBaH } from '../../../../../services/local-storage'
 import { MaxMinLevelEnum } from '../../../../../enum/max-min-level-enum'
@@ -11,7 +11,7 @@ import './levels-header.scss'
 
 export class LevelsHeader extends BaseComponent {
   private mainState: MainStateType = mainState
-  private completedTask: string[]
+  private completedTask = localStorageADyBaH.completedTask
   private logo: BaseComponent
   private prevLevelButton: BaseComponent
   private nextLevelButton: BaseComponent
@@ -20,12 +20,7 @@ export class LevelsHeader extends BaseComponent {
   private levelsData: LevelsDataInterface = levelsData
   private progressBar: BaseComponent
 
-  constructor(
-    parent: HTMLElement,
-    completedTask: string[],
-    levelListComponent: BaseComponent,
-    progressBar: BaseComponent,
-  ) {
+  constructor(parent: HTMLElement, levelListComponent: BaseComponent, progressBar: BaseComponent) {
     super({ attribute: { className: 'header-levels-block' }, parent })
     this.levelListComponent = levelListComponent
     this.logo = new BaseComponent({
@@ -51,7 +46,6 @@ export class LevelsHeader extends BaseComponent {
     emitter.subscribe('changeElementsOnState', () => this.changeLogo())
     emitter.subscribe('resetLevels', () => this.resetCompletedLogo())
     emitter.subscribe('setupWin', () => this.updateCompletedTask())
-    this.completedTask = completedTask
     this.changeLogo()
   }
 

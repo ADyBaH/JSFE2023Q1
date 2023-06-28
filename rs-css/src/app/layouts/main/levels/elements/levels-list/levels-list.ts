@@ -6,15 +6,14 @@ import { emitter } from '../../../../../services/event-emitter'
 import './levels-list.scss'
 
 export class LevelsList extends BaseComponent {
-  private completedTask: string[]
+  private completedTask = localStorageADyBaH.completedTask
   public levelsData: LevelsDataInterface = levelsData
   public arrayButtons: BaseComponent[]
   public resetButton: BaseComponent
 
-  constructor(parent: HTMLElement, completedTask: string[]) {
+  constructor(parent: HTMLElement) {
     super({ attribute: { className: 'levels-list-block levels-list-block_hidden' }, parent })
     this.innerHTML = '<h2 class="levels-block__logo">Chosen level</h2>'
-    this.completedTask = completedTask
     this.arrayButtons = this.createButtons()
     this.resetButton = new BaseComponent({
       tag: 'button',

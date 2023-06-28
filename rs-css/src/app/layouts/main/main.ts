@@ -9,8 +9,10 @@ import { TableBlock } from './table/table-block'
 import { Editor } from './editor/editor'
 import { Levels } from './levels/levels'
 import { mainState } from './main-state'
+import { Modal } from './modal/modal'
 
 export class Main extends BaseComponent {
+  public modal: Modal = new Modal(this.element)
   public tableBlock: TableBlock
   public editor: Editor
   public levels = new Levels(this.element)

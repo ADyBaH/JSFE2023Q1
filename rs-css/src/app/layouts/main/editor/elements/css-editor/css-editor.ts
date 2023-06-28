@@ -88,6 +88,9 @@ export class CssEditor extends BaseComponent {
       if (+this.mainState.levelId + 1 < MaxMinLevelEnum.max) {
         emitter.emit('changeLevel', this.levelsData[`${+this.mainState.levelId + 1}`])
       }
+      if (+this.mainState.levelId === MaxMinLevelEnum.max) {
+        emitter.emit('showModal')
+      }
     }
     return true
   }

@@ -19,7 +19,7 @@ export class Main extends BaseComponent {
   public modal: Modal = new Modal(this.element)
   public tableBlock: TableBlock
   public editor: Editor
-  public levels = new Levels(this.element)
+  public levels: Levels
   public levelsData: LevelsDataInterface = levelsData
   public lastTask: string = localStorageADyBaH.lastTask
   private mainState: MainStateType = mainState
@@ -27,6 +27,7 @@ export class Main extends BaseComponent {
   constructor(root: HTMLElement) {
     super({ tag: 'main', attribute: { className: 'main' }, parent: root })
     this.tableBlock = new TableBlock(this.element, this.levelsData[this.lastTask])
+    this.levels = new Levels(this.element)
     this.editor = new Editor(this.element, this.tableBlock.table.element)
     emitter.subscribe(EmitterEnum.changeLevel, (args: LevelInterface) => this.changeState(args))
     emitter.emit(EmitterEnum.changeLevel, this.levelsData[this.lastTask])
@@ -41,9 +42,10 @@ export class Main extends BaseComponent {
       this.mainState.tableComponents.push(elements.tableElement)
       if (setup.child) {
         const elementsChild = new EventBinder(
-          new TableElement(setup, elements.tableElement.element),
-          new EditorElement(setup, elements.editorElement.element),
+          new TableElement(setup.child, elements.tableElement.element),
+          new EditorElement(setup.child, elements.editorElement.element),
         )
+        elementsChild.tableElement.addClass('custom-child-element')
         elementsChild.editorElement.element.insertAdjacentHTML(
           'afterend',
           `<span class="hljs-tag">&lt;/<span class="hljs-name">${setup.tag}</span>&gt;</span>`,

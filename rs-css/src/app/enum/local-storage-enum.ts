@@ -1,4 +1,5 @@
 export enum LocalStorageEnum {
-  lastTask = 'lastTaskADyBaH',
-  completedTask = 'completedTaskADyBaH',
+  lastTaskKey = 'lastTaskADyBaH',
+  completedTaskKey = 'completedTaskADyBaH',
+  helpedTaskKey = 'helpedTaskADyBaH',
 }

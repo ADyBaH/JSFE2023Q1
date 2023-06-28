@@ -106,6 +106,7 @@ export class CssEditor extends BaseComponent {
         hljs.highlightBlock(this.codeElement.element)
       }, index * 100)
     })
+    emitter.emit('setupHelp', mainState.levelId)
   }
 
   private resetInput(): void {

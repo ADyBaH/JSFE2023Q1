@@ -14,6 +14,8 @@
   padding: 1rem;
 
   &__description-text {
+    @extend %text-logo-with-shadow;
+
     margin: .5rem 0 0;
     text-align: end
   }
@@ -32,6 +34,8 @@
   }
 
   &__progress-bar {
+    @extend %background;
+    
     width: 80%;
     height: 0.5rem;
     margin: .5rem auto 0;

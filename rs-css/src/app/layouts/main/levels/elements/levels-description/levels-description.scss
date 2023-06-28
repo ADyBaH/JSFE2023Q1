@@ -2,6 +2,8 @@
 
 .levels-block {
   &__description {
+    @extend %text-logo-with-shadow;
+    
     position: relative;
     right: -2rem;
     

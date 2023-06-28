@@ -5,6 +5,8 @@
   align-items: center;
 
   &__logo {
+    @extend %text-logo-with-shadow;
+    
     margin: 0;
     
     &::before {

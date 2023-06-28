@@ -1,9 +1,15 @@
+@import '../../../../../../styles/variables';
+
 .levels-block {
   &__logo {
+    @extend %text-logo-with-shadow;
+
     margin: .9rem 0;
   }
 
   &__button {
+    @extend %text-logo-with-shadow;
+
     cursor: pointer;
 
     text-align: start;
@@ -36,6 +42,8 @@
   }
 
   &__reset-button {
+    @extend %text-logo-with-shadow;
+    
     cursor: pointer;
 
     align-self: center;

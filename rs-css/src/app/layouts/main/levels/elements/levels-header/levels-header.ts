@@ -48,7 +48,7 @@ export class LevelsHeader extends BaseComponent {
     emitter.subscribe('changeElementsOnState', () => this.changeLogo())
     emitter.subscribe('resetLevels', () => this.resetCompletedLogo())
     emitter.subscribe('setupWin', () => this.updateCompletedTask())
-    emitter.subscribe('setupHelped', () => this.updateHelpedTask())
+    emitter.subscribe('setupHelp', () => this.updateHelpedTask())
     this.changeLogo()
   }
 

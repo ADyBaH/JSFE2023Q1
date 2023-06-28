@@ -21,6 +21,8 @@ export class TableAndEditorElement {
     })
 
     this.editorElement.setEventListener('mouseover', (event) => this.toggleHoverClassName(event))
+    this.tableElement.setEventListener('mouseover', (event) => this.toggleHoverClassName(event))
+    this.editorElement.setEventListener('mouseout', (event) => this.toggleHoverClassName(event))
     this.tableElement.setEventListener('mouseout', (event) => this.toggleHoverClassName(event))
   }
 

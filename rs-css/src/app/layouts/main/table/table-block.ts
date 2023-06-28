@@ -28,7 +28,7 @@ export class TableBlock extends BaseComponent {
   }
 
   public changeTable(args: MainStateType): void {
-    this.table.removeAllChields()
+    this.table.removeAllChildren()
     if (Array.isArray(args.tableComponents)) {
       args.tableComponents.forEach((baseComponent) => this.table.element.append(baseComponent.element))
     }

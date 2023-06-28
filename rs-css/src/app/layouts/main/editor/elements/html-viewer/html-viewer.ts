@@ -14,7 +14,7 @@ export class HtmlViewer extends BaseComponent {
   }
 
   public changeMarkup(args: MainStateType): void {
-    this.markup.removeAllChields()
+    this.markup.removeAllChildren()
     this.markup.element.insertAdjacentHTML(
       'afterbegin',
       `<span class="hljs-tag">

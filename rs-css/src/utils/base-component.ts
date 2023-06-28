@@ -47,7 +47,7 @@ export class BaseComponent {
     this.element.className = value
   }
 
-  public removeAllChields(): void {
+  public removeAllChildren(): void {
     while (this.element.firstChild !== null) {
       if (this.element.firstChild !== null) {
         this.element.removeChild(this.element.firstChild)

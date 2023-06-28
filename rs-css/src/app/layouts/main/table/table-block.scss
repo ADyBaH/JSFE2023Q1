@@ -1,11 +1,80 @@
+@import '../../../../styles/variables';
+
 .table-block {
+  text-align: center;
+  
   &__table {
+    transform: rotateX(25deg);
+
     display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+
+    height: 10rem;
+    margin-bottom: 1rem;
+
+    background-color: var(--orang);
+    border-radius: 1rem;
+
+  }
+
+  &__logo {
+    @extend %text-logo-with-shadow;
   }
 }
 
 .custom-element {
   cursor: pointer;
-  width: 10px;
-  height: 10px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+}
+
+
+.animated-element {
+  animation: skew .5s ease-in infinite alternate;
+}
+
+.plate {
+  @extend %plate;
+}
+
+#fancy {
+  border: 1rem solid #6bcbfb71;
+}
+
+.bento {
+  @extend %bento;
+}
+
+.apple {
+ @extend %apple;
+}
+
+.orange {
+ @extend %apple;
+
+ background-color: #ffa500;
+ border-right: .4rem solid #966202;
+ border-bottom: 1rem solid #966202;
+ border-left: .4rem solid #966202;
+}
+
+.pickle {
+ @extend %pickle;
+}
+
+.small {
+  width: 2rem;
+  height: 2rem;
+
+  border-right-width: .2rem;
+  border-bottom-width: .6rem;
+  border-left-width: .2rem;
 }

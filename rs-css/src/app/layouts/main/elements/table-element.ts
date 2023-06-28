@@ -2,7 +2,7 @@ import { BaseComponent } from '../../../../utils/base-component'
 import { LevelNodeSetting } from '../../../models/level-node-setting-interface'
 
 export class TableElement extends BaseComponent {
-  constructor({ tag, attribute }: LevelNodeSetting, parent?: HTMLElement) {
+  constructor({ tag, attribute, animated }: LevelNodeSetting, parent?: HTMLElement) {
     super({
       tag,
       attribute,
@@ -10,5 +10,8 @@ export class TableElement extends BaseComponent {
     })
     this.addClass('custom-element')
     this.addClass(tag)
+    if (animated) {
+      this.addClass('animated-element')
+    }
   }
 }

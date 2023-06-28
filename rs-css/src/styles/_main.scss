@@ -45,6 +45,11 @@
   }
 }
 
-.custom-element {
-  display: block;
+.active {
+  box-shadow: 0 0 10px #010100;
+}
+
+.active-text {
+  color: #ffffffb6;
+  text-shadow: 2px 2px 5px #ffffffb6;
 }

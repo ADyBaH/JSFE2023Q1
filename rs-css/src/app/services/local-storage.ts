@@ -48,13 +48,17 @@ class LocalStorage {
 
   public setCompletedTask(value: string): void {
     const array = this.completedTask
-    array.push(value)
+    if (!array.includes(value)) {
+      array.push(value)
+    }
     this.setToLocalStorage(LocalStorageEnum.completedTaskKey, JSON.stringify(array))
   }
 
   public setHelpedTask(value: string): void {
     const array = this.helpedTask
-    array.push(value)
+    if (!array.includes(value)) {
+      array.push(value)
+    }
     this.setToLocalStorage(LocalStorageEnum.helpedTaskKey, JSON.stringify(array))
   }
 

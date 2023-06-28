@@ -13,36 +13,36 @@ class LocalStorage {
   }
 
   public get lastTask(): string {
-    const [lastTaskKey] = LocalStorageEnum.lastTaskKey
-    const lastTask = localStorage.getItem(lastTaskKey)
+    const key = LocalStorageEnum.lastTaskKey
+    const lastTask = localStorage.getItem(key)
 
     if (lastTask) {
       return lastTask
     }
 
     const level = '1'
-    this.setToLocalStorage(lastTaskKey, level)
+    this.setToLocalStorage(key, level)
     return level
   }
 
   public get completedTask(): string[] {
-    const [completedTaskKey] = LocalStorageEnum.completedTaskKey
-    const completedTask = localStorage.getItem(completedTaskKey)
+    const key = LocalStorageEnum.completedTaskKey
+    const completedTask = localStorage.getItem(key)
 
     if (completedTask) {
       return JSON.parse(completedTask)
     }
-    this.setToLocalStorage(completedTaskKey, JSON.stringify([]))
+    this.setToLocalStorage(key, JSON.stringify([]))
     return []
   }
   public get helpedTask(): string[] {
-    const [helpedTaskKey] = LocalStorageEnum.helpedTaskKey
-    const helpedTask = localStorage.getItem(helpedTaskKey)
+    const key = LocalStorageEnum.helpedTaskKey
+    const helpedTask = localStorage.getItem(key)
 
     if (helpedTask) {
       return JSON.parse(helpedTask)
     }
-    this.setToLocalStorage(helpedTaskKey, JSON.stringify([]))
+    this.setToLocalStorage(key, JSON.stringify([]))
     return []
   }
 

@@ -2,8 +2,8 @@ import { LevelInterface } from '../../../models/level-interface'
 import { BaseComponent } from '../../../../utils/base-component'
 import { MainStateType } from '../../../types/main-state-type'
 import { emitter } from '../../../services/event-emitter'
-import './table-block.scss'
 import { EmitterEnum } from '../../../enum/emitter-enum'
+import './table-block.scss'
 
 export class TableBlock extends BaseComponent {
   public logo: BaseComponent

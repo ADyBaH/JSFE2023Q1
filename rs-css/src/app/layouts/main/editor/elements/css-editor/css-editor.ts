@@ -9,6 +9,7 @@ import { MaxMinLevelEnum } from '../../../../../enum/max-min-level-enum'
 import { emitter } from '../../../../../services/event-emitter'
 import { mainState } from '../../../main-state'
 import './css-editor.scss'
+import { EmitterEnum } from '../../../../../enum/emitter-enum'
 
 export class CssEditor extends BaseComponent {
   private readonly levelsData: LevelsDataInterface = levelsData
@@ -54,8 +55,8 @@ export class CssEditor extends BaseComponent {
     this.enterButton.setEventListener('click', () => this.checkInput())
     this.helpButton.setEventListener('click', () => this.writeAnswer())
     this.input.setEventListener('keyup', (event) => this.changeCodeValue(event))
-    emitter.subscribe('changeElementsOnState', (args: MainStateType) => this.changeAnswer(args))
-    emitter.subscribe('changeLevel', () => this.resetInput())
+    emitter.subscribe(EmitterEnum.changeElementsOnState, (args: MainStateType) => this.changeAnswer(args))
+    emitter.subscribe(EmitterEnum.changeLevel, () => this.resetInput())
     hljs.highlightBlock(this.codeElement.element)
   }
 
@@ -80,16 +81,16 @@ export class CssEditor extends BaseComponent {
       return false
     }
     if (arrayLevelsNames.includes(value)) {
-      emitter.emit('changeLevel', this.levelsData[value])
+      emitter.emit(EmitterEnum.changeLevel, this.levelsData[value])
     }
     const findElements = Array.from(this.tableElement.querySelectorAll(value))
     if (this.checkWin(findElements)) {
-      emitter.emit('setupWin', this.mainState.levelId)
+      emitter.emit(EmitterEnum.setupWin, this.mainState.levelId)
       if (+this.mainState.levelId + 1 < MaxMinLevelEnum.max) {
-        emitter.emit('changeLevel', this.levelsData[`${+this.mainState.levelId + 1}`])
+        emitter.emit(EmitterEnum.changeLevel, this.levelsData[`${+this.mainState.levelId + 1}`])
       }
       if (+this.mainState.levelId === MaxMinLevelEnum.max) {
-        emitter.emit('showModal')
+        emitter.emit(EmitterEnum.showModal)
       }
     }
     return true
@@ -109,7 +110,7 @@ export class CssEditor extends BaseComponent {
         hljs.highlightBlock(this.codeElement.element)
       }, index * 100)
     })
-    emitter.emit('setupHelp', mainState.levelId)
+    emitter.emit(EmitterEnum.setupHelp, mainState.levelId)
   }
 
   private resetInput(): void {

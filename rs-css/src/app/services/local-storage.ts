@@ -1,12 +1,15 @@
+import { EmitterEnum } from '../enum/emitter-enum'
 import { LocalStorageEnum } from '../enum/local-storage-enum'
 import { emitter } from './event-emitter'
 
 class LocalStorage {
   constructor() {
-    emitter.subscribe('resetLevels', () => this.clearCompletedLevels())
-    emitter.subscribe('setToLastTask', (args: string) => this.setToLocalStorage(LocalStorageEnum.lastTaskKey, args))
-    emitter.subscribe('setupWin', (value: string): void => this.setCompletedTask(value))
-    emitter.subscribe('setupHelp', (value: string): void => this.setHelpedTask(value))
+    emitter.subscribe(EmitterEnum.resetLevels, () => this.clearCompletedLevels())
+    emitter.subscribe(EmitterEnum.setToLastTask, (args: string) =>
+      this.setToLocalStorage(LocalStorageEnum.lastTaskKey, args),
+    )
+    emitter.subscribe(EmitterEnum.setupWin, (value: string): void => this.setCompletedTask(value))
+    emitter.subscribe(EmitterEnum.setupHelp, (value: string): void => this.setHelpedTask(value))
   }
   public setToLocalStorage(key: string, value: string): void {
     localStorage.setItem(key, value)

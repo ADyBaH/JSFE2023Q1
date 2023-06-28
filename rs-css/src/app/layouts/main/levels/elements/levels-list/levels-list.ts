@@ -4,6 +4,7 @@ import { localStorageADyBaH } from '../../../../../services/local-storage'
 import { BaseComponent } from '../../../../../../utils/base-component'
 import { emitter } from '../../../../../services/event-emitter'
 import './levels-list.scss'
+import { EmitterEnum } from '../../../../../enum/emitter-enum'
 
 export class LevelsList extends BaseComponent {
   private completedTask = localStorageADyBaH.completedTask
@@ -21,8 +22,8 @@ export class LevelsList extends BaseComponent {
       attribute: { className: 'levels-block__reset-button', textContent: 'Reset levels.' },
       parent: this.element,
     })
-    emitter.subscribe('setupWin', () => this.setupWin())
-    emitter.subscribe('setupHelped', () => this.setupWin())
+    emitter.subscribe(EmitterEnum.setupWin, () => this.setupWin())
+    emitter.subscribe(EmitterEnum.setupHelp, () => this.setupWin())
     this.arrayButtons.forEach((button) => button.setEventListener('click', (event: Event) => this.eventClick(event)))
     this.resetButton.setEventListener('click', () => this.resetLevels())
   }
@@ -53,14 +54,14 @@ export class LevelsList extends BaseComponent {
       const targetText: string | null = target.textContent
       if (targetText) {
         const numberTask = targetText.split(' ')[0]
-        emitter.emit('setToLastTask', numberTask)
-        emitter.emit('changeLevel', this.levelsData[numberTask])
+        emitter.emit(EmitterEnum.setToLastTask, numberTask)
+        emitter.emit(EmitterEnum.changeLevel, this.levelsData[numberTask])
       }
     }
   }
 
   public resetLevels(): void {
-    emitter.emit('resetLevels')
+    emitter.emit(EmitterEnum.resetLevels)
     this.arrayButtons.forEach((baseComponent) => baseComponent.setClassName('levels-block__button'))
   }
 

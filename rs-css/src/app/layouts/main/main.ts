@@ -13,6 +13,7 @@ import { Modal } from './modal/modal'
 import { EditorElement } from './elements/editor-element'
 import { TableElement } from './elements/table-element'
 import { LevelInterface } from '../../models/level-interface'
+import { EmitterEnum } from '../../enum/emitter-enum'
 
 export class Main extends BaseComponent {
   public modal: Modal = new Modal(this.element)
@@ -27,8 +28,8 @@ export class Main extends BaseComponent {
     super({ tag: 'main', attribute: { className: 'main' }, parent: root })
     this.tableBlock = new TableBlock(this.element, this.levelsData[this.lastTask])
     this.editor = new Editor(this.element, this.tableBlock.table.element)
-    emitter.subscribe('changeLevel', (args: LevelInterface) => this.changeState(args))
-    emitter.emit('changeLevel', this.levelsData[this.lastTask])
+    emitter.subscribe(EmitterEnum.changeLevel, (args: LevelInterface) => this.changeState(args))
+    emitter.emit(EmitterEnum.changeLevel, this.levelsData[this.lastTask])
   }
 
   private changeState(template: LevelInterface): void {
@@ -52,6 +53,6 @@ export class Main extends BaseComponent {
     mainState.answer = template.answer
     mainState.levelId = template.id
     mainState.task = template.task
-    emitter.emit('changeElementsOnState', mainState)
+    emitter.emit(EmitterEnum.changeElementsOnState, mainState)
   }
 }

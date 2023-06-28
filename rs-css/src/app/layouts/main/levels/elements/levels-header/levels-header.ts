@@ -9,6 +9,7 @@ import { emitter } from '../../../../../services/event-emitter'
 import { mainState } from '../../../main-state'
 import './levels-header.scss'
 import { levelsHeaderDictionary } from '../../../../../dictionary/levels-header-dictionary'
+import { EmitterEnum } from '../../../../../enum/emitter-enum'
 
 export class LevelsHeader extends BaseComponent {
   private mainState: MainStateType = mainState
@@ -45,10 +46,10 @@ export class LevelsHeader extends BaseComponent {
     this.burgerBlock.setEventListener('click', () => this.toggleBurgerRotate())
     this.prevLevelButton.setEventListener('click', () => this.decrementsLevels())
     this.nextLevelButton.setEventListener('click', () => this.incrementLevels())
-    emitter.subscribe('changeElementsOnState', () => this.changeLogo())
-    emitter.subscribe('resetLevels', () => this.resetCompletedLogo())
-    emitter.subscribe('setupWin', () => this.updateCompletedTask())
-    emitter.subscribe('setupHelp', () => this.updateHelpedTask())
+    emitter.subscribe(EmitterEnum.changeElementsOnState, () => this.changeLogo())
+    emitter.subscribe(EmitterEnum.resetLevels, () => this.resetCompletedLogo())
+    emitter.subscribe(EmitterEnum.setupWin, () => this.updateCompletedTask())
+    emitter.subscribe(EmitterEnum.setupHelp, () => this.updateHelpedTask())
     this.changeLogo()
   }
 
@@ -76,8 +77,8 @@ export class LevelsHeader extends BaseComponent {
   }
 
   private setupChange(value: string): void {
-    emitter.emit('changeLevel', this.levelsData[value])
-    emitter.emit('setToLastTask', value)
+    emitter.emit(EmitterEnum.changeLevel, this.levelsData[value])
+    emitter.emit(EmitterEnum.setToLastTask, value)
     this.changeProgressBar()
   }
 

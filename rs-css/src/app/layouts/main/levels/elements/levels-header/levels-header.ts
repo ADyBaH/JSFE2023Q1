@@ -1,5 +1,5 @@
+import { LevelsBurgerBlock } from './element/levels-burger-button/levels-burger-button'
 import { LevelsDataInterface } from '../../../../../models/interface-for-levels'
-import { LevelsBurgerBlock } from '../levels-burger-button/levels-burger-button'
 import { levelsData } from '../../../../../../assets/data/levels-data.json'
 import { localStorageADyBaH } from '../../../../../services/local-storage'
 import { MaxMinLevelEnum } from '../../../../../enum/max-min-level-enum'

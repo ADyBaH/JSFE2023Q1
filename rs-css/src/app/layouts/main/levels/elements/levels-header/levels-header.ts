@@ -71,14 +71,22 @@ export class LevelsHeader extends BaseComponent {
     this.levelListComponent.toggle('levels-list-block_hidden')
   }
 
+  private changeProgressBar(): void {
+    Object.assign(this.progressBar.element, { value: `${this.mainState.levelId}` })
+  }
+
+  private setupChange(value: string): void {
+    emitter.emit('changeLevel', this.levelsData[value])
+    emitter.emit('setToLastTask', value)
+    this.changeProgressBar()
+  }
+
   public incrementLevels(): boolean {
     const value = +this.mainState.levelId + 1
     if (value > MaxMinLevelEnum.max) {
       return false
     }
-    this.emitChangeLevel(`${value}`)
-    emitter.emit('setToLastTask', `${value}`)
-    this.changeProgressBar()
+    this.setupChange(`${value}`)
     return true
   }
 
@@ -87,18 +95,8 @@ export class LevelsHeader extends BaseComponent {
     if (value < MaxMinLevelEnum.min) {
       return false
     }
-    this.emitChangeLevel(`${value}`)
-    emitter.emit('setToLastTask', `${value}`)
-    this.changeProgressBar()
+    this.setupChange(`${value}`)
     return true
-  }
-
-  private emitChangeLevel(key: string): void {
-    emitter.emit('changeLevel', this.levelsData[key])
-  }
-
-  private changeProgressBar(): void {
-    Object.assign(this.progressBar.element, { value: `${this.mainState.levelId}` })
   }
 
   private resetCompletedLogo(): void {

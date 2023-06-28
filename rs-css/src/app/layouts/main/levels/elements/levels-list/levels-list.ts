@@ -1,4 +1,4 @@
-import { LevelsDataInterface } from '../../../../../models/interface-for-levels'
+import { LevelsDataInterface } from '../../../../../models/levels-interface'
 import { levelsData } from '../../../../../../assets/data/levels-data.json'
 import { localStorageADyBaH } from '../../../../../services/local-storage'
 import { BaseComponent } from '../../../../../../utils/base-component'

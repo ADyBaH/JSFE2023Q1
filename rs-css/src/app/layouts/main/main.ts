@@ -1,4 +1,4 @@
-import { LevelInterface, LevelsDataInterface } from '../../models/interface-for-levels'
+import { LevelInterface, LevelsDataInterface } from '../../models/levels-interface'
 import { levelsData } from '../../../assets/data/levels-data.json'
 import { EventBinder } from './table-and-editor-element'
 import { localStorageADyBaH } from '../../services/local-storage'

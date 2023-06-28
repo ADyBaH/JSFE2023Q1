@@ -1,7 +1,7 @@
 import hljs from 'highlight.js'
 import { stringTemplateForInputBlock } from '../../../../../constants/css-editor-constant'
 import { arrayLevelsNames } from '../../../../../constants/array-levels-names-constant'
-import { LevelsDataInterface } from '../../../../../models/interface-for-levels'
+import { LevelsDataInterface } from '../../../../../models/levels-interface'
 import { levelsData } from '../../../../../../assets/data/levels-data.json'
 import { BaseComponent } from '../../../../../../utils/base-component'
 import { MainStateType } from '../../../../../types/main-state-type'

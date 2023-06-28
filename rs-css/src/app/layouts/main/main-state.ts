@@ -1,4 +1,4 @@
-import { LevelsDataInterface } from '../../models/interface-for-levels'
+import { LevelsDataInterface } from '../../models/levels-interface'
 import { levelsData } from '../../../assets/data/levels-data.json'
 import { MainStateType } from '../../types/main-state-type'
 import { MaxMinLevelEnum } from '../../enum/max-min-level-enum'

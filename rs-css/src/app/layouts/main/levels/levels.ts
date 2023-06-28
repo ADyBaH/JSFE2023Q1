@@ -8,15 +8,14 @@ import './levels.scss'
 export class Levels extends BaseComponent {
   public levelsData = levelsData
   private levelList = new LevelsList(this.element)
-  public progressBar: BaseComponent
+  public progressBar = new BaseComponent({
+    tag: 'progress',
+    attribute: { className: 'levels-block__progress-bar', value: '1', max: '10' },
+  })
   private levelsHeader: LevelsHeader
   private description: LevelsDescription
   constructor(root: HTMLElement) {
     super({ attribute: { className: 'levels-block' }, parent: root })
-    this.progressBar = new BaseComponent({
-      tag: 'progress',
-      attribute: { className: 'levels-block__progress-bar', value: '1', max: '10' },
-    })
     this.levelsHeader = new LevelsHeader(this.element, this.levelList, this.progressBar)
     this.element.append(this.progressBar.element)
     this.description = new LevelsDescription(this.element)

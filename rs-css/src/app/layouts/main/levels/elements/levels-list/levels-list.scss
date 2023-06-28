@@ -23,6 +23,11 @@
       color: var(--completed);
     }
 
+    &_helped::before {
+      content: '? ';
+      color: var(--completed);
+    }
+
     @media (any-hover: hover) {
       &:hover {
         background-color: var(--bg-shadow-article-color);

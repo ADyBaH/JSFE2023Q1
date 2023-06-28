@@ -39,6 +39,14 @@ export class BaseComponent {
     }
   }
 
+  public get className(): string {
+    return this.element.className
+  }
+
+  public setClassName(value: string): void {
+    this.element.className = value
+  }
+
   public removeAllChields(): void {
     while (this.element.firstChild !== null) {
       if (this.element.firstChild !== null) {

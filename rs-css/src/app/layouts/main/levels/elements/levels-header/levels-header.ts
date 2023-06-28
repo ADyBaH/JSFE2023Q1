@@ -8,10 +8,12 @@ import { MainStateType } from '../../../../../types/main-state-type'
 import { emitter } from '../../../../../services/event-emitter'
 import { mainState } from '../../../main-state'
 import './levels-header.scss'
+import { levelsHeaderDictionary } from '../../../../../dictionary/levels-header-dictionary'
 
 export class LevelsHeader extends BaseComponent {
   private mainState: MainStateType = mainState
   private completedTask = localStorageADyBaH.completedTask
+  private helpedTask = localStorageADyBaH.helpedTask
   private logo: BaseComponent
   private prevLevelButton: BaseComponent
   private nextLevelButton: BaseComponent
@@ -46,6 +48,7 @@ export class LevelsHeader extends BaseComponent {
     emitter.subscribe('changeElementsOnState', () => this.changeLogo())
     emitter.subscribe('resetLevels', () => this.resetCompletedLogo())
     emitter.subscribe('setupWin', () => this.updateCompletedTask())
+    emitter.subscribe('setupHelped', () => this.updateHelpedTask())
     this.changeLogo()
   }
 
@@ -53,12 +56,14 @@ export class LevelsHeader extends BaseComponent {
     this.changeProgressBar()
     this.logo.innerText = `Levels ${this.mainState.levelId} of ${MaxMinLevelEnum.max}`
 
-    if (this.completedTask.includes(this.mainState.levelId)) {
-      this.logo.addClass('header-levels-block__logo_completed')
-    }
-    if (!this.completedTask.includes(this.mainState.levelId)) {
-      this.logo.removeClass('header-levels-block__logo_completed')
-    }
+    levelsHeaderDictionary.completedTask[`${this.completedTask.includes(this.mainState.levelId)}`](
+      this.logo,
+      'header-levels-block__logo_completed',
+    )
+    levelsHeaderDictionary.helpedTask[`${this.helpedTask.includes(this.mainState.levelId)}`](
+      this.logo,
+      'header-levels-block__logo_helped',
+    )
   }
 
   private toggleBurgerRotate(): void {
@@ -98,11 +103,18 @@ export class LevelsHeader extends BaseComponent {
 
   private resetCompletedLogo(): void {
     this.completedTask = localStorageADyBaH.completedTask
+    this.helpedTask = localStorageADyBaH.helpedTask
     this.logo.removeClass('header-levels-block__logo_completed')
+    this.logo.removeClass('header-levels-block__logo_helped')
   }
 
   private updateCompletedTask(): void {
     this.logo.addClass('header-levels-block__logo_completed')
     this.completedTask = localStorageADyBaH.completedTask
+  }
+
+  private updateHelpedTask(): void {
+    this.logo.addClass('header-levels-block__logo_helped')
+    this.helpedTask = localStorageADyBaH.helpedTask
   }
 }

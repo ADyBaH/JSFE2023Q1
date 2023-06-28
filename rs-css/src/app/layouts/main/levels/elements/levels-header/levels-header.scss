@@ -16,6 +16,10 @@
       color: var(--completed);
     }
 
+    &_helped::before {
+      content: '? ';
+    }
+
   }
 
   &__prev-button,

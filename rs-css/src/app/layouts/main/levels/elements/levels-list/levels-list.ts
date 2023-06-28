@@ -7,6 +7,7 @@ import './levels-list.scss'
 
 export class LevelsList extends BaseComponent {
   private completedTask = localStorageADyBaH.completedTask
+  private helpedTask = localStorageADyBaH.helpedTask
   public levelsData: LevelsDataInterface = levelsData
   public arrayButtons: BaseComponent[]
   public resetButton: BaseComponent
@@ -21,24 +22,29 @@ export class LevelsList extends BaseComponent {
       parent: this.element,
     })
     emitter.subscribe('setupWin', () => this.setupWin())
+    emitter.subscribe('setupHelped', () => this.setupWin())
     this.arrayButtons.forEach((button) => button.setEventListener('click', (event: Event) => this.eventClick(event)))
     this.resetButton.setEventListener('click', () => this.resetLevels())
   }
 
   private createButtons(): BaseComponent[] {
-    return Object.keys(this.levelsData).map(
-      (element) =>
-        new BaseComponent({
-          tag: 'button',
-          attribute: {
-            className: `levels-block__button ${
-              this.completedTask.includes(element) ? ' levels-block__button_completed' : ''
-            }`,
-            textContent: `${element} ${this.levelsData[String(element)].nameTask}`,
-          },
-          parent: this.element,
-        }),
-    )
+    return Object.keys(this.levelsData).map((element) => {
+      const buttonElement = new BaseComponent({
+        tag: 'button',
+        attribute: {
+          className: 'levels-block__button',
+          textContent: `${element} ${this.levelsData[String(element)].nameTask}`,
+        },
+        parent: this.element,
+      })
+      if (this.completedTask.includes(element)) {
+        buttonElement.addClass('levels-block__button_completed')
+      }
+      if (this.helpedTask.includes(element)) {
+        buttonElement.addClass('levels-block__button_helped')
+      }
+      return buttonElement
+    })
   }
 
   private eventClick(event: Event): void {
@@ -55,15 +61,19 @@ export class LevelsList extends BaseComponent {
 
   public resetLevels(): void {
     emitter.emit('resetLevels')
-    this.arrayButtons.forEach((baseComponent) => baseComponent.removeClass('levels-block__button_completed'))
+    this.arrayButtons.forEach((baseComponent) => baseComponent.setClassName('levels-block__button'))
   }
 
   private setupWin(): void {
     this.completedTask = localStorageADyBaH.completedTask
+    this.helpedTask = localStorageADyBaH.helpedTask
     this.arrayButtons.forEach((baseComponent) => {
       const value = baseComponent.element.textContent?.split(' ')[0]
       if (value && this.completedTask.includes(value)) {
         baseComponent.addClass('levels-block__button_completed')
+      }
+      if (value && this.helpedTask.includes(value)) {
+        baseComponent.addClass('levels-block__button_helped')
       }
     })
   }

@@ -1,8 +1,8 @@
 import { BaseComponent } from '../../../../utils/base-component'
-import { NodeSetup } from '../../../models/levels-interface'
+import { LevelNodeSetting } from '../../../models/level-node-setting-interface'
 
 export class EditorElement extends BaseComponent {
-  constructor({ innerHTML }: NodeSetup, parent?: HTMLElement) {
+  constructor({ innerHTML }: LevelNodeSetting, parent?: HTMLElement) {
     super({
       attribute: {
         className: 'html-text__element',

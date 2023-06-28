@@ -1,8 +1,8 @@
 import { BaseComponent } from '../../../../utils/base-component'
-import { NodeSetup } from '../../../models/levels-interface'
+import { LevelNodeSetting } from '../../../models/level-node-setting-interface'
 
 export class TableElement extends BaseComponent {
-  constructor({ tag, attribute }: NodeSetup, parent?: HTMLElement) {
+  constructor({ tag, attribute }: LevelNodeSetting, parent?: HTMLElement) {
     super({
       tag,
       attribute,

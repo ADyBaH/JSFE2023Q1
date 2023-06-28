@@ -1,6 +1,6 @@
-import { LevelInterface } from '../../../models/levels-interface'
-import { MainStateType } from '../../../types/main-state-type'
+import { LevelInterface } from '../../../models/level-interface'
 import { BaseComponent } from '../../../../utils/base-component'
+import { MainStateType } from '../../../types/main-state-type'
 import { emitter } from '../../../services/event-emitter'
 import './table-block.scss'
 

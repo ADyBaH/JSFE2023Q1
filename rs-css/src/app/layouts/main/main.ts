@@ -1,4 +1,4 @@
-import { LevelInterface, LevelsDataInterface } from '../../models/levels-interface'
+import { LevelsDataInterface } from '../../models/levels-interface'
 import { levelsData } from '../../../assets/data/levels-data.json'
 import { EventBinder } from './table-and-editor-element'
 import { localStorageADyBaH } from '../../services/local-storage'
@@ -12,6 +12,7 @@ import { mainState } from './main-state'
 import { Modal } from './modal/modal'
 import { EditorElement } from './elements/editor-element'
 import { TableElement } from './elements/table-element'
+import { LevelInterface } from '../../models/level-interface'
 
 export class Main extends BaseComponent {
   public modal: Modal = new Modal(this.element)

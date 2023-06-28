@@ -1,5 +1,5 @@
-import { LevelInterface } from '../../../../../models/levels-interface'
 import { BaseComponent } from '../../../../../../utils/base-component'
+import { LevelInterface } from '../../../../../models/level-interface'
 import { emitter } from '../../../../../services/event-emitter'
 import './levels-description.scss'
 

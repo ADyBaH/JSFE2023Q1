@@ -1,6 +1,6 @@
 import { LevelInterface, LevelsDataInterface } from '../../models/interface-for-levels'
 import { levelsData } from '../../../assets/data/levels-data.json'
-import { TableAndEditorElement } from './table-and-editor-element'
+import { EventBinder } from './table-and-editor-element'
 import { localStorageADyBaH } from '../../services/local-storage'
 import { BaseComponent } from '../../../utils/base-component'
 import { MainStateType } from '../../types/main-state-type'
@@ -10,6 +10,8 @@ import { Editor } from './editor/editor'
 import { Levels } from './levels/levels'
 import { mainState } from './main-state'
 import { Modal } from './modal/modal'
+import { EditorElement } from './elements/editor-element'
+import { TableElement } from './elements/table-element'
 
 export class Main extends BaseComponent {
   public modal: Modal = new Modal(this.element)
@@ -32,13 +34,14 @@ export class Main extends BaseComponent {
     this.mainState.editorComponents = []
     this.mainState.tableComponents = []
     template.layout.forEach((setup) => {
-      const elements = new TableAndEditorElement(setup)
+      const elements = new EventBinder(new TableElement(setup), new EditorElement(setup))
       this.mainState.editorComponents.push(elements.editorElement)
       this.mainState.tableComponents.push(elements.tableElement)
       if (setup.child) {
-        const elementsChild = new TableAndEditorElement(setup.child)
-        elements.editorElement.element.append(elementsChild.editorElement.element)
-        elements.tableElement.element.append(elementsChild.tableElement.element)
+        const elementsChild = new EventBinder(
+          new TableElement(setup, elements.tableElement.element),
+          new EditorElement(setup, elements.editorElement.element),
+        )
         elementsChild.editorElement.element.insertAdjacentHTML(
           'afterend',
           `<span class="hljs-tag">&lt;/<span class="hljs-name">${setup.tag}</span>&gt;</span>`,

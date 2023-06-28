@@ -1,24 +1,11 @@
-import { NodeSetup } from '../../models/interface-for-levels'
 import { BaseComponent } from '../../../utils/base-component'
 
-export class TableAndEditorElement {
+export class EventBinder {
   public tableElement: BaseComponent
   public editorElement: BaseComponent
-  constructor({ tag, attribute, innerHTML }: NodeSetup, parent?: HTMLElement) {
-    this.tableElement = new BaseComponent({
-      tag,
-      attribute,
-      parent,
-    })
-    this.tableElement.addClass('custom-element')
-    this.tableElement.addClass(tag)
-    this.editorElement = new BaseComponent({
-      attribute: {
-        className: 'html-text__element',
-        innerHTML,
-      },
-      parent,
-    })
+  constructor(tableElement: BaseComponent, editorElement: BaseComponent) {
+    this.tableElement = tableElement
+    this.editorElement = editorElement
 
     this.editorElement.setEventListener('mouseover', (event) => this.toggleHoverClassName(event))
     this.tableElement.setEventListener('mouseover', (event) => this.toggleHoverClassName(event))

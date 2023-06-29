@@ -31,6 +31,7 @@ export class Main extends BaseComponent {
     this.levels = new Levels(this.element)
     this.editor = new Editor(this.element, this.tableBlock.table.element)
     emitter.subscribe(EmitterEnum.changeLevel, (args: LevelInterface) => this.changeState(args))
+    emitter.subscribe('shakeEditor', () => this.shakeTable())
     emitter.emit(EmitterEnum.changeLevel, this.levelsData[this.lastTask])
   }
 
@@ -58,5 +59,10 @@ export class Main extends BaseComponent {
     mainState.levelId = template.id
     mainState.mainTask = template.task
     emitter.emit(EmitterEnum.changeElementsOnState, mainState)
+  }
+
+  public shakeTable(): void {
+    this.editor.addClass('shake')
+    setInterval(() => this.editor.removeClass('shake'), 2000)
   }
 }

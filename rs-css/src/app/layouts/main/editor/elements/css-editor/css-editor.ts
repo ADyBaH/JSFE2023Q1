@@ -77,24 +77,25 @@ export class CssEditor extends BaseComponent {
 
   private checkInput(): boolean {
     const value = this.input.inputValue
-
     if (arrayLevelsNames.includes(value)) {
       emitter.emit(EmitterEnum.changeLevel, this.levelsData[value])
     }
-
     let findElements: Element[]
-
     try {
       findElements = Array.from(this.tableElement.querySelectorAll(value))
     } catch {
       findElements = []
     }
-    console.log(this.element.parentElement)
     if (this.checkWin(findElements)) {
       emitter.emit(EmitterEnum.setupWin, this.mainState.levelId)
+
       if (+this.mainState.levelId + 1 <= MaxMinLevelEnum.max) {
-        emitter.emit(EmitterEnum.changeLevel, this.levelsData[`${+this.mainState.levelId + 1}`])
-        return true
+        findElements.forEach((elements) => elements.classList.add('slide-out'))
+        console.log(+this.mainState.levelId)
+        setTimeout((): void => {
+          emitter.emit(EmitterEnum.changeLevel, this.levelsData[`${+this.mainState.levelId + 1}`])
+          emitter.emit(EmitterEnum.setToLastTask, this.mainState.levelId)
+        }, 500)
       }
       if (+this.mainState.levelId === MaxMinLevelEnum.max) {
         emitter.emit(EmitterEnum.showModal)
@@ -103,7 +104,7 @@ export class CssEditor extends BaseComponent {
     }
     if (findElements.length) {
       findElements.forEach((elements) => elements.classList.add('shake'))
-      setInterval(() => findElements.forEach((elements) => elements.classList.remove('shake')), 2000)
+      setTimeout(() => findElements.forEach((elements) => elements.classList.remove('shake')), 2000)
       return true
     }
     emitter.emit('shakeEditor')

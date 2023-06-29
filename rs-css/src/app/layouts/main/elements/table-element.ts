@@ -8,6 +8,8 @@ export class TableElement extends BaseComponent {
       attribute,
       parent,
     })
+    this.addClass('fade-in')
+    setInterval(() => this.removeClass('fade-in'), 250)
     this.addClass('custom-element')
     this.addClass(tag)
     if (animated) {

@@ -1,6 +1,6 @@
 import { LevelsDataInterface } from '../../models/levels-interface'
 import { levelsData } from '../../../assets/data/levels-data.json'
-import { EventBinder } from './table-and-editor-element'
+import { EventBinder } from './event-binder'
 import { localStorageADyBaH } from '../../services/local-storage'
 import { BaseComponent } from '../../../utils/base-component'
 import { MainStateType } from '../../types/main-state-type'

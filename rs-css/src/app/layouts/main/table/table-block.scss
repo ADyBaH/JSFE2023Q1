@@ -2,7 +2,7 @@
 
 .table-block {
   text-align: center;
-  
+
   &__table {
     transform: rotateX(25deg);
 
@@ -24,21 +24,8 @@
   }
 }
 
-.custom-element {
-  cursor: pointer;
-
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  box-sizing: border-box;
-}
-
-
 .animated-element {
-  animation: skew .5s ease-in infinite alternate;
+  animation: skew 0.5s ease-in infinite alternate;
 }
 
 .plate {
@@ -54,45 +41,58 @@
 }
 
 .apple {
- @extend %apple;
+  @extend %apple;
 }
 
 .orange {
- @extend %apple;
+  @extend %apple;
 
- background-color: #ffa500;
- border-right: .4rem solid #966202;
- border-bottom: 1rem solid #966202;
- border-left: .4rem solid #966202;
+  background-color: #ffa500;
+  border-right: 0.4rem solid #966202;
+  border-bottom: 1rem solid #966202;
+  border-left: 0.4rem solid #966202;
 }
 
 .pickle {
- @extend %pickle;
+  @extend %pickle;
 }
 
 .small {
   width: 2rem;
   height: 2rem;
 
-  border-right-width: .2rem;
-  border-bottom-width: .6rem;
-  border-left-width: .2rem;
+  border-right-width: 0.2rem;
+  border-bottom-width: 0.6rem;
+  border-left-width: 0.2rem;
 }
 
 .title {
   position: absolute;
+  right: 30%;
   bottom: 90%;
-  transform: translate(-20%);
 
-  box-sizing:border-box;
-  width: 15rem;
-  height: 3rem;
+  box-sizing: border-box;
+  width: 10rem;
+  height: 2rem;
   padding: 0.5rem;
 
+  font-size: 0.8rem;
   text-align: center;
 
   background-color: #fff;
-  border: .5rem solid #000;
+  border: 0.1rem solid #000;
   border-radius: 1rem;
+}
 
+.custom-child-element,
+.custom-element {
+  cursor: pointer;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
 }

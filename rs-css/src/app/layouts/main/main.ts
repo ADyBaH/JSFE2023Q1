@@ -46,6 +46,7 @@ export class Main extends BaseComponent {
           new EditorElement(setup.child, elements.editorElement.element),
         )
         elementsChild.tableElement.addClass('custom-child-element')
+        elementsChild.tableElement.removeClass('custom-element')
         elementsChild.editorElement.element.insertAdjacentHTML(
           'afterend',
           `<span class="hljs-tag">&lt;/<span class="hljs-name">${setup.tag}</span>&gt;</span>`,

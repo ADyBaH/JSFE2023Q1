@@ -1,4 +1,5 @@
-import { BaseComponent } from '../../../utils/base-component'
+import { BaseComponent } from '../../../../utils/base-component'
+import './footer.scss'
 
 export class Footer extends BaseComponent {
   constructor(root: HTMLElement) {

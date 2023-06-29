@@ -78,3 +78,21 @@
   border-bottom-width: .6rem;
   border-left-width: .2rem;
 }
+
+.title {
+  position: absolute;
+  bottom: 90%;
+  transform: translate(-20%);
+
+  box-sizing:border-box;
+  width: 15rem;
+  height: 3rem;
+  padding: 0.5rem;
+
+  text-align: center;
+
+  background-color: #fff;
+  border: .5rem solid #000;
+  border-radius: 1rem;
+
+}

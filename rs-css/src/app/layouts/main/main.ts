@@ -56,7 +56,7 @@ export class Main extends BaseComponent {
     })
     mainState.answer = template.answer
     mainState.levelId = template.id
-    mainState.task = template.task
+    mainState.mainTask = template.task
     emitter.emit(EmitterEnum.changeElementsOnState, mainState)
   }
 }

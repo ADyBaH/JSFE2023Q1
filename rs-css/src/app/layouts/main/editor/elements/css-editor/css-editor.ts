@@ -3,13 +3,13 @@ import { stringTemplateForInputBlock } from '../../../../../constants/css-editor
 import { arrayLevelsNames } from '../../../../../constants/array-levels-names-constant'
 import { LevelsDataInterface } from '../../../../../models/levels-interface'
 import { levelsData } from '../../../../../../assets/data/levels-data.json'
+import { MaxMinLevelEnum } from '../../../../../enum/max-min-level-enum'
 import { BaseComponent } from '../../../../../../utils/base-component'
 import { MainStateType } from '../../../../../types/main-state-type'
-import { MaxMinLevelEnum } from '../../../../../enum/max-min-level-enum'
 import { emitter } from '../../../../../services/event-emitter'
+import { EmitterEnum } from '../../../../../enum/emitter-enum'
 import { mainState } from '../../../main-state'
 import './css-editor.scss'
-import { EmitterEnum } from '../../../../../enum/emitter-enum'
 
 export class CssEditor extends BaseComponent {
   private readonly levelsData: LevelsDataInterface = levelsData
@@ -96,8 +96,8 @@ export class CssEditor extends BaseComponent {
     return true
   }
 
-  private changeAnswer(args: MainStateType): void {
-    this.answer = Array.from(this.tableElement.querySelectorAll(args.answer))
+  private changeAnswer({ answer }: MainStateType): void {
+    this.answer = Array.from(this.tableElement.querySelectorAll(answer))
   }
 
   private writeAnswer(): void {

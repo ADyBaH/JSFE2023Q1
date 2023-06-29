@@ -13,7 +13,7 @@ export class HtmlViewer extends BaseComponent {
     emitter.subscribe(EmitterEnum.changeElementsOnState, (args: MainStateType) => this.changeMarkup(args))
   }
 
-  public changeMarkup(args: MainStateType): void {
+  public changeMarkup({ editorComponents }: MainStateType): void {
     this.markup.removeAllChildren()
     this.markup.element.insertAdjacentHTML(
       'afterbegin',
@@ -22,8 +22,8 @@ export class HtmlViewer extends BaseComponent {
       <span class="hljs-attr">class</span>=<span class="hljs-string">"table"</span>&gt;</span>`,
     )
 
-    if (Array.isArray(args.editorComponents)) {
-      args.editorComponents.forEach((baseComponent) => {
+    if (Array.isArray(editorComponents)) {
+      editorComponents.forEach((baseComponent) => {
         this.markup.element.append(baseComponent.element)
       })
       this.markup.element.insertAdjacentHTML(

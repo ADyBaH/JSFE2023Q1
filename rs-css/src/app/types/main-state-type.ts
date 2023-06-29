@@ -6,5 +6,5 @@ export type MainStateType = {
   maximumLevels: number
   answer: string
   levelId: string
-  task: string
+  mainTask: string
 }

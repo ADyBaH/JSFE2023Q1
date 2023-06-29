@@ -3,8 +3,8 @@ import { levelsData } from '../../../../../../assets/data/levels-data.json'
 import { localStorageADyBaH } from '../../../../../services/local-storage'
 import { BaseComponent } from '../../../../../../utils/base-component'
 import { emitter } from '../../../../../services/event-emitter'
-import './levels-list.scss'
 import { EmitterEnum } from '../../../../../enum/emitter-enum'
+import './levels-list.scss'
 
 export class LevelsList extends BaseComponent {
   private completedTask = localStorageADyBaH.completedTask
@@ -48,8 +48,7 @@ export class LevelsList extends BaseComponent {
     })
   }
 
-  private eventClick(event: Event): void {
-    const { target } = event
+  private eventClick({ target }: Event): void {
     if (target && target instanceof HTMLElement) {
       const targetText: string | null = target.textContent
       if (targetText) {

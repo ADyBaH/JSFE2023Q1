@@ -26,7 +26,7 @@ export class LevelsDescription extends BaseComponent {
     this.toggle('levels-block__description_hidden')
   }
 
-  public changeDescription(level: LevelInterface): void {
-    this.descriptionBlock.innerHTML = level.description
+  public changeDescription({ description }: LevelInterface): void {
+    this.descriptionBlock.innerHTML = description
   }
 }

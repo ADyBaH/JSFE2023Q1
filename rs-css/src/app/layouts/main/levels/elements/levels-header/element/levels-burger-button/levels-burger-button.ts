@@ -1,5 +1,5 @@
-import './levels-burger-button.scss'
 import { BaseComponent } from '../../../../../../../../utils/base-component'
+import './levels-burger-button.scss'
 
 export class LevelsBurgerBlock extends BaseComponent {
   constructor(parent: HTMLElement) {

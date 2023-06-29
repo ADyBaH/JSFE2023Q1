@@ -1,15 +1,15 @@
-import { LevelsDataInterface } from '../../../../../models/levels-interface'
+import { levelsHeaderDictionary } from '../../../../../dictionary/levels-header-dictionary'
 import { LevelsBurgerBlock } from './element/levels-burger-button/levels-burger-button'
+import { LevelsDataInterface } from '../../../../../models/levels-interface'
 import { levelsData } from '../../../../../../assets/data/levels-data.json'
 import { localStorageADyBaH } from '../../../../../services/local-storage'
 import { MaxMinLevelEnum } from '../../../../../enum/max-min-level-enum'
 import { BaseComponent } from '../../../../../../utils/base-component'
 import { MainStateType } from '../../../../../types/main-state-type'
 import { emitter } from '../../../../../services/event-emitter'
+import { EmitterEnum } from '../../../../../enum/emitter-enum'
 import { mainState } from '../../../main-state'
 import './levels-header.scss'
-import { levelsHeaderDictionary } from '../../../../../dictionary/levels-header-dictionary'
-import { EmitterEnum } from '../../../../../enum/emitter-enum'
 
 export class LevelsHeader extends BaseComponent {
   private mainState: MainStateType = mainState
@@ -43,9 +43,9 @@ export class LevelsHeader extends BaseComponent {
     })
     this.progressBar = progressBar
     this.burgerBlock = new LevelsBurgerBlock(this.element)
-    this.burgerBlock.setEventListener('click', () => this.toggleBurgerRotate())
     this.prevLevelButton.setEventListener('click', () => this.decrementsLevels())
     this.nextLevelButton.setEventListener('click', () => this.incrementLevels())
+    this.burgerBlock.setEventListener('click', () => this.toggleBurgerRotate())
     emitter.subscribe(EmitterEnum.changeElementsOnState, () => this.changeLogo())
     emitter.subscribe(EmitterEnum.resetLevels, () => this.resetCompletedLogo())
     emitter.subscribe(EmitterEnum.setupWin, () => this.updateCompletedTask())

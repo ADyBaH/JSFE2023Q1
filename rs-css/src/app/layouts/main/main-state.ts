@@ -7,7 +7,7 @@ const levelsDataConst: LevelsDataInterface = levelsData
 
 export const mainState: MainStateType = {
   answer: levelsDataConst[`${MaxMinLevelEnum.min}`].answer,
-  task: levelsDataConst[`${MaxMinLevelEnum.min}`].task,
+  mainTask: levelsDataConst[`${MaxMinLevelEnum.min}`].task,
   editorComponents: [],
   tableComponents: [],
   maximumLevels: MaxMinLevelEnum.max,

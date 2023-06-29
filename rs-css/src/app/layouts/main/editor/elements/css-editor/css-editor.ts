@@ -91,7 +91,6 @@ export class CssEditor extends BaseComponent {
 
       if (+this.mainState.levelId + 1 <= MaxMinLevelEnum.max) {
         findElements.forEach((elements) => elements.classList.add('slide-out'))
-        console.log(+this.mainState.levelId)
         setTimeout((): void => {
           emitter.emit(EmitterEnum.changeLevel, this.levelsData[`${+this.mainState.levelId + 1}`])
           emitter.emit(EmitterEnum.setToLastTask, this.mainState.levelId)

@@ -5,14 +5,15 @@
 
   &__table {
     transform: rotateX(25deg);
-
+    
     display: flex;
     gap: 1rem;
     align-items: center;
     justify-content: center;
-
+    
     height: 10rem;
     margin-bottom: 1rem;
+    padding: 1rem;
 
     background-color: var(--orang);
     border-radius: 1rem;
@@ -76,11 +77,11 @@
   height: 2rem;
   padding: 0.5rem;
 
-  font-size: 0.8rem;
+  font-size: .8rem;
   text-align: center;
 
   background-color: #fff;
-  border: 0.1rem solid #000;
+  border: .1rem solid #000;
   border-radius: 1rem;
 }
 

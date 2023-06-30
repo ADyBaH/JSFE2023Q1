@@ -1,4 +1,4 @@
-import { levelsHeaderDictionary } from '../../../../../dictionary/levels-header-dictionary'
+import { changeClassNameDictionary } from '../../../../../dictionary/change-class-name-dictionary'
 import { LevelsBurgerBlock } from './element/levels-burger-button/levels-burger-button'
 import { LevelsDataInterface } from '../../../../../models/levels-interface'
 import { levelsData } from '../../../../../../assets/data/levels-data.json'
@@ -57,11 +57,11 @@ export class LevelsHeader extends BaseComponent {
     this.changeProgressBar()
     this.logo.innerText = `Levels ${this.mainState.levelId} of ${MaxMinLevelEnum.max}`
 
-    levelsHeaderDictionary.completedTask[`${this.completedTask.includes(this.mainState.levelId)}`](
+    changeClassNameDictionary[`${this.completedTask.includes(this.mainState.levelId)}`](
       this.logo,
       'header-levels-block__logo_completed',
     )
-    levelsHeaderDictionary.helpedTask[`${this.helpedTask.includes(this.mainState.levelId)}`](
+    changeClassNameDictionary[`${this.helpedTask.includes(this.mainState.levelId)}`](
       this.logo,
       'header-levels-block__logo_helped',
     )

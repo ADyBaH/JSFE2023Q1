@@ -2,6 +2,7 @@ import { LevelsDataInterface } from '../../../../../models/levels-interface'
 import { levelsData } from '../../../../../../assets/data/levels-data.json'
 import { localStorageADyBaH } from '../../../../../services/local-storage'
 import { BaseComponent } from '../../../../../../utils/base-component'
+import { LevelButtonElement } from './elements/level-button-element'
 import { emitter } from '../../../../../services/event-emitter'
 import { EmitterEnum } from '../../../../../enum/emitter-enum'
 import './levels-list.scss'
@@ -29,23 +30,16 @@ export class LevelsList extends BaseComponent {
   }
 
   private createButtons(): BaseComponent[] {
-    return Object.keys(this.levelsData).map((element) => {
-      const buttonElement = new BaseComponent({
-        tag: 'button',
-        attribute: {
-          className: 'levels-block__button',
-          textContent: `${element} ${this.levelsData[String(element)].nameTask}`,
-        },
-        parent: this.element,
-      })
-      if (this.completedTask.includes(element)) {
-        buttonElement.addClass('levels-block__button_completed')
-      }
-      if (this.helpedTask.includes(element)) {
-        buttonElement.addClass('levels-block__button_helped')
-      }
-      return buttonElement
-    })
+    return Object.keys(this.levelsData).map(
+      (element) =>
+        new LevelButtonElement({
+          parent: this.element,
+          key: element,
+          nameTask: this.levelsData[element].nameTask,
+          isCompletedTask: this.completedTask.includes(element),
+          isHelpedTask: this.helpedTask.includes(element),
+        }),
+    )
   }
 
   private eventClick({ target }: Event): void {

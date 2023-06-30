@@ -17,6 +17,7 @@ export class CssEditor extends BaseComponent {
   private answer: HTMLElement[] = []
   private mainState = mainState
   private tableElement
+
   private preElement = new BaseComponent({
     tag: 'pre',
     attribute: { className: 'css-editor__pre' },
@@ -34,15 +35,18 @@ export class CssEditor extends BaseComponent {
     attribute: { className: 'css-editor__input', placeholder: 'Type in a CSS selector' },
     parent: this.element,
   })
+
   private inputBlock = new BaseComponent({
     attribute: { className: 'css-editor__button-block' },
     parent: this.element,
   })
+
   public enterButton = new BaseComponent({
     tag: 'button',
     attribute: { textContent: 'Enter', className: 'css-editor__enter-button' },
     parent: this.inputBlock.element,
   })
+
   public helpButton = new BaseComponent({
     tag: 'button',
     attribute: { textContent: 'Help', className: 'css-editor__help-button' },
@@ -51,22 +55,29 @@ export class CssEditor extends BaseComponent {
 
   constructor(root: HTMLElement, tableElement: HTMLElement) {
     super({ attribute: { className: 'css-editor' }, parent: root })
+
     this.tableElement = tableElement
+
     this.inputBlock.element.insertAdjacentHTML('afterend', stringTemplateForInputBlock)
+
     this.enterButton.setEventListener('click', () => this.checkInput())
     this.helpButton.setEventListener('click', () => this.writeAnswer())
     this.input.setEventListener('keyup', (event) => this.changeCodeValue(event))
+
     emitter.subscribe(EmitterEnum.changeElementsOnState, (args: MainStateType) => this.changeAnswer(args))
     emitter.subscribe(EmitterEnum.changeLevel, () => this.resetInput())
+
     hljs.highlightBlock(this.codeElement.element)
   }
 
   private changeCodeValue(event: KeyboardEvent | Event): void {
     const element = event.target
+
     if (element instanceof HTMLInputElement) {
       this.codeElement.innerText = element.value
       hljs.highlightBlock(this.codeElement.element)
     }
+
     if (event instanceof KeyboardEvent && event.code === 'Enter') {
       this.checkInput()
     }
@@ -78,11 +89,13 @@ export class CssEditor extends BaseComponent {
 
   private findElements(request: string): Element[] {
     let findElements: Element[]
+
     try {
       findElements = Array.from(this.tableElement.querySelectorAll(request))
     } catch {
       findElements = []
     }
+
     return findElements
   }
 
@@ -90,6 +103,7 @@ export class CssEditor extends BaseComponent {
     if (!isWin) {
       return false
     }
+
     emitter.emit(EmitterEnum.setupWin, this.mainState.levelId)
 
     const isLoverMaxLvl = +this.mainState.levelId + 1 <= MaxMinLevelEnum.max
@@ -97,6 +111,7 @@ export class CssEditor extends BaseComponent {
 
     if (isLoverMaxLvl) {
       arrayElements.forEach((elements) => elements.classList.add('slide-out'))
+
       setTimeout((): void => {
         emitter.emit(EmitterEnum.changeLevel, this.levelsData[`${+this.mainState.levelId + 1}`])
         emitter.emit(EmitterEnum.setToLastTask, this.mainState.levelId)
@@ -106,6 +121,7 @@ export class CssEditor extends BaseComponent {
     if (isLastLevel) {
       emitter.emit(EmitterEnum.showModal)
     }
+
     return true
   }
 
@@ -115,19 +131,23 @@ export class CssEditor extends BaseComponent {
     }
 
     shakeElementDictionary[`${isNotEmptyArray}`](arrayElements)
+
     return true
   }
 
   private checkInput(): void {
     const value = this.input.inputValue
+
     if (arrayLevelsNames.includes(value)) {
       emitter.emit(EmitterEnum.changeLevel, this.levelsData[value])
     }
 
     const arrayElements: Element[] = this.findElements(value)
+
     const isWin = this.isWin(arrayElements)
 
     this.changeLevel(isWin, arrayElements)
+
     this.setShakeClassName(isWin, !!arrayElements.length, arrayElements)
   }
 
@@ -145,6 +165,7 @@ export class CssEditor extends BaseComponent {
         hljs.highlightBlock(this.codeElement.element)
       }, index * 100)
     })
+
     emitter.emit(EmitterEnum.setupHelp, mainState.levelId)
   }
 

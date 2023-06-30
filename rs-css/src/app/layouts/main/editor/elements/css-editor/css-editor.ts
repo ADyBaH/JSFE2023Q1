@@ -1,6 +1,7 @@
 import hljs from 'highlight.js'
 import { stringTemplateForInputBlock } from '../../../../../constants/css-editor-constant'
 import { arrayLevelsNames } from '../../../../../constants/array-levels-names-constant'
+import { shakeElementDictionary } from './dictionary/shake-element-dictionary'
 import { LevelsDataInterface } from '../../../../../models/levels-interface'
 import { levelsData } from '../../../../../../assets/data/levels-data.json'
 import { MaxMinLevelEnum } from '../../../../../enum/max-min-level-enum'
@@ -71,43 +72,63 @@ export class CssEditor extends BaseComponent {
     }
   }
 
-  private checkWin(findElements: Element[]): boolean {
+  private isWin(findElements: Element[]): boolean {
     return this.answer.every((element) => findElements.includes(element)) && this.answer.length === findElements.length
   }
 
-  private checkInput(): boolean {
+  private findElements(request: string): Element[] {
+    let findElements: Element[]
+    try {
+      findElements = Array.from(this.tableElement.querySelectorAll(request))
+    } catch {
+      findElements = []
+    }
+    return findElements
+  }
+
+  private changeLevel(isWin: boolean, arrayElements: Element[]): boolean {
+    if (!isWin) {
+      return false
+    }
+    emitter.emit(EmitterEnum.setupWin, this.mainState.levelId)
+
+    const isLoverMaxLvl = +this.mainState.levelId + 1 <= MaxMinLevelEnum.max
+    const isLastLevel = +this.mainState.levelId === MaxMinLevelEnum.max
+
+    if (isLoverMaxLvl) {
+      arrayElements.forEach((elements) => elements.classList.add('slide-out'))
+      setTimeout((): void => {
+        emitter.emit(EmitterEnum.changeLevel, this.levelsData[`${+this.mainState.levelId + 1}`])
+        emitter.emit(EmitterEnum.setToLastTask, this.mainState.levelId)
+      }, 500)
+    }
+
+    if (isLastLevel) {
+      emitter.emit(EmitterEnum.showModal)
+    }
+    return true
+  }
+
+  private setShakeClassName(isWin: boolean, isNotEmptyArray: boolean, arrayElements: Element[]): boolean {
+    if (isWin) {
+      return false
+    }
+
+    shakeElementDictionary[`${isNotEmptyArray}`](arrayElements)
+    return true
+  }
+
+  private checkInput(): void {
     const value = this.input.inputValue
     if (arrayLevelsNames.includes(value)) {
       emitter.emit(EmitterEnum.changeLevel, this.levelsData[value])
     }
-    let findElements: Element[]
-    try {
-      findElements = Array.from(this.tableElement.querySelectorAll(value))
-    } catch {
-      findElements = []
-    }
-    if (this.checkWin(findElements)) {
-      emitter.emit(EmitterEnum.setupWin, this.mainState.levelId)
 
-      if (+this.mainState.levelId + 1 <= MaxMinLevelEnum.max) {
-        findElements.forEach((elements) => elements.classList.add('slide-out'))
-        setTimeout((): void => {
-          emitter.emit(EmitterEnum.changeLevel, this.levelsData[`${+this.mainState.levelId + 1}`])
-          emitter.emit(EmitterEnum.setToLastTask, this.mainState.levelId)
-        }, 500)
-      }
-      if (+this.mainState.levelId === MaxMinLevelEnum.max) {
-        emitter.emit(EmitterEnum.showModal)
-      }
-      return true
-    }
-    if (findElements.length) {
-      findElements.forEach((elements) => elements.classList.add('shake'))
-      setTimeout(() => findElements.forEach((elements) => elements.classList.remove('shake')), 2000)
-      return true
-    }
-    emitter.emit('shakeEditor')
-    return true
+    const arrayElements: Element[] = this.findElements(value)
+    const isWin = this.isWin(arrayElements)
+
+    this.changeLevel(isWin, arrayElements)
+    this.setShakeClassName(isWin, !!arrayElements.length, arrayElements)
   }
 
   private changeAnswer({ answer }: MainStateType): void {

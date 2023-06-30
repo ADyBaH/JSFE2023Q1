@@ -7,6 +7,7 @@ export class Layout {
     const header = new Header(root)
     const main = new Main(root)
     const footer = new Footer(root)
+
     return [header, main, footer]
   }
 }

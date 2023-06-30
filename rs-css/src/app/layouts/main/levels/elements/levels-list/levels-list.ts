@@ -16,15 +16,20 @@ export class LevelsList extends BaseComponent {
 
   constructor(parent: HTMLElement) {
     super({ attribute: { className: 'levels-list-block levels-list-block_hidden' }, parent })
+
     this.innerHTML = '<h2 class="levels-block__logo">Chosen level</h2>'
+
     this.arrayButtons = this.createButtons()
+
     this.resetButton = new BaseComponent({
       tag: 'button',
       attribute: { className: 'levels-block__reset-button', textContent: 'Reset levels.' },
       parent: this.element,
     })
+
     emitter.subscribe(EmitterEnum.setupWin, () => this.setupWin())
     emitter.subscribe(EmitterEnum.setupHelp, () => this.setupWin())
+
     this.arrayButtons.forEach((button) => button.setEventListener('click', (event: Event) => this.eventClick(event)))
     this.resetButton.setEventListener('click', () => this.resetLevels())
   }
@@ -61,11 +66,14 @@ export class LevelsList extends BaseComponent {
   private setupWin(): void {
     this.completedTask = localStorageADyBaH.completedTask
     this.helpedTask = localStorageADyBaH.helpedTask
+
     this.arrayButtons.forEach((baseComponent) => {
       const value = baseComponent.element.textContent?.split(' ')[0]
+
       if (value && this.completedTask.includes(value)) {
         baseComponent.addClass('levels-block__button_completed')
       }
+
       if (value && this.helpedTask.includes(value)) {
         baseComponent.addClass('levels-block__button_helped')
       }

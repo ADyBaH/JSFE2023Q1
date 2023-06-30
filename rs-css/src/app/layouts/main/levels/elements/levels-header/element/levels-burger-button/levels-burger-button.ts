@@ -7,6 +7,7 @@ export class LevelsBurgerBlock extends BaseComponent {
       attribute: { className: 'header-levels-block__burger-block' },
       parent,
     })
+
     this.element.innerHTML = '<div class="header-levels-block__burger-button"></div>'
   }
 }

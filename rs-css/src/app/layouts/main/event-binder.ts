@@ -7,12 +7,14 @@ export class EventBinder {
   constructor(tableElement: BaseComponent, editorElement: BaseComponent) {
     this.tableElement = tableElement
     this.editorElement = editorElement
+
     this.title = new BaseComponent({
       attribute: {
         className: 'title',
         textContent: `<${tableElement.element.tagName}></${tableElement.element.tagName}>`,
       },
     })
+
     this.editorElement.setEventListener('mouseover', (event) => this.toggleHoverClassName(event))
     this.tableElement.setEventListener('mouseover', (event) => this.toggleHoverClassName(event))
     this.editorElement.setEventListener('mouseout', (event) => this.toggleHoverClassName(event))
@@ -21,11 +23,14 @@ export class EventBinder {
 
   private toggleHoverClassName(event: Event): void {
     event.stopPropagation()
+
     this.editorElement.toggle('active-text')
     this.tableElement.toggle('active')
+
     if (event.type === 'mouseover') {
       this.addTitle()
     }
+
     if (event.type === 'mouseout') {
       this.removeTitle()
     }

@@ -15,6 +15,7 @@ export class LevelButtonElement extends BaseComponent {
     if (isCompletedTask) {
       this.addClass('levels-block__button_completed')
     }
+
     if (isHelpedTask) {
       this.addClass('levels-block__button_helped')
     }

@@ -25,42 +25,52 @@ export class LevelsHeader extends BaseComponent {
 
   constructor(parent: HTMLElement, levelListComponent: BaseComponent, progressBar: BaseComponent) {
     super({ attribute: { className: 'header-levels-block' }, parent })
+
     this.levelListComponent = levelListComponent
+
     this.logo = new BaseComponent({
       tag: 'h2',
       attribute: { className: 'header-levels-block__logo' },
       parent: this.element,
     })
+
     this.prevLevelButton = new BaseComponent({
       tag: 'button',
       attribute: { className: 'header-levels-block__prev-button' },
       parent: this.element,
     })
+
     this.nextLevelButton = new BaseComponent({
       tag: 'button',
       attribute: { className: 'header-levels-block__next-button' },
       parent: this.element,
     })
+
     this.progressBar = progressBar
     this.burgerBlock = new LevelsBurgerBlock(this.element)
+
     this.prevLevelButton.setEventListener('click', () => this.decrementsLevels())
     this.nextLevelButton.setEventListener('click', () => this.incrementLevels())
     this.burgerBlock.setEventListener('click', () => this.toggleBurgerRotate())
+
     emitter.subscribe(EmitterEnum.changeElementsOnState, () => this.changeLogo())
     emitter.subscribe(EmitterEnum.resetLevels, () => this.resetCompletedLogo())
     emitter.subscribe(EmitterEnum.setupWin, () => this.updateCompletedTask())
     emitter.subscribe(EmitterEnum.setupHelp, () => this.updateHelpedTask())
+
     this.changeLogo()
   }
 
   public changeLogo(): void {
     this.changeProgressBar()
+
     this.logo.innerText = `Levels ${this.mainState.levelId} of ${MaxMinLevelEnum.max}`
 
     changeClassNameDictionary[`${this.completedTask.includes(this.mainState.levelId)}`](
       this.logo,
       'header-levels-block__logo_completed',
     )
+
     changeClassNameDictionary[`${this.helpedTask.includes(this.mainState.levelId)}`](
       this.logo,
       'header-levels-block__logo_helped',
@@ -79,23 +89,28 @@ export class LevelsHeader extends BaseComponent {
   private setupChange(value: string): void {
     emitter.emit(EmitterEnum.changeLevel, this.levelsData[value])
     emitter.emit(EmitterEnum.setToLastTask, value)
+
     this.changeProgressBar()
   }
 
   public incrementLevels(): boolean {
     const value = +this.mainState.levelId + 1
+
     if (value > MaxMinLevelEnum.max) {
       return false
     }
+
     this.setupChange(`${value}`)
     return true
   }
 
   public decrementsLevels(): boolean {
     const value = +this.mainState.levelId - 1
+
     if (value < MaxMinLevelEnum.min) {
       return false
     }
+
     this.setupChange(`${value}`)
     return true
   }
@@ -103,17 +118,20 @@ export class LevelsHeader extends BaseComponent {
   private resetCompletedLogo(): void {
     this.completedTask = localStorageADyBaH.completedTask
     this.helpedTask = localStorageADyBaH.helpedTask
+
     this.logo.removeClass('header-levels-block__logo_completed')
     this.logo.removeClass('header-levels-block__logo_helped')
   }
 
   private updateCompletedTask(): void {
     this.logo.addClass('header-levels-block__logo_completed')
+
     this.completedTask = localStorageADyBaH.completedTask
   }
 
   private updateHelpedTask(): void {
     this.logo.addClass('header-levels-block__logo_helped')
+
     this.helpedTask = localStorageADyBaH.helpedTask
   }
 }

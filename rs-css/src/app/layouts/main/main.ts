@@ -27,9 +27,11 @@ export class Main extends BaseComponent {
 
   constructor(root: HTMLElement) {
     super({ tag: 'main', attribute: { className: 'main' }, parent: root })
+
     this.tableBlock = new TableBlock(this.element, this.levelsData[this.lastTask])
     this.levels = new Levels(this.element)
     this.editor = new Editor(this.element, this.tableBlock.table.element)
+
     emitter.subscribe(EmitterEnum.changeLevel, (args: LevelInterface) => this.changeState(args))
     emitter.subscribe('shakeEditor', () => this.shakeTable())
     emitter.emit(EmitterEnum.changeLevel, this.levelsData[this.lastTask])
@@ -38,15 +40,19 @@ export class Main extends BaseComponent {
   private changeState(template: LevelInterface): void {
     this.mainState.editorComponents = []
     this.mainState.tableComponents = []
+
     template.layout.forEach((setup) => {
       const elements = new EventBinder(new TableElement(setup), new EditorElement(setup))
+
       this.mainState.editorComponents.push(elements.editorElement)
       this.mainState.tableComponents.push(elements.tableElement)
+
       if (setup.child) {
         const elementsChild = new EventBinder(
           new TableElement(setup.child, elements.tableElement.element),
           new EditorElement(setup.child, elements.editorElement.element),
         )
+
         elementsChild.tableElement.addClass('custom-child-element')
         elementsChild.tableElement.removeClass('custom-element')
         elementsChild.editorElement.element.insertAdjacentHTML(
@@ -55,6 +61,7 @@ export class Main extends BaseComponent {
         )
       }
     })
+
     mainState.answer = template.answer
     mainState.levelId = template.id
     mainState.mainTask = template.task

@@ -9,8 +9,10 @@ export class Editor extends BaseComponent {
   public htmlViewer: HtmlViewer
   constructor(root: HTMLElement, tableElement: HTMLElement) {
     super({ attribute: { className: 'editor-block' }, parent: root })
+
     const cssBlock = new FileBlock(this.element, 'css')
     const htmlBlock = new FileBlock(this.element, 'html')
+
     this.cssEditor = new CssEditor(cssBlock.fileBlock.element, tableElement)
     this.htmlViewer = new HtmlViewer(htmlBlock.fileBlock.element)
   }

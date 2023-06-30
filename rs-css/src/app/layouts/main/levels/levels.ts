@@ -14,11 +14,15 @@ export class Levels extends BaseComponent {
   })
   private levelsHeader: LevelsHeader
   private description: LevelsDescription
+
   constructor(root: HTMLElement) {
     super({ attribute: { className: 'levels-block' }, parent: root })
+
     this.levelsHeader = new LevelsHeader(this.element, this.levelList, this.progressBar)
     this.element.append(this.progressBar.element)
+
     this.description = new LevelsDescription(this.element)
+
     this.progressBar.element.insertAdjacentHTML(
       'afterend',
       '<h3 class="levels-block__description-text">Description:</h3>',

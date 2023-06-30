@@ -465,6 +465,29 @@
       ],
       "answer": "*",
       "description": "<h3 class=\"description-block_logo-grey\"><b>The Universal Selector</b></h3><h4 class=\"description-block_logo\">You can select everything!</h4><h2 class=\"description-block_marker\">*</h2><p>You can select all elements with the universal selector!</p><h5 class=\"description-block_logo-grey\">Examples</h5><p><span class=\"description-block_marker\">p *</span> selects any element inside all <span class=\"description-block_marker\">< p ></span>elements.</p>"
+    },
+    "11": {
+      "id": "1",
+      "nameTask": "Lash child",
+      "task": "Select the last plates",
+      "layout": [
+        {
+          "tag": "plate",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span> /&gt;</span>",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        },
+        {
+          "tag": "plate",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span> /&gt;</span>",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        }
+      ],
+      "answer": ":last-child",
+      "description": "<h3 class=\"description-block_logo-grey\"><b>Type Pseudo-class</b></h3><h4 class=\"description-block_logo\">Select elements by their position</h4><h2 class=\"description-block_marker\">Last A</h2><p>Selects last elements</p> <h5 class=\"description-block_logo-grey\">Examples</h5><p class=\"description-block_bottom-border\"> <span class=\"description-block_marker\">:nth-child(1)</span>selects first <span class=\"description-block_marker\">< div ></span> element.</p>"
     }
   }
 }

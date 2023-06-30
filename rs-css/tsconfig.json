@@ -2,6 +2,7 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "types": ["node", "jest", "@testing-library/jest-dom"],
     "module": "commonjs",
     "noImplicitAny": true,
     "outDir": "./dist",

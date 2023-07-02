@@ -6,4 +6,5 @@ export enum EmitterEnum {
   setupHelp = 'setupHelp',
   showModal = 'showModal',
   setToLastTask = 'setToLastTask',
+  shakeEditor = 'shakeEditor',
 }

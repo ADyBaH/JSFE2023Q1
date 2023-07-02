@@ -33,7 +33,7 @@ export class Main extends BaseComponent {
     this.editor = new Editor(this.element, this.tableBlock.table.element)
 
     emitter.subscribe(EmitterEnum.changeLevel, (args: LevelInterface) => this.changeState(args))
-    emitter.subscribe('shakeEditor', () => this.shakeTable())
+    emitter.subscribe(EmitterEnum.shakeEditor, () => this.shakeTable())
     emitter.emit(EmitterEnum.changeLevel, this.levelsData[this.lastTask])
   }
 

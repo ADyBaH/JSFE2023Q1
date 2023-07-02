@@ -1,3 +1,4 @@
+import { EmitterEnum } from '../../../../../../enum/emitter-enum'
 import { emitter } from '../../../../../../services/event-emitter'
 
 export const shakeElementDictionary = {
@@ -7,7 +8,7 @@ export const shakeElementDictionary = {
     setTimeout(() => arrayElements.forEach((elements) => elements.classList.remove('shake')), 2000)
   },
   false: (arrayElements: Element[]): Element[] => {
-    emitter.emit('shakeEditor')
+    emitter.emit(EmitterEnum.shakeEditor)
 
     return arrayElements
   },

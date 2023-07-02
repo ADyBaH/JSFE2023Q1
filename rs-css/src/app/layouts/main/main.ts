@@ -42,7 +42,7 @@ export class Main extends BaseComponent {
     this.mainState.tableComponents = []
 
     template.layout.forEach((setup) => {
-      const elements = new EventBinder(new TableElement(setup), new EditorElement(setup))
+      const elements = new EventBinder(new TableElement(setup), new EditorElement(setup), setup.innerHTML)
 
       this.mainState.editorComponents.push(elements.editorElement)
       this.mainState.tableComponents.push(elements.tableElement)
@@ -51,6 +51,7 @@ export class Main extends BaseComponent {
         const elementsChild = new EventBinder(
           new TableElement(setup.child, elements.tableElement.element),
           new EditorElement(setup.child, elements.editorElement.element),
+          setup.child.innerHTML,
         )
 
         elementsChild.tableElement.addClass('custom-child-element')

@@ -4,14 +4,14 @@ export class EventBinder {
   public tableElement: BaseComponent
   public editorElement: BaseComponent
   public title: BaseComponent
-  constructor(tableElement: BaseComponent, editorElement: BaseComponent) {
+  constructor(tableElement: BaseComponent, editorElement: BaseComponent, titleInnerHTML: string) {
     this.tableElement = tableElement
     this.editorElement = editorElement
 
     this.title = new BaseComponent({
       attribute: {
         className: 'title',
-        textContent: `<${tableElement.element.tagName}></${tableElement.element.tagName}>`,
+        innerHTML: titleInnerHTML,
       },
     })
 

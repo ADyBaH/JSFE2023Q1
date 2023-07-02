@@ -17,7 +17,7 @@ export class FileBlock extends BaseComponent {
       attribute: {
         className: 'file-block',
         innerHTML: `<div class="file-block_numbers">${Array.from(
-          { length: 15 },
+          { length: 17 },
           (_, index) => `<p class="file-block__number">${index + 1}</p>`,
         ).join('')}</div>`,
       },

@@ -467,15 +467,14 @@
       "description": "<h3 class=\"description-block_logo-grey\"><b>The Universal Selector</b></h3><h4 class=\"description-block_logo\">You can select everything!</h4><h2 class=\"description-block_marker\">*</h2><p>You can select all elements with the universal selector!</p><h5 class=\"description-block_logo-grey\">Examples</h5><p><span class=\"description-block_marker\">p *</span> selects any element inside all <span class=\"description-block_marker\">< p ></span>elements.</p>"
     },
     "11": {
-      "id": "1",
-      "nameTask": "Lash child",
-      "task": "Select the last plates",
+      "id": "11",
+      "nameTask": "Unic task: Lash child",
+      "task": "Unic Task:Select the last plates",
       "layout": [
         {
           "tag": "plate",
           "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span> /&gt;</span>",
           "attribute": {},
-          "animated": true,
           "child": null
         },
         {
@@ -487,7 +486,529 @@
         }
       ],
       "answer": ":last-child",
-      "description": "<h3 class=\"description-block_logo-grey\"><b>Type Pseudo-class</b></h3><h4 class=\"description-block_logo\">Select elements by their position</h4><h2 class=\"description-block_marker\">Last A</h2><p>Selects last elements</p> <h5 class=\"description-block_logo-grey\">Examples</h5><p class=\"description-block_bottom-border\"> <span class=\"description-block_marker\">:nth-child(1)</span>selects first <span class=\"description-block_marker\">< div ></span> element.</p>"
+      "description": "<h3 class=\"description-block_logo-grey\"><b>Type Pseudo-class</b></h3><h4 class=\"description-block_logo\">My unic Task: Select elements by their position</h4><h2 class=\"description-block_marker\">Last Element</h2><p>Selects last elements</p> <h5 class=\"description-block_logo-grey\">Examples</h5><p class=\"description-block_bottom-border\"><span class=\"description-block_marker\">:nth-child(1)</span>selects first <span class=\"description-block_marker\">< div ></span> element.</p>"
+    },
+    "12": {
+      "id": "12",
+      "nameTask": "Unic task: select second element",
+      "task": "Unic Task: Select the second bento boxes",
+      "layout": [
+        {
+          "tag": "bento",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span> /&gt;</span>",
+          "attribute": {},
+          "child": null
+        },
+        {
+          "tag": "bento",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span> /&gt;</span>",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        },
+        {
+          "tag": "bento",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span> /&gt;</span>",
+          "attribute": {},
+          "child": null
+        }
+      ],
+      "answer": ":nth-child(2)",
+      "description": "<h3 class=\"description-block_logo-grey\"><b>Type Pseudo-class</b></h3><h4 class=\"description-block_logo\">My unic Task: Select elements by their position</h4><h2 class=\"description-block_marker\">Second Element</h2><p>Selects last elements</p> <h5 class=\"description-block_logo-grey\">Examples</h5><p class=\"description-block_bottom-border\"><span class=\"description-block_marker\">:nth-child(1)</span>selects first <span class=\"description-block_marker\">< div ></span> element.</p>"
+    },
+    "13": {
+      "id": "13",
+      "nameTask": "Unic task: select even element",
+      "task": "Unic Task: Select the even bento boxes",
+      "layout": [
+        {
+          "tag": "bento",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span> /&gt;</span>",
+          "attribute": {},
+          "child": null
+        },
+        {
+          "tag": "bento",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span> /&gt;</span>",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        },
+        {
+          "tag": "bento",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span> /&gt;</span>",
+          "attribute": {},
+          "child": null
+        },
+        {
+          "tag": "bento",
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span> /&gt;</span>",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        }
+      ],
+      "answer": ":nth-child(even)",
+      "description": "<h3 class=\"description-block_logo-grey\"><b>Type Pseudo-class</b></h3><h4 class=\"description-block_logo\">My unic Task: Select elements by their position</h4><h2 class=\"description-block_marker\">Even Element</h2><p>Selects even elements</p> <h5 class=\"description-block_logo-grey\">Examples</h5><p class=\"description-block_bottom-border\"><span class=\"description-block_marker\">:nth-child(3n)</span> or <span class=\"description-block_marker\">:nth-child(odd)</span>selects even <span class=\"description-block_marker\">< div ></span> elements.</p>"
+    },
+    "14": {
+      "id": "14",
+      "nameTask": "Unic task: Select an empty elements",
+      "task": "Unic task: Select an empty plate",
+      "layout": [
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        }
+      ],
+      "answer": "plate:not(:has(pickle))",
+      "description": "<h3 class=\"description-block_logo-grey\"><b>Type Pseudo-class</b></h3><h4 class=\"description-block_logo\">Unic task: Select an empty elements</h4><h2 class=\"description-block_marker\">Empty Elements</h2><p>The <span class=\"description-block_marker\">:not()</span> CSS pseudo-class represents elements that do not match a list of selectors. Since it prevents specific items from being selected, it is known as the negation pseudo-class.</p> <h5 class=\"description-block_logo-grey\">Examples</h5><p class=\"description-block_bottom-border\"><span class=\"description-block_marker\">:not(n)</span> select elements who don't have elements <span class=\"description-block_marker\">(n)</span></p>"
+    },
+    "15": {
+      "id": "15",
+      "nameTask": "Unic task: Select not empty elements",
+      "task": "Unic task: Select not empty plate",
+      "layout": [
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "animated": true,
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "animated": true,
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "animated": true,
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        }
+      ],
+      "answer": "plate:has(pickle)",
+      "description": "<h3 class=\"description-block_logo-grey\"><b>Type Pseudo-class</b></h3><h4 class=\"description-block_logo\">Unic task: Select not empty elements</h4><h2 class=\"description-block_marker\">Not Empty Elements</h2><p>The functional <span class=\"description-block_marker\">:has()</span> CSS pseudo-class represents an element if any of the relative selectors that are passed as an argument match at least one element when anchored against this element. This pseudo-class presents a way of selecting a parent element or a previous sibling element with respect to a reference element by taking a relative selector list as an argument.</p> <h5 class=\"description-block_logo-grey\">Examples</h5><p class=\"description-block_bottom-border\"><span class=\"description-block_marker\">element:has(n)</span> select elements who have elements <span class=\"description-block_marker\">(n)</span></p>"
+    },
+    "16": {
+      "id": "16",
+      "nameTask": "Unic task: Select an empty elements",
+      "task": "Unic task: Select an empty plate",
+      "layout": [
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">apple</span> /&gt;</span>",
+            "tag": "apple",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> /&gt;</span>",
+            "tag": "orange",
+            "attribute": {},
+            "child": null
+          }
+        }
+      ],
+      "answer": "plate:empty",
+      "description": "<h3 class=\"description-block_logo-grey\"><b>Type Pseudo-class</b></h3><h4 class=\"description-block_logo\">Unic task: Select not empty elements</h4><h2 class=\"description-block_marker\">Not Empty Elements</h2><p>The <span class=\"description-block_marker\">:empty</span> represents any element that has no children. Children can be either element nodes or text (including whitespace). Comments, processing instructions, and CSS content do not affect whether an element is considered empty.</p> <h5 class=\"description-block_logo-grey\">Examples</h5><p class=\"description-block_bottom-border\"><span class=\"description-block_marker\">element:empty</span> select elements who not have elements.</p>"
+    },
+    "17": {
+      "id": "17",
+      "nameTask": "Unic task: Not on the bento",
+      "task": "Unic task: Select element not on the bento",
+      "layout": [
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+            "tag": "orange",
+            "attribute": {
+              "className": "small"
+            },
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+          "tag": "orange",
+          "attribute": {
+            "className": "small"
+          },
+          "animated": true,
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+            "tag": "orange",
+            "attribute": {
+              "className": "small"
+            },
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+            "tag": "orange",
+            "attribute": {
+              "className": "small"
+            },
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">orange</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+            "tag": "orange",
+            "attribute": {
+              "className": "small"
+            },
+            "child": null
+          }
+        }
+      ],
+      "answer": ":not(bento) > orange",
+      "description": "<h4 class=\"description-block_logo\">You can do it...</h4><h2 class=\"description-block_marker\">Put your back into it!</h2><p>Combine what you learned in the last few levels to solve this one!</p>"
+    },
+    "18": {
+      "id": "18",
+      "nameTask": "Unic task: after bento",
+      "task": "Unic task: Select all element after bento.",
+      "layout": [
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+          "tag": "pickle",
+          "attribute": {
+            "className": "small"
+          },
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+          "tag": "pickle",
+          "attribute": {},
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "animated": true,
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "animated": true,
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+          "tag": "pickle",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+          "tag": "pickle",
+          "attribute": {
+            "className": "small"
+          },
+          "animated": true,
+          "child": null
+        }
+      ],
+      "answer": "bento ~ *",
+      "description": "<h3 class=\"description-block_logo-grey\"><b>Type Combinators</b></h3><h4 class=\"description-block_logo\">Unic task: Select after element</h4><h2 class=\"description-block_marker\">After Element</h2><p>The combinators <span class=\"description-block_marker\">~</span> and <span class=\"description-block_marker\">></span> help you complete task.</p>"
+    },
+    "19": {
+      "id": "19",
+      "nameTask": "Unic task: pickle on the table",
+      "task": "Select normal pickles on the table",
+      "layout": [
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+          "tag": "pickle",
+          "attribute": {
+            "className": "small"
+          },
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+          "tag": "pickle",
+          "attribute": {},
+          "animated": true,
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+          "tag": "pickle",
+          "animated": true,
+          "attribute": {},
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+          "tag": "pickle",
+          "attribute": {
+            "className": "small"
+          },
+          "child": null
+        }
+      ],
+      "answer": "pickle.small + pickle, plate + pickle",
+      "description": "<h4 class=\"description-block_logo\">You can do it...</h4><h2 class=\"description-block_marker\">Put your back into it!</h2><p>Combine what you learned in the last few levels to solve this one!</p>"
+    },
+    "20": {
+      "id": "20",
+      "nameTask": "Unic task: even pickles",
+      "task": "Unic task: Select even pickles.",
+      "layout": [
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+          "tag": "pickle",
+          "attribute": {
+            "className": "small"
+          },
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+          "tag": "pickle",
+          "animated": true,
+          "attribute": {},
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">bento</span>&gt;</span>",
+          "tag": "bento",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "animated": true,
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">plate</span>&gt;</span>",
+          "tag": "plate",
+          "attribute": {},
+          "child": {
+            "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+            "tag": "pickle",
+            "attribute": {},
+            "child": null
+          }
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> /&gt;</span>",
+          "tag": "pickle",
+          "animated": true,
+          "attribute": {},
+          "child": null
+        },
+        {
+          "innerHTML": "<span class=\"hljs-tag\">&lt;<span class=\"hljs-name\">pickle</span> <span class=\"hljs-attr\">class</span>=<span class=\"hljs-string\">\"small\"</span> /&gt;</span>",
+          "tag": "pickle",
+          "attribute": {
+            "className": "small"
+          },
+          "child": null
+        }
+      ],
+      "answer": "pickle:nth-child(2n), bento > pickle",
+      "description": "<h4 class=\"description-block_logo\">You can do it...</h4><h2 class=\"description-block_marker\">Put your back into it!</h2><p>Combine what you learned in the last few levels to solve this one!</p>"
     }
+
   }
 }

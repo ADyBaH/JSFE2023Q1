@@ -145,7 +145,7 @@ export class CssEditor extends BaseComponent {
     const arrayElements: Element[] = this.findElements(value)
 
     const isWin = this.isWin(arrayElements)
-
+    console.log(arrayElements, isWin, this.answer)
     this.changeLevel(isWin, arrayElements)
 
     this.setShakeClassName(isWin, !!arrayElements.length, arrayElements)

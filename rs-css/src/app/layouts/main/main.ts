@@ -37,11 +37,11 @@ export class Main extends BaseComponent {
     emitter.emit(EmitterEnum.changeLevel, this.levelsData[this.lastTask])
   }
 
-  private changeState(template: LevelInterface): void {
+  private changeState({ layout, answer, id, task }: LevelInterface): void {
     this.mainState.editorComponents = []
     this.mainState.tableComponents = []
 
-    template.layout.forEach((setup) => {
+    layout.forEach((setup) => {
       const elements = new EventBinder(new TableElement(setup), new EditorElement(setup), setup.innerHTML)
 
       this.mainState.editorComponents.push(elements.editorElement)
@@ -63,9 +63,9 @@ export class Main extends BaseComponent {
       }
     })
 
-    mainState.answer = template.answer
-    mainState.levelId = template.id
-    mainState.mainTask = template.task
+    mainState.answer = answer
+    mainState.levelId = id
+    mainState.mainTask = task
     emitter.emit(EmitterEnum.changeElementsOnState, mainState)
   }
 

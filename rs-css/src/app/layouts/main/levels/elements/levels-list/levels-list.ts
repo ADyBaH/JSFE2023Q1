@@ -6,6 +6,7 @@ import { LevelButtonElement } from './elements/level-button-element'
 import { emitter } from '../../../../../services/event-emitter'
 import { EmitterEnum } from '../../../../../enum/emitter-enum'
 import './levels-list.scss'
+import { levelListInnerHTMLString } from '../../../../../constants/level-list-constant'
 
 export class LevelsList extends BaseComponent {
   private completedTask = localStorageADyBaH.completedTask
@@ -17,7 +18,7 @@ export class LevelsList extends BaseComponent {
   constructor(parent: HTMLElement) {
     super({ attribute: { className: 'levels-list-block levels-list-block_hidden' }, parent })
 
-    this.innerHTML = '<h2 class="levels-block__logo">Chosen level</h2>'
+    this.innerHTML = levelListInnerHTMLString
 
     this.arrayButtons = this.createButtons()
 

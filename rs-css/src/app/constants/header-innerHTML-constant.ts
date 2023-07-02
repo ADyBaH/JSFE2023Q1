@@ -1,1 +1,1 @@
-export const headerInnerHTMLString = '<h1 class = "header__logo">RSS-CSS</h1>'
+export const headerInnerHTML = '<h1 class = "header__logo">RSS-CSS</h1>'

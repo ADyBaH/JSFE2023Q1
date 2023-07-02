@@ -1,5 +1,6 @@
-import { EmitterEnum } from '../enum/emitter-enum'
+import { arrayLevelsNames } from '../constants/array-levels-names-constant'
 import { LocalStorageEnum } from '../enum/local-storage-enum'
+import { EmitterEnum } from '../enum/emitter-enum'
 import { emitter } from './event-emitter'
 
 class LocalStorage {
@@ -23,8 +24,9 @@ class LocalStorage {
       return lastTask
     }
 
-    const level = '1'
+    const level = arrayLevelsNames[0]
     this.setToLocalStorage(key, level)
+
     return level
   }
 
@@ -35,7 +37,9 @@ class LocalStorage {
     if (completedTask) {
       return JSON.parse(completedTask)
     }
+
     this.setToLocalStorage(key, JSON.stringify([]))
+
     return []
   }
   public get helpedTask(): string[] {
@@ -45,23 +49,29 @@ class LocalStorage {
     if (helpedTask) {
       return JSON.parse(helpedTask)
     }
+
     this.setToLocalStorage(key, JSON.stringify([]))
+
     return []
   }
 
   public setCompletedTask(value: string): void {
     const array = this.completedTask
+
     if (!array.includes(value)) {
       array.push(value)
     }
+
     this.setToLocalStorage(LocalStorageEnum.completedTaskKey, JSON.stringify(array))
   }
 
   public setHelpedTask(value: string): void {
     const array = this.helpedTask
+
     if (!array.includes(value)) {
       array.push(value)
     }
+
     this.setToLocalStorage(LocalStorageEnum.helpedTaskKey, JSON.stringify(array))
   }
 

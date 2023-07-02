@@ -26,7 +26,7 @@ export class CssEditor extends BaseComponent {
 
   private codeElement = new BaseComponent({
     tag: 'code',
-    attribute: { className: 'css-editor__code lang-css' },
+    attribute: { className: 'css-editor__code lang-css animated-background-color' },
     parent: this.preElement.element,
   })
 
@@ -60,6 +60,8 @@ export class CssEditor extends BaseComponent {
 
     this.inputBlock.element.insertAdjacentHTML('afterend', stringTemplateForInputBlock)
 
+    this.input.setEventListener('focus', () => this.codeElement.removeClass('animated-background-color'))
+    this.input.setEventListener('blur', () => this.codeElement.addClass('animated-background-color'))
     this.enterButton.setEventListener('click', () => this.checkInput())
     this.helpButton.setEventListener('click', () => this.writeAnswer())
     this.input.setEventListener('keyup', (event) => this.changeCodeValue(event))

@@ -61,3 +61,14 @@
     opacity: 1;
   }
 }
+
+@keyframes color-animation {
+  0% {
+    background-color: #ffffff80;
+  }
+  
+  100% {
+    background-color: #00ffff80;
+  }
+}
+

@@ -1,4 +1,4 @@
-import { levelsDiscriptionInnerHTML } from '../../../constants/levels-description-constant'
+import { levelsDescriptionInnerHTML } from '../../../constants/levels-description-constant'
 import { LevelsDescription } from './elements/levels-description/levels-description'
 import { levelsData } from '../../../../assets/data/levels-data.json'
 import { LevelsHeader } from './elements/levels-header/levels-header'
@@ -29,6 +29,6 @@ export class Levels extends BaseComponent {
 
     this.description = new LevelsDescription(this.element)
 
-    this.progressBar.element.insertAdjacentHTML('afterend', levelsDiscriptionInnerHTML)
+    this.progressBar.element.insertAdjacentHTML('afterend', levelsDescriptionInnerHTML)
   }
 }

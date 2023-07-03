@@ -53,11 +53,11 @@
 
   &__enter {
     height: 100%;
-    font-size: 0.6rem;
+    font-size: .6rem;
   }
 
   &__text {
-    margin: 0.03rem 0 0;
+    margin: .03rem 0 0;
   }
 
   &__help-button,
@@ -79,5 +79,5 @@
 }
 
 .animated-background-color {
-  animation: color-animation 0.5s ease-in infinite alternate;
+  animation: color-animation .5s ease-in infinite alternate;
 }

@@ -26,7 +26,7 @@
 }
 
 .animated-element {
-  animation: skew 0.5s ease-in infinite alternate;
+  animation: skew .5s ease-in infinite alternate;
 }
 
 .plate {
@@ -49,9 +49,9 @@
   @extend %apple;
 
   background-color: #ffa500;
-  border-right: 0.4rem solid #966202;
+  border-right: .4rem solid #966202;
   border-bottom: 1rem solid #966202;
-  border-left: 0.4rem solid #966202;
+  border-left: .4rem solid #966202;
 }
 
 .pickle {
@@ -62,9 +62,9 @@
   width: 2rem;
   height: 2rem;
 
-  border-right-width: 0.2rem;
-  border-bottom-width: 0.6rem;
-  border-left-width: 0.2rem;
+  border-right-width: .2rem;
+  border-bottom-width: .6rem;
+  border-left-width: .2rem;
 }
 
 .title {
@@ -73,7 +73,7 @@
   bottom: 90%;
 
   box-sizing: border-box;
-  padding: 0.5rem;
+  padding: .5rem;
 
   font-size: .8rem;
   text-align: center;

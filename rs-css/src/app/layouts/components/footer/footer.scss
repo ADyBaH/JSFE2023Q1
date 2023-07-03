@@ -20,9 +20,9 @@
     @extend %background;
 
     position: relative;
-    padding: 0.5rem 1.5rem 0.5rem 2rem;
+    padding: .5rem 1.5rem .5rem 2rem;
     text-decoration: none;
-    transition: transform 0.3s;
+    transition: transform .3s;
 
     &::before {
       content: "";
@@ -30,8 +30,8 @@
       position: absolute;
       right: 4.6rem;
 
-      width: 0.9rem;
-      height: 0.9rem;
+      width: .9rem;
+      height: .9rem;
 
       background-image: url('../../../../assets/icons/github-logo.svg');
       background-repeat: no-repeat;
@@ -57,7 +57,7 @@
     background-position: center;
     background-size: 90%;
 
-    transition: transform 0.3s;
+    transition: transform .3s;
 
     @media (any-hover: hover) {
       &:hover {

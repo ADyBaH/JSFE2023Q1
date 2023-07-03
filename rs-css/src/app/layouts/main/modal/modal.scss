@@ -17,7 +17,7 @@
   opacity: 1;
   background-color: var(--modal-background);
 
-  transition: visibility 0.5s, opacity 0.5s;
+  transition: visibility .5s, opacity .5s;
 
   &_hidden {
     visibility: hidden;

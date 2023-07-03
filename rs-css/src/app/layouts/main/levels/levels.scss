@@ -37,29 +37,29 @@
     @extend %background;
     
     width: 80%;
-    height: 0.5rem;
+    height: .5rem;
     margin: .5rem auto 0;
 
     accent-color: var(--completed);
     background: grey;
-    border-radius: 0.5rem;
+    border-radius: .5rem;
 
     &::-webkit-progress-bar {
-      height: 0.5rem;
+      height: .5rem;
       background-color: none;
-      border-radius: 0.5rem;
+      border-radius: .5rem;
 
     }
 
     &::-webkit-progress-value {
       background-color: #000;
-      border-radius: 0.5rem;
+      border-radius: .5rem;
 
     }
 
     &::-moz-progress-bar {
       background-color: #000;
-      border-radius: 0.5rem;
+      border-radius: .5rem;
     }
   }
 }
@@ -77,8 +77,8 @@
   width: 21rem;
 
   background-color: var(--bg-color);
-  border: 0.2rem solid black;
-  border-radius: 0.5rem;
+  border: .2rem solid black;
+  border-radius: .5rem;
 
   transition: right .2s;
   

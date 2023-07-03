@@ -18,6 +18,7 @@ import './css-editor.scss'
 
 export class CssEditor extends BaseComponent {
   private readonly levelsData: LevelsDataInterface = levelsData
+  private lockForTextInput = false
   private arrayElementsForAnswer: HTMLElement[] = []
   private mainState = mainState
   private tableElement
@@ -163,17 +164,26 @@ export class CssEditor extends BaseComponent {
   }
 
   private writeAnswer(): void {
-    this.resetInput()
+    let endWriteAnswerTime: number = 0
 
-    this.mainState.answer.split('').forEach((letter, index) => {
+    if (!this.lockForTextInput) {
+      this.resetInput()
+
+      this.lockForTextInput = true
+      this.mainState.answer.split('').forEach((letter, index) => {
+        setTimeout(() => {
+          this.input.inputValue += letter
+          this.codeElement.innerText += letter
+          hljs.highlightBlock(this.codeElement.element)
+        }, index * answerDebounceTime)
+        endWriteAnswerTime = index * answerDebounceTime
+      })
+
+      emitter.emit(EmitterEnum.SetupHelp, mainState.levelId)
       setTimeout(() => {
-        this.input.inputValue += letter
-        this.codeElement.innerText += letter
-        hljs.highlightBlock(this.codeElement.element)
-      }, index * answerDebounceTime)
-    })
-
-    emitter.emit(EmitterEnum.SetupHelp, mainState.levelId)
+        this.lockForTextInput = false
+      }, endWriteAnswerTime)
+    }
   }
 
   private resetInput(): void {

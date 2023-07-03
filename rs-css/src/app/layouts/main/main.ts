@@ -1,4 +1,5 @@
 import { LevelsDataInterface } from '../../models/levels-interface'
+import { endShakeAnimation } from '../../constants/main-constants'
 import { levelsData } from '../../../assets/data/levels-data.json'
 import { localStorageADyBaH } from '../../services/local-storage'
 import { LevelInterface } from '../../models/level-interface'
@@ -37,7 +38,6 @@ export class Main extends BaseComponent {
     emitter.emit(EmitterEnum.ChangeLevel, this.levelsData[this.lastTask])
   }
 
-  // переиминовать деструктуризировать
   private changeState({ layout, answer, id, task }: LevelInterface): void {
     this.mainState.editorComponents = []
     this.mainState.tableComponents = []
@@ -78,6 +78,6 @@ export class Main extends BaseComponent {
   }
   public shakeTable(): void {
     this.editor.addClass('shake')
-    setInterval(() => this.editor.removeClass('shake'), 2000)
+    setInterval(() => this.editor.removeClass('shake'), endShakeAnimation)
   }
 }

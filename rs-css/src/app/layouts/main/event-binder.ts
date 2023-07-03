@@ -1,4 +1,5 @@
 import { BaseComponent } from '../../../utils/base-component'
+import { EventEnum } from '../../enum/event-enum'
 
 export class EventBinder {
   public tableElement: BaseComponent
@@ -15,23 +16,25 @@ export class EventBinder {
       },
     })
 
-    this.editorElement.setEventListener('mouseover', (event) => this.toggleHoverClassName(event))
-    this.tableElement.setEventListener('mouseover', (event) => this.toggleHoverClassName(event))
-    this.editorElement.setEventListener('mouseout', (event) => this.toggleHoverClassName(event))
-    this.tableElement.setEventListener('mouseout', (event) => this.toggleHoverClassName(event))
+    this.editorElement.setEventListener(EventEnum.MouseOver, (event) => this.toggleHoverClassName(event))
+    this.tableElement.setEventListener(EventEnum.MouseOver, (event) => this.toggleHoverClassName(event))
+    this.editorElement.setEventListener(EventEnum.MouseOut, (event) => this.toggleHoverClassName(event))
+    this.tableElement.setEventListener(EventEnum.MouseOut, (event) => this.toggleHoverClassName(event))
   }
 
   private toggleHoverClassName(event: Event): void {
     event.stopPropagation()
 
+    const { type } = event
+
     this.editorElement.toggle('active-text')
     this.tableElement.toggle('active')
 
-    if (event.type === 'mouseover') {
+    if (type === EventEnum.MouseOver) {
       this.addTitle()
     }
 
-    if (event.type === 'mouseout') {
+    if (type === EventEnum.MouseOut) {
       this.removeTitle()
     }
   }

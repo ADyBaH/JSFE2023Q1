@@ -7,6 +7,7 @@ import { LevelButtonElement } from './elements/level-button-element'
 import { emitter } from '../../../../../services/event-emitter'
 import { EmitterEnum } from '../../../../../enum/emitter-enum'
 import './levels-list.scss'
+import { EventEnum } from '../../../../../enum/event-enum'
 
 export class LevelsList extends BaseComponent {
   private completedTask = localStorageADyBaH.completedTask
@@ -31,8 +32,10 @@ export class LevelsList extends BaseComponent {
     emitter.subscribe(EmitterEnum.SetupWin, () => this.setupWin())
     emitter.subscribe(EmitterEnum.SetupHelp, () => this.setupWin())
 
-    this.arrayButtons.forEach((button) => button.setEventListener('click', (event: Event) => this.eventClick(event)))
-    this.resetButton.setEventListener('click', () => this.resetLevels())
+    this.arrayButtons.forEach((button) =>
+      button.setEventListener(EventEnum.Click, (event: Event) => this.eventClick(event)),
+    )
+    this.resetButton.setEventListener(EventEnum.Click, () => this.resetLevels())
   }
 
   private createButtons(): BaseComponent[] {

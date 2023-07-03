@@ -13,6 +13,7 @@ import { BaseComponent } from '../../../../../../utils/base-component'
 import { MainStateType } from '../../../../../types/main-state-type'
 import { emitter } from '../../../../../services/event-emitter'
 import { EmitterEnum } from '../../../../../enum/emitter-enum'
+import { EventEnum } from '../../../../../enum/event-enum'
 import { mainState } from '../../../main-state'
 import './css-editor.scss'
 
@@ -65,11 +66,11 @@ export class CssEditor extends BaseComponent {
 
     this.inputBlock.element.insertAdjacentHTML('afterend', stringTemplateForInputBlock)
 
-    this.input.setEventListener('focus', () => this.codeElement.removeClass('animated-background-color'))
-    this.input.setEventListener('blur', () => this.codeElement.addClass('animated-background-color'))
-    this.enterButton.setEventListener('click', () => this.checkInput())
-    this.helpButton.setEventListener('click', () => this.writeAnswer())
-    this.input.setEventListener('keyup', (event: Event) => this.changeCodeValue(event))
+    this.input.setEventListener(EventEnum.Focus, () => this.codeElement.removeClass('animated-background-color'))
+    this.input.setEventListener(EventEnum.Blur, () => this.codeElement.addClass('animated-background-color'))
+    this.enterButton.setEventListener(EventEnum.Click, () => this.checkInput())
+    this.helpButton.setEventListener(EventEnum.Click, () => this.writeAnswer())
+    this.input.setEventListener(EventEnum.KeyUp, (event: Event) => this.changeCodeValue(event))
 
     emitter.subscribe(EmitterEnum.ChangeElementsOnState, (args: MainStateType) => this.changeAnswer(args))
     emitter.subscribe(EmitterEnum.ChangeLevel, () => this.resetInput())

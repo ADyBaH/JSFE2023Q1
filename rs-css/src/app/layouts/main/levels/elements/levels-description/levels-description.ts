@@ -1,7 +1,8 @@
 import { LevelInterface } from '../../../../../models/level-interface'
 import { BaseComponent } from '../../../../../../utils/base-component'
-import { EmitterEnum } from '../../../../../enum/emitter-enum'
 import { emitter } from '../../../../../services/event-emitter'
+import { EmitterEnum } from '../../../../../enum/emitter-enum'
+import { EventEnum } from '../../../../../enum/event-enum'
 import './levels-description.scss'
 
 export class LevelsDescription extends BaseComponent {
@@ -19,7 +20,7 @@ export class LevelsDescription extends BaseComponent {
   constructor(parent: HTMLElement) {
     super({ attribute: { className: 'levels-block__description levels-block__description_hidden' }, parent })
 
-    this.buttonToggleClose.setEventListener('click', () => this.toggleCloseDescription())
+    this.buttonToggleClose.setEventListener(EventEnum.Click, () => this.toggleCloseDescription())
 
     emitter.subscribe(EmitterEnum.ChangeLevel, (args: LevelInterface) => this.changeDescription(args))
   }

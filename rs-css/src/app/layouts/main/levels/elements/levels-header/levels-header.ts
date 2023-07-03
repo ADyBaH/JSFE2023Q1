@@ -10,6 +10,7 @@ import { emitter } from '../../../../../services/event-emitter'
 import { EmitterEnum } from '../../../../../enum/emitter-enum'
 import { mainState } from '../../../main-state'
 import './levels-header.scss'
+import { EventEnum } from '../../../../../enum/event-enum'
 
 export class LevelsHeader extends BaseComponent {
   private mainState: MainStateType = mainState
@@ -49,9 +50,9 @@ export class LevelsHeader extends BaseComponent {
     this.progressBar = progressBar
     this.burgerBlock = new LevelsBurgerBlock(this.element)
 
-    this.prevLevelButton.setEventListener('click', () => this.decrementsLevels())
-    this.nextLevelButton.setEventListener('click', () => this.incrementLevels())
-    this.burgerBlock.setEventListener('click', () => this.toggleBurgerRotate())
+    this.prevLevelButton.setEventListener(EventEnum.Click, () => this.decrementsLevels())
+    this.nextLevelButton.setEventListener(EventEnum.Click, () => this.incrementLevels())
+    this.burgerBlock.setEventListener(EventEnum.Click, () => this.toggleBurgerRotate())
 
     emitter.subscribe(EmitterEnum.ChangeElementsOnState, () => this.changeLogo())
     emitter.subscribe(EmitterEnum.ResetLevels, () => this.resetCompletedLogo())

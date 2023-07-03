@@ -93,26 +93,24 @@ export class LevelsHeader extends BaseComponent {
     this.changeProgressBar()
   }
 
-  public incrementLevels(): boolean {
+  public incrementLevels(): void {
     const value = +this.mainState.levelId + 1
 
     if (value > MaxMinLevelEnum.max) {
-      return false
+      return
     }
 
     this.setupChange(`${value}`)
-    return true
   }
 
-  public decrementsLevels(): boolean {
+  public decrementsLevels(): void {
     const value = +this.mainState.levelId - 1
 
     if (value < MaxMinLevelEnum.min) {
-      return false
+      return
     }
 
     this.setupChange(`${value}`)
-    return true
   }
 
   private resetCompletedLogo(): void {

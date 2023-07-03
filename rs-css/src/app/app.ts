@@ -5,12 +5,11 @@ class App {
   public layout = new Layout()
   private root = document.getElementById('root')
 
-  public init(): boolean {
+  public init(): void {
     if (!this.root) {
-      return false
+      return
     }
     this.layout.create(this.root)
-    return true
   }
 }
 

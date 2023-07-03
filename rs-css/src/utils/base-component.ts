@@ -67,7 +67,7 @@ export class BaseComponent {
     this.element.classList.toggle(className)
   }
 
-  public setEventListener(name: string, callback: (event: KeyboardEvent | Event) => void): void {
+  public setEventListener(name: string, callback: (event: Event) => void): void {
     this.element.addEventListener(name, callback)
   }
 }

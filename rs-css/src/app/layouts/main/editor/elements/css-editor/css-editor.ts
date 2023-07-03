@@ -1,5 +1,9 @@
 import hljs from 'highlight.js'
-import { stringTemplateForInputBlock } from '../../../../../constants/css-editor-constant'
+import {
+  answerDebounceTime,
+  stringTemplateForInputBlock,
+  timeAnimationSlide,
+} from '../../../../../constants/css-editor-constant'
 import { arrayLevelsNames } from '../../../../../constants/array-levels-names-constant'
 import { shakeElementDictionary } from './dictionary/shake-element-dictionary'
 import { LevelsDataInterface } from '../../../../../models/levels-interface'
@@ -14,7 +18,7 @@ import './css-editor.scss'
 
 export class CssEditor extends BaseComponent {
   private readonly levelsData: LevelsDataInterface = levelsData
-  private answer: HTMLElement[] = []
+  private arrayElementsForAnswer: HTMLElement[] = []
   private mainState = mainState
   private tableElement
 
@@ -64,29 +68,34 @@ export class CssEditor extends BaseComponent {
     this.input.setEventListener('blur', () => this.codeElement.addClass('animated-background-color'))
     this.enterButton.setEventListener('click', () => this.checkInput())
     this.helpButton.setEventListener('click', () => this.writeAnswer())
-    this.input.setEventListener('keyup', (event) => this.changeCodeValue(event))
+    this.input.setEventListener('keyup', (event: Event) => this.changeCodeValue(event))
 
-    emitter.subscribe(EmitterEnum.changeElementsOnState, (args: MainStateType) => this.changeAnswer(args))
-    emitter.subscribe(EmitterEnum.changeLevel, () => this.resetInput())
+    emitter.subscribe(EmitterEnum.ChangeElementsOnState, (args: MainStateType) => this.changeAnswer(args))
+    emitter.subscribe(EmitterEnum.ChangeLevel, () => this.resetInput())
 
     hljs.highlightBlock(this.codeElement.element)
   }
 
-  private changeCodeValue(event: KeyboardEvent | Event): void {
-    const element = event.target
+  private changeCodeValue(event: Event): void {
+    if (event instanceof KeyboardEvent) {
+      const { target, code } = event
 
-    if (element instanceof HTMLInputElement) {
-      this.codeElement.innerText = element.value
-      hljs.highlightBlock(this.codeElement.element)
-    }
+      if (target instanceof HTMLInputElement) {
+        this.codeElement.innerText = target.value
+        hljs.highlightBlock(this.codeElement.element)
+      }
 
-    if (event instanceof KeyboardEvent && event.code === 'Enter') {
-      this.checkInput()
+      if (code === 'Enter') {
+        this.checkInput()
+      }
     }
   }
 
   private isWin(findElements: Element[]): boolean {
-    return this.answer.every((element) => findElements.includes(element)) && this.answer.length === findElements.length
+    return (
+      this.arrayElementsForAnswer.every((element) => findElements.includes(element)) &&
+      this.arrayElementsForAnswer.length === findElements.length
+    )
   }
 
   private findElements(request: string): Element[] {
@@ -101,60 +110,56 @@ export class CssEditor extends BaseComponent {
     return findElements
   }
 
-  private changeLevel(isWin: boolean, arrayElements: Element[]): boolean {
+  private changeLevel(isWin: boolean, arrayElements: Element[]): void {
     if (!isWin) {
-      return false
+      return
     }
 
-    emitter.emit(EmitterEnum.setupWin, this.mainState.levelId)
+    emitter.emit(EmitterEnum.SetupWin, this.mainState.levelId)
 
-    const isLoverMaxLvl = +this.mainState.levelId + 1 <= MaxMinLevelEnum.max
-    const isLastLevel = +this.mainState.levelId === MaxMinLevelEnum.max
+    const isLowerMaxLvl = +this.mainState.levelId + 1 <= MaxMinLevelEnum.Max
+    const isLastLevel = +this.mainState.levelId === MaxMinLevelEnum.Max
 
-    if (isLoverMaxLvl) {
+    if (isLowerMaxLvl) {
       arrayElements.forEach((elements) => elements.classList.add('slide-out'))
 
       setTimeout((): void => {
-        emitter.emit(EmitterEnum.changeLevel, this.levelsData[`${+this.mainState.levelId + 1}`])
-        emitter.emit(EmitterEnum.setToLastTask, this.mainState.levelId)
-      }, 500)
+        emitter.emit(EmitterEnum.ChangeLevel, this.levelsData[`${+this.mainState.levelId + 1}`])
+        emitter.emit(EmitterEnum.SetToLastTask, this.mainState.levelId)
+      }, timeAnimationSlide)
     }
 
     if (isLastLevel) {
-      emitter.emit(EmitterEnum.showModal)
+      emitter.emit(EmitterEnum.ShowModal)
     }
-
-    return true
   }
 
-  private setShakeClassName(isWin: boolean, isNotEmptyArray: boolean, arrayElements: Element[]): boolean {
+  private setShakeClassName(isWin: boolean, isNotEmptyArray: boolean, arrayElements: Element[]): void {
     if (isWin) {
-      return false
+      return
     }
 
     shakeElementDictionary[`${isNotEmptyArray}`](arrayElements)
-
-    return true
   }
 
   private checkInput(): void {
     const value = this.input.inputValue
 
     if (arrayLevelsNames.includes(value)) {
-      emitter.emit(EmitterEnum.changeLevel, this.levelsData[value])
+      emitter.emit(EmitterEnum.ChangeLevel, this.levelsData[value])
     }
 
     const arrayElements: Element[] = this.findElements(value)
 
     const isWin = this.isWin(arrayElements)
-    console.log(arrayElements, isWin, this.answer)
+
     this.changeLevel(isWin, arrayElements)
 
     this.setShakeClassName(isWin, !!arrayElements.length, arrayElements)
   }
 
   private changeAnswer({ answer }: MainStateType): void {
-    this.answer = Array.from(this.tableElement.querySelectorAll(answer))
+    this.arrayElementsForAnswer = Array.from(this.tableElement.querySelectorAll(answer))
   }
 
   private writeAnswer(): void {
@@ -165,10 +170,10 @@ export class CssEditor extends BaseComponent {
         this.input.inputValue += letter
         this.codeElement.innerText += letter
         hljs.highlightBlock(this.codeElement.element)
-      }, index * 100)
+      }, index * answerDebounceTime)
     })
 
-    emitter.emit(EmitterEnum.setupHelp, mainState.levelId)
+    emitter.emit(EmitterEnum.SetupHelp, mainState.levelId)
   }
 
   private resetInput(): void {

@@ -5,19 +5,19 @@ import { emitter } from './event-emitter'
 
 class LocalStorage {
   constructor() {
-    emitter.subscribe(EmitterEnum.resetLevels, () => this.clearCompletedLevels())
-    emitter.subscribe(EmitterEnum.setToLastTask, (args: string) =>
-      this.setToLocalStorage(LocalStorageEnum.lastTaskKey, args),
+    emitter.subscribe(EmitterEnum.ResetLevels, () => this.clearCompletedLevels())
+    emitter.subscribe(EmitterEnum.SetToLastTask, (args: string) =>
+      this.setToLocalStorage(LocalStorageEnum.LastTaskKey, args),
     )
-    emitter.subscribe(EmitterEnum.setupWin, (value: string): void => this.setCompletedTask(value))
-    emitter.subscribe(EmitterEnum.setupHelp, (value: string): void => this.setHelpedTask(value))
+    emitter.subscribe(EmitterEnum.SetupWin, (value: string): void => this.setCompletedTask(value))
+    emitter.subscribe(EmitterEnum.SetupHelp, (value: string): void => this.setHelpedTask(value))
   }
   public setToLocalStorage(key: string, value: string): void {
     localStorage.setItem(key, value)
   }
 
   public get lastTask(): string {
-    const key = LocalStorageEnum.lastTaskKey
+    const key = LocalStorageEnum.LastTaskKey
     const lastTask = localStorage.getItem(key)
 
     if (lastTask) {
@@ -31,7 +31,7 @@ class LocalStorage {
   }
 
   public get completedTask(): string[] {
-    const key = LocalStorageEnum.completedTaskKey
+    const key = LocalStorageEnum.CompletedTaskKey
     const completedTask = localStorage.getItem(key)
 
     if (completedTask) {
@@ -43,7 +43,7 @@ class LocalStorage {
     return []
   }
   public get helpedTask(): string[] {
-    const key = LocalStorageEnum.helpedTaskKey
+    const key = LocalStorageEnum.HelpedTaskKey
     const helpedTask = localStorage.getItem(key)
 
     if (helpedTask) {
@@ -62,7 +62,7 @@ class LocalStorage {
       array.push(value)
     }
 
-    this.setToLocalStorage(LocalStorageEnum.completedTaskKey, JSON.stringify(array))
+    this.setToLocalStorage(LocalStorageEnum.CompletedTaskKey, JSON.stringify(array))
   }
 
   public setHelpedTask(value: string): void {
@@ -72,12 +72,12 @@ class LocalStorage {
       array.push(value)
     }
 
-    this.setToLocalStorage(LocalStorageEnum.helpedTaskKey, JSON.stringify(array))
+    this.setToLocalStorage(LocalStorageEnum.HelpedTaskKey, JSON.stringify(array))
   }
 
   private clearCompletedLevels(): void {
-    this.setToLocalStorage(LocalStorageEnum.completedTaskKey, JSON.stringify([]))
-    this.setToLocalStorage(LocalStorageEnum.helpedTaskKey, JSON.stringify([]))
+    this.setToLocalStorage(LocalStorageEnum.CompletedTaskKey, JSON.stringify([]))
+    this.setToLocalStorage(LocalStorageEnum.HelpedTaskKey, JSON.stringify([]))
   }
 }
 

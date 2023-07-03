@@ -10,7 +10,7 @@ export class Modal extends BaseComponent {
 
     this.innerHTML = modalWinTemplate
 
-    emitter.subscribe(EmitterEnum.showModal, () => this.toggle('modal_hidden'))
+    emitter.subscribe(EmitterEnum.ShowModal, () => this.toggle('modal_hidden'))
     this.setEventListener('click', () => this.toggle('modal_hidden'))
   }
 }

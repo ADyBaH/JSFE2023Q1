@@ -21,7 +21,7 @@ export class LevelsDescription extends BaseComponent {
 
     this.buttonToggleClose.setEventListener('click', () => this.toggleCloseDescription())
 
-    emitter.subscribe(EmitterEnum.changeLevel, (args: LevelInterface) => this.changeDescription(args))
+    emitter.subscribe(EmitterEnum.ChangeLevel, (args: LevelInterface) => this.changeDescription(args))
   }
 
   private toggleCloseDescription(): void {

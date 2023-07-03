@@ -8,7 +8,7 @@ export const shakeElementDictionary = {
     setTimeout(() => arrayElements.forEach((elements) => elements.classList.remove('shake')), 2000)
   },
   false: (arrayElements: Element[]): Element[] => {
-    emitter.emit(EmitterEnum.shakeEditor)
+    emitter.emit(EmitterEnum.ShakeEditor)
 
     return arrayElements
   },

@@ -1,4 +1,6 @@
+// с большой буквы ключи
+
 export enum MaxMinLevelEnum {
-  min = 1,
-  max = 20,
+  Min = 1,
+  Max = 20,
 }

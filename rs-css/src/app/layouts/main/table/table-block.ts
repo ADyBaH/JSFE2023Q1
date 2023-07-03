@@ -23,8 +23,8 @@ export class TableBlock extends BaseComponent {
       parent: this.element,
     })
 
-    emitter.subscribe(EmitterEnum.changeElementsOnState, ({ mainTask }: MainStateType) => this.changeLogo(mainTask))
-    emitter.subscribe(EmitterEnum.changeElementsOnState, (args: MainStateType) => this.changeTable(args))
+    emitter.subscribe(EmitterEnum.ChangeElementsOnState, ({ mainTask }: MainStateType) => this.changeLogo(mainTask))
+    emitter.subscribe(EmitterEnum.ChangeElementsOnState, (args: MainStateType) => this.changeTable(args))
   }
 
   public changeLogo(task: string): void {

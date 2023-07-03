@@ -1,3 +1,4 @@
+import { levelListInnerHTML } from '../../../../../constants/level-list-constant'
 import { LevelsDataInterface } from '../../../../../models/levels-interface'
 import { levelsData } from '../../../../../../assets/data/levels-data.json'
 import { localStorageADyBaH } from '../../../../../services/local-storage'
@@ -6,7 +7,6 @@ import { LevelButtonElement } from './elements/level-button-element'
 import { emitter } from '../../../../../services/event-emitter'
 import { EmitterEnum } from '../../../../../enum/emitter-enum'
 import './levels-list.scss'
-import { levelListInnerHTML } from '../../../../../constants/level-list-constant'
 
 export class LevelsList extends BaseComponent {
   private completedTask = localStorageADyBaH.completedTask
@@ -28,8 +28,8 @@ export class LevelsList extends BaseComponent {
       parent: this.element,
     })
 
-    emitter.subscribe(EmitterEnum.setupWin, () => this.setupWin())
-    emitter.subscribe(EmitterEnum.setupHelp, () => this.setupWin())
+    emitter.subscribe(EmitterEnum.SetupWin, () => this.setupWin())
+    emitter.subscribe(EmitterEnum.SetupHelp, () => this.setupWin())
 
     this.arrayButtons.forEach((button) => button.setEventListener('click', (event: Event) => this.eventClick(event)))
     this.resetButton.setEventListener('click', () => this.resetLevels())
@@ -53,14 +53,14 @@ export class LevelsList extends BaseComponent {
       const targetText: string | null = target.textContent
       if (targetText) {
         const numberTask = targetText.split(' ')[0]
-        emitter.emit(EmitterEnum.setToLastTask, numberTask)
-        emitter.emit(EmitterEnum.changeLevel, this.levelsData[numberTask])
+        emitter.emit(EmitterEnum.SetToLastTask, numberTask)
+        emitter.emit(EmitterEnum.ChangeLevel, this.levelsData[numberTask])
       }
     }
   }
 
   public resetLevels(): void {
-    emitter.emit(EmitterEnum.resetLevels)
+    emitter.emit(EmitterEnum.ResetLevels)
     this.arrayButtons.forEach((baseComponent) => baseComponent.setClassName('levels-block__button'))
   }
 

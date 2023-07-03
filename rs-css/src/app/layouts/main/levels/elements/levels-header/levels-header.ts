@@ -53,10 +53,10 @@ export class LevelsHeader extends BaseComponent {
     this.nextLevelButton.setEventListener('click', () => this.incrementLevels())
     this.burgerBlock.setEventListener('click', () => this.toggleBurgerRotate())
 
-    emitter.subscribe(EmitterEnum.changeElementsOnState, () => this.changeLogo())
-    emitter.subscribe(EmitterEnum.resetLevels, () => this.resetCompletedLogo())
-    emitter.subscribe(EmitterEnum.setupWin, () => this.updateCompletedTask())
-    emitter.subscribe(EmitterEnum.setupHelp, () => this.updateHelpedTask())
+    emitter.subscribe(EmitterEnum.ChangeElementsOnState, () => this.changeLogo())
+    emitter.subscribe(EmitterEnum.ResetLevels, () => this.resetCompletedLogo())
+    emitter.subscribe(EmitterEnum.SetupWin, () => this.updateCompletedTask())
+    emitter.subscribe(EmitterEnum.SetupHelp, () => this.updateHelpedTask())
 
     this.changeLogo()
   }
@@ -64,7 +64,7 @@ export class LevelsHeader extends BaseComponent {
   public changeLogo(): void {
     this.changeProgressBar()
 
-    this.logo.innerText = `Levels ${this.mainState.levelId} of ${MaxMinLevelEnum.max}`
+    this.logo.innerText = `Levels ${this.mainState.levelId} of ${MaxMinLevelEnum.Max}`
 
     changeClassNameDictionary[`${this.completedTask.includes(this.mainState.levelId)}`](
       this.logo,
@@ -87,8 +87,8 @@ export class LevelsHeader extends BaseComponent {
   }
 
   private setupChange(value: string): void {
-    emitter.emit(EmitterEnum.changeLevel, this.levelsData[value])
-    emitter.emit(EmitterEnum.setToLastTask, value)
+    emitter.emit(EmitterEnum.ChangeLevel, this.levelsData[value])
+    emitter.emit(EmitterEnum.SetToLastTask, value)
 
     this.changeProgressBar()
   }
@@ -96,7 +96,7 @@ export class LevelsHeader extends BaseComponent {
   public incrementLevels(): void {
     const value = +this.mainState.levelId + 1
 
-    if (value > MaxMinLevelEnum.max) {
+    if (value > MaxMinLevelEnum.Max) {
       return
     }
 
@@ -106,7 +106,7 @@ export class LevelsHeader extends BaseComponent {
   public decrementsLevels(): void {
     const value = +this.mainState.levelId - 1
 
-    if (value < MaxMinLevelEnum.min) {
+    if (value < MaxMinLevelEnum.Min) {
       return
     }
 

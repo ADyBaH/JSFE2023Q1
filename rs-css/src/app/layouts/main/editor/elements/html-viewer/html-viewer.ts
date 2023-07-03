@@ -13,7 +13,7 @@ export class HtmlViewer extends BaseComponent {
   constructor(root: HTMLElement) {
     super({ attribute: { className: 'html-viewer' }, parent: root })
 
-    emitter.subscribe(EmitterEnum.changeElementsOnState, (args: MainStateType) => this.changeMarkup(args))
+    emitter.subscribe(EmitterEnum.ChangeElementsOnState, (args: MainStateType) => this.changeMarkup(args))
   }
 
   public changeMarkup({ editorComponents }: MainStateType): void {

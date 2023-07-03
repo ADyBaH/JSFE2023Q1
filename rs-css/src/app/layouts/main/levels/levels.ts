@@ -14,8 +14,8 @@ export class Levels extends BaseComponent {
     tag: 'progress',
     attribute: {
       className: 'levels-block__progress-bar',
-      value: `${MaxMinLevelEnum.min}`,
-      max: `${MaxMinLevelEnum.max}`,
+      value: `${MaxMinLevelEnum.Min}`,
+      max: `${MaxMinLevelEnum.Max}`,
     },
   })
   private levelsHeader: LevelsHeader

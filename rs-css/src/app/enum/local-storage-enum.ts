@@ -1,5 +1,7 @@
+// с большой буквы ключи
+
 export enum LocalStorageEnum {
-  lastTaskKey = 'lastTaskADyBaH',
-  completedTaskKey = 'completedTaskADyBaH',
-  helpedTaskKey = 'helpedTaskADyBaH',
+  LastTaskKey = 'lastTaskADyBaH',
+  CompletedTaskKey = 'completedTaskADyBaH',
+  HelpedTaskKey = 'helpedTaskADyBaH',
 }

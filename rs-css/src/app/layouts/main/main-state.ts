@@ -6,10 +6,10 @@ import { MaxMinLevelEnum } from '../../enum/max-min-level-enum'
 const levelsDataConst: LevelsDataInterface = levelsData
 
 export const mainState: MainStateType = {
-  answer: levelsDataConst[`${MaxMinLevelEnum.min}`].answer,
-  mainTask: levelsDataConst[`${MaxMinLevelEnum.min}`].task,
+  answer: levelsDataConst[`${MaxMinLevelEnum.Min}`].answer,
+  mainTask: levelsDataConst[`${MaxMinLevelEnum.Min}`].task,
   editorComponents: [],
   tableComponents: [],
-  maximumLevels: MaxMinLevelEnum.max,
-  levelId: `${MaxMinLevelEnum.min}`,
+  maximumLevels: MaxMinLevelEnum.Max,
+  levelId: `${MaxMinLevelEnum.Min}`,
 }

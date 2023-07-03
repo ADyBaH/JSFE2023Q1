@@ -9,3 +9,7 @@ export const stringTemplateForInputBlock: string = `
 <p class="css-editor__text">Type a number to skip to a level.</p>
 <p class="css-editor__text">Ex → "5" for level 5</p><p class="css-editor__text">*/</p>
 `
+
+export const timeAnimationSlide = 500
+
+export const answerDebounceTime = 100

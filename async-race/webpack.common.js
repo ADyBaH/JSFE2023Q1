@@ -5,7 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin')
 const path = require('path')
 
 const PROJECT = {
-  title: 'TStemplate',
+  title: 'Async Race',
   lang: 'en',
   isEmptyBodyRequired: true,
 }

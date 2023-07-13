@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="dist1/reset.css" />
+    <link rel="stylesheet" href="dist1/reveal.css" />
+    <link rel="stylesheet" href="dist1/theme/black.css" />
+
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>Inheritance vs Composition</section>
+        <section>Preface</section>
+        <section>Problems</section>
+        <section>
+          <pre><code data-line-numbers="1-2|3-4|8-13" class="language-javascript">class Shape {
+  constructor(shape, color) {
+    this.shape = shape;
+    this.color = color;
+  }
+}
+
+const circle = new Shape("circle", "red");
+const square = new Shape("square", "red");
+const triangle = new Shape("triangle", "red");
+						</code></pre>
+        </section>
+        <section>
+          <pre><code  class="language-javascript">circle.color = "white";
+square.color = "white";
+triangle.color = "white";</code></pre>
+        </section>
+        <section>Inheritance</section>
+				<section>
+          <pre><code data-line-numbers="1-5|7-7|12-19" class="language-javascript">class Color {
+	color = "white";
+}
+
+class Shape extends Color {
+	constructor(shape) {
+		super();
+		this.shape = shape;
+	}
+}
+
+const circle = new Shape("circle");
+circle.color; // white
+
+const square = new Shape("square");
+square.color; // white
+
+const triangle = new Shape("triangle");
+triangle.color; // white
+						</code></pre>
+        </section>
+				<section>
+          <pre><code data-line-numbers="1-3|11-19" class="language-javascript">class Color {
+	color = "black";
+}
+class Shape extends Color {
+	constructor(shape) {
+		super();
+		this.shape = shape;
+	}
+}
+
+const circle = new Shape("circle");
+const square = new Shape("square");
+const triangle = new Shape("triangle");
+
+circle.color; // black
+square.color; // black
+triangle.color; // black
+						</code></pre>
+        </section>
+        <section>Composition</section>
+				<section>
+          <pre><code data-line-numbers="1-3|6|11-19" class="language-javascript">class Color {
+	color = "white";
+}
+
+class Shape {
+	colorInstance = new Color();
+	constructor(shape) {
+		this.shape = shape;
+	}
+}
+
+const circle = new Shape("circle");
+circle.colorInstance.color; // white
+
+const square = new Shape("square");
+square.colorInstance.color; // white
+
+const triangle = new Shape("triangle");
+triangle.colorInstance.color; // white
+						</code></pre>
+        </section>
+        <section>Difference between inheritance and composition</section>
+        <section>Encapsulation</section>
+				<section>Name conflict and Inheritance</section>
+				<section>
+          <pre><code data-line-numbers="1-8|10-21|22-25" class="language-javascript">class Color {
+	id = "colorId";
+	color = "white";
+
+	log() {
+		return "from color";
+	}
+}
+
+class Shape extends Color {
+	id = "shapeId";
+	constructor(shape) {
+		super();
+		this.shape = shape;
+	}
+
+	log() {
+		return "from shape";
+	}
+}
+
+const circle = new Shape("circle");
+circle.id; // shapeId
+circle.log(); // from shape
+						</code></pre>
+        </section>
+				<section>Name conflict and Composition</section>
+				<section>
+          <pre><code data-line-numbers="1-8|11|22-29" class="language-javascript">class Color {
+	id = "colorId";
+	color = "white";
+
+	log() {
+		return "from color";
+	}
+}
+
+class Shape {
+	colorInstance = new Color();
+	id = "shapeId";
+	constructor(shape) {
+		this.shape = shape;
+	}
+
+	log() {
+		return "from shape";
+	}
+}
+
+const circle = new Shape("circle");
+circle.colorInstance.color; // white
+
+circle.colorInstance.id; // colorId
+circle.id; // shapeId
+
+circle.colorInstance.log(); // from shape
+circle.log(); // from color
+						</code></pre>
+        </section>
+        <section>Afterword</section>
+        <section>Goodbye</section>
+      </div>
+    </div>
+
+    <script src="dist1/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      Reveal.initialize({
+        hash: true,
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>

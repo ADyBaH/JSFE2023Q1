@@ -1,4 +1,5 @@
 [Video Presentation](https://youtu.be/kC617KDA6bE)
+[Reveal presentation's deploy](https://rolling-scopes-school.github.io/adybah-JSFE2023Q1/presentation/reveal/)
 
 # Inheritance vs Composition
 

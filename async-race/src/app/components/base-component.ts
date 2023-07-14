@@ -78,4 +78,8 @@ export class BaseComponent {
   public appends(elements: HTMLElement[]): void {
     this.element.append(...elements)
   }
+
+  public replace(element: HTMLElement): void {
+    this.element.replaceWith(element)
+  }
 }

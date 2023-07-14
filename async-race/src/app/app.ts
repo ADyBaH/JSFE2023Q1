@@ -1,7 +1,7 @@
 import { BaseComponent } from './components/base-component'
+import { Footer } from './components/footer/footer'
 import { Header } from './components/header/header'
 import { Main } from './components/main/main'
-import { Footer } from './components/footer/footer'
 
 class App {
   private root = new BaseComponent({

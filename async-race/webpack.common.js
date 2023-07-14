@@ -1,6 +1,4 @@
-const StylelintPlugin = require('stylelint-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const ESLintPlugin = require('eslint-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const path = require('path')
 
@@ -44,8 +42,8 @@ module.exports = {
   },
 
   plugins: [
-    new StylelintPlugin({ extensions: ['scss'] }),
-    new ESLintPlugin({ extensions: ['ts'] }),
+    // new StylelintPlugin({ extensions: ['scss'] }),
+    // new ESLintPlugin({ extensions: ['ts'] }),
     new HtmlWebpackPlugin({
       templateContent: getTemplate(),
       fileName: 'index.html',

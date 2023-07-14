@@ -14,7 +14,8 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
-    "project": "./tsconfig.json",
+    "project": true,
+    "tsconfigRootDir": "./",
     "sourceType": "module"
   },
   "plugins": ["prettier", "import", "@typescript-eslint"],
@@ -26,7 +27,7 @@
         "default": "array"
       }
     ],
-    "@typescript-eslint/explicit-function-return-type": 2,
+    "@typescript-eslint/explicit-function-return-type": "error",
     "@typescript-eslint/explicit-member-accessibility": [
       "error",
       {
@@ -40,16 +41,26 @@
         }
       }
     ],
-    "@typescript-eslint/lines-between-class-members": 0,
-    "@typescript-eslint/no-explicit-any": 2,
-    "@typescript-eslint/no-inferrable-types": 0,
-    "@typescript-eslint/no-non-null-assertion": 1,
-    "@typescript-eslint/no-unnecessary-type-assertion": 2,
+    "@typescript-eslint/consistent-type-exports": "error",
+    "@typescript-eslint/consistent-type-imports": "error",
+    "@typescript-eslint/no-useless-empty-export": "error",
+    "import/no-extraneous-dependencies": "off",
+    "@typescript-eslint/lines-between-class-members": "off",
+    "@typescript-eslint/no-explicit-any": "error",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "@typescript-eslint/no-non-null-assertion": "warn",
+    "@typescript-eslint/no-unnecessary-type-assertion": "error",
+    "@typescript-eslint/member-ordering": [
+      "error",
+      {
+        "default": ["field", "signature", "constructor", "method"]
+      }
+    ],
     "block-spacing": ["warn", "always"],
-    "class-methods-use-this": 0,
+    "class-methods-use-this": "off",
     "curly": ["warn", "all"],
     "eol-last": 2,
-    "import/prefer-default-export": 0,
+    "import/prefer-default-export": "off",
     "max-len": [
       "error",
       {
@@ -59,8 +70,8 @@
       }
     ],
     "max-lines-per-function": ["error", 40],
-    "no-console": 0,
-    "no-debugger": 0,
+    "no-console": "error",
+    "no-debugger": "error",
     "no-multiple-empty-lines": [
       "error",
       {
@@ -69,12 +80,13 @@
         "maxEOF": 1
       }
     ],
-    "no-param-reassign": 1,
-    "no-plusplus": 0,
-    "no-return-assign": 1,
-    "no-template-curly-in-string": 1,
-    "no-underscore-dangle": 0,
-    "no-unused-vars": 0,
+    "no-param-reassign": "warn",
+    "no-plusplus": "off",
+    "no-return-assign": "warn",
+    "no-template-curly-in-string": "warn",
+
+    "no-underscore-dangle": "off",
+    "no-unused-vars": "off",
     "object-curly-spacing": ["warn", "always"],
     "spaced-comment": [
       "error",

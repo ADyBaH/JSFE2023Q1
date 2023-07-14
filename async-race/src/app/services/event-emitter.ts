@@ -1,4 +1,4 @@
-import { CallbackType } from '../types/callback-type'
+import type { CallbackType } from '../types/callback-type'
 
 class EventEmitter<Str, Arguments> {
   private listeners = new Map()

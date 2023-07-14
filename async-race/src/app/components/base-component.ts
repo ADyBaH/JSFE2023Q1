@@ -1,4 +1,4 @@
-import { BaseComponentInterface } from '../models/base-component-interface'
+import type { BaseComponentInterface } from '../models/base-component-interface'
 
 export class BaseComponent {
   public element

@@ -1,6 +1,6 @@
 import { BaseComponent } from 'src/app/components/base-component'
 
-export class Form extends BaseComponent {
+export class GarageForm extends BaseComponent {
   private fieldset = new BaseComponent({
     tag: 'fieldset',
     parent: this.element,

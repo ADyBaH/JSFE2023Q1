@@ -1,7 +1,7 @@
 import { BaseComponent } from 'src/app/components/base-component'
-import { carSvg } from 'src/app/constants/carSvg'
+import { carSvgString } from 'src/app/constants/car-svg-string'
 import './garage.scss'
-import { Form } from './components/form/form'
+import { GarageForm } from './components/form/garage-form'
 
 export class Garage extends BaseComponent {
   private inputsContainer = new BaseComponent({
@@ -9,8 +9,8 @@ export class Garage extends BaseComponent {
     parent: this.element,
   })
 
-  private createForm = new Form('garage-form', 'Create Car', this.inputsContainer.element)
-  private changeForm = new Form('change-form', 'Change Car', this.inputsContainer.element)
+  private createForm = new GarageForm('garage-form', 'Create Car', this.inputsContainer.element)
+  private changeForm = new GarageForm('change-form', 'Change Car', this.inputsContainer.element)
 
   private buttonCreate = new BaseComponent({
     tag: 'button',
@@ -51,7 +51,7 @@ export class Garage extends BaseComponent {
     parent: this.element,
   })
   private car = new BaseComponent({
-    attribute: { className: 'container-car', innerHTML: carSvg },
+    attribute: { className: 'container-car', innerHTML: carSvgString },
     parent: this.element,
   })
 

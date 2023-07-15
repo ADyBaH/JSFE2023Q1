@@ -63,7 +63,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.js'],
     modules: [
-      path.join(__dirname, 'src'),
+      __dirname,
       'node_modules',
     ],
   },

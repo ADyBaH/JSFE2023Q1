@@ -1,9 +1,14 @@
-@import 'styles/variables';
+@import '/src/styles/variables';
 
-.header {
-  &__logo {
-    @extend %text-logo-with-shadow;
-    
-    text-align: center;
+.navigation {
+  text-align: center;
+
+  .button {
+    @extend %button-style;
+
+    width: 10rem;
+    height: 2rem;
+    margin: 1rem;
+    color: var(--bg-article-color);
   }
 }

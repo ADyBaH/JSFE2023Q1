@@ -1,4 +1,4 @@
-import { BaseComponent } from 'app/components/base-component'
+import { BaseComponent } from 'src/app/components/base-component'
 import './winners-page.scss'
 
 export class Winners extends BaseComponent {

@@ -1,4 +1,4 @@
-import { BaseComponent } from 'app/components/base-component'
+import { BaseComponent } from 'src/app/components/base-component'
 import './not-found-page.scss'
 
 export class NotFound extends BaseComponent {

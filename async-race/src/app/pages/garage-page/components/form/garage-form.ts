@@ -8,7 +8,7 @@ export class GarageForm extends BaseComponent {
 
   private inputText
   private inputColor
-  private buttonSubmit
+  public buttonSubmit
 
   constructor(className: string, legendName: string, parent: HTMLElement) {
     super({

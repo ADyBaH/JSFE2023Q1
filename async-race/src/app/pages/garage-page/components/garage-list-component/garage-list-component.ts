@@ -1,6 +1,9 @@
 import { BaseComponent } from 'src/app/components/base-component'
 import { Button } from 'src/app/components/button'
 import { carSvgString } from 'src/app/constants/car-svg-string'
+import { EmitterEnum } from 'src/app/enum/emitter-enum'
+import { emitter } from 'src/app/services/event-emitter'
+import { httpService } from 'src/app/services/http-service'
 import type { Car } from 'src/app/types/car-type'
 
 export class GarageListComponent extends BaseComponent {
@@ -35,5 +38,12 @@ export class GarageListComponent extends BaseComponent {
 
     this.roadContainer.element.insertAdjacentHTML('beforeend', carSvgString)
     this.roadContainer.element.style.fill = color
+
+    this.buttonRemove.setEventListener('click', this.removeCar)
+  }
+
+  public removeCar = async (): Promise<void> => {
+    await httpService.removeCar(this.id)
+    emitter.emit(EmitterEnum.updateCars)
   }
 }

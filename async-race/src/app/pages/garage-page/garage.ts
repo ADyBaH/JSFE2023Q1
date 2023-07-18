@@ -4,6 +4,7 @@ import { Button } from 'src/app/components/button'
 import { httpService } from 'src/app/services/http-service'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter-enum'
+import { instanceRandomCars } from 'src/app/services/random-cars-service'
 import { GarageForm } from './components/form/garage-form'
 import { GarageList } from './components/garage-list/garage-list'
 import './garage.scss'
@@ -31,7 +32,7 @@ export class Garage extends BaseComponent {
 
   private garageList = new GarageList(this.element)
 
-  private pagination = new Pagination(this.element)
+  private pagination = new Pagination(EmitterEnum.updateCars, this.element)
 
   constructor(parent?: HTMLElement) {
     super({
@@ -42,6 +43,7 @@ export class Garage extends BaseComponent {
     })
     this.changeLogo()
     this.createForm.buttonSubmit.setEventListener('click', this.appendCar)
+    this.buttonGenerateCar.setEventListener('click', this.appendCars)
     emitter.subscribe(EmitterEnum.updateCars, this.changeLogo)
   }
 
@@ -50,8 +52,14 @@ export class Garage extends BaseComponent {
     this.logo.innerText = `Garage(${array.length} cars)`
   }
 
-  private appendCar = (): void => {
-    httpService.addCar({ name: this.createForm.text, color: this.createForm.color })
+  private appendCar = async (): Promise<void> => {
+    const nameCar = this.createForm.text || instanceRandomCars.generateRandomCar().name
+    await httpService.addCar({ name: nameCar, color: this.createForm.color })
+    emitter.emit(EmitterEnum.updateCars)
+  }
+
+  private appendCars = async (): Promise<void> => {
+    await httpService.addCars()
     emitter.emit(EmitterEnum.updateCars)
   }
 }

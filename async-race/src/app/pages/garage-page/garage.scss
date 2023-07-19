@@ -1,15 +1,28 @@
 .garage {
+  width: 100%;
   padding: 1rem;
 
   .car-svg {
-    width: 100px;
-    height: 10vw;
-    fill: inherit
+    width: 6rem;
+    height: 3rem;
+    fill: inherit;
+
+    &__body {
+      box-shadow: 10px 15px 25px #00000059;
+    }
   }
+}
+
+.inputs-container {
+  width: 35%;
 }
 
 .change-form {
   &_hide {
     display: none;
   }
+}
+
+.garage-list {
+  min-height: 35rem;
 }

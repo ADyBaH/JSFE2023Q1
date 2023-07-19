@@ -38,6 +38,16 @@ export class HttpService {
       method: 'DELETE',
     })
   }
+
+  public async changeCar(object: Omit<Car, 'id'>, id: number): Promise<void> {
+    await fetch(`${this.serverUrl}/garage/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(object),
+    })
+  }
 }
 
 export const httpService = new HttpService()

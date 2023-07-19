@@ -7,3 +7,9 @@
     fill: inherit
   }
 }
+
+.change-form {
+  &_hide {
+    display: none;
+  }
+}

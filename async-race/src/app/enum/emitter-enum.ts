@@ -9,4 +9,5 @@ export enum EmitterEnum {
   updateCars = 'updateCars',
   updatePaginationCars = 'updatePaginationCars',
   changeNumberPage = 'changeNumberPage',
+  selectCar = 'selectCar',
 }

@@ -39,10 +39,15 @@ export class GarageListComponent extends BaseComponent {
     this.roadContainer.element.style.fill = color
 
     this.buttonRemove.setEventListener('click', this.removeCar)
+    this.buttonSelect.setEventListener('click', this.selectCar)
   }
 
   public removeCar = async (): Promise<void> => {
     await httpService.removeCar(this.id)
     emitter.emit(EmitterEnum.updateCars)
+  }
+
+  private selectCar = (): void => {
+    emitter.emit(EmitterEnum.selectCar, this.id)
   }
 }

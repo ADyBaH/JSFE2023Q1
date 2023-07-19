@@ -2,25 +2,30 @@ import { BaseComponent } from 'src/app/components/base-component'
 import { httpService } from 'src/app/services/http-service'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter-enum'
+import { maxItemsInList } from 'src/app/constants/list-constants'
+import type { Car } from 'src/app/types/car-type'
 import { GarageListComponent } from '../garage-list-component/garage-list-component'
+import { garageState } from '../../garage-state'
 
 export class GarageList extends BaseComponent {
-  private logo = new BaseComponent({
-    tag: 'h2',
-    attribute: { className: 'garage-list__logo', textContent: 'Page #1' },
-    parent: this.element,
-  })
+  private garageState = garageState
 
-  private carsArrayPromise
   constructor(parent: HTMLElement) {
     super({ attribute: { className: 'garage-list' }, parent })
-    this.carsArrayPromise = this.generateGarageComponents()
+    this.generateGarageComponents()
     emitter.subscribe(EmitterEnum.updateCars, this.generateGarageComponents)
+    emitter.subscribe(EmitterEnum.changeNumberPage, this.generateGarageComponents)
   }
 
-  private generateGarageComponents = async (): Promise<BaseComponent[]> => {
+  private getChunkCars(array: Car[], numberPage: number, lenght: number): Car[] {
+    return array.slice(numberPage * lenght - lenght, numberPage * lenght)
+  }
+  private generateGarageComponents = async (): Promise<void> => {
     this.removeAllChildren()
     const carsArray = await httpService.getCars()
-    return carsArray.map((car) => new GarageListComponent(car, this.element))
+    this.garageState.maxPage = Math.ceil(carsArray.length / maxItemsInList)
+    this.getChunkCars(carsArray, this.garageState.currentPage, maxItemsInList).map(
+      (car) => new GarageListComponent(car, this.element),
+    )
   }
 }

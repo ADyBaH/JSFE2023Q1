@@ -19,6 +19,8 @@ export class GarageListComponent extends BaseComponent {
     super({ attribute: { className: 'garage-list__component' }, parent })
     this.id = id
 
+    this.buttonStart = new Button('garage-list__button', 'Start', this.element)
+    this.buttonStop = new Button('garage-list__button', 'Stop', this.element)
     this.buttonSelect = new Button('garage-list__button', 'Select', this.element)
     this.buttonRemove = new Button('garage-list__button', 'Remove', this.element)
 
@@ -32,9 +34,6 @@ export class GarageListComponent extends BaseComponent {
       attribute: { className: 'garage-list__road-container' },
       parent: this.element,
     })
-
-    this.buttonStart = new Button('garage-list__button', 'Start', this.roadContainer.element)
-    this.buttonStop = new Button('garage-list__button', 'Stop', this.roadContainer.element)
 
     this.roadContainer.element.insertAdjacentHTML('beforeend', carSvgString)
     this.roadContainer.element.style.fill = color

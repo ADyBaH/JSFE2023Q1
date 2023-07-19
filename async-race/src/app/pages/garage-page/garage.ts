@@ -1,15 +1,17 @@
-import { Pagination } from 'src/app/components/pagination/pagination'
 import { BaseComponent } from 'src/app/components/base-component'
 import { Button } from 'src/app/components/button'
 import { httpService } from 'src/app/services/http-service'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter-enum'
 import { instanceRandomCars } from 'src/app/services/random-cars-service'
+import { Pagination } from 'src/app/components/pagination/pagination'
 import { GarageForm } from './components/form/garage-form'
 import { GarageList } from './components/garage-list/garage-list'
 import './garage.scss'
+import { garageState } from './garage-state'
 
 export class Garage extends BaseComponent {
+  private garageState = garageState
   private inputsContainer = new BaseComponent({
     attribute: { className: 'inputs-container' },
     parent: this.element,
@@ -30,9 +32,8 @@ export class Garage extends BaseComponent {
     parent: this.element,
   })
 
+  private paginationGarage = new Pagination(this.garageState, this.element)
   private garageList = new GarageList(this.element)
-
-  private pagination = new Pagination(EmitterEnum.updateCars, this.element)
 
   constructor(parent?: HTMLElement) {
     super({

@@ -7,4 +7,6 @@ export enum EmitterEnum {
   showModal = 'showModal',
   setToLastTask = 'setToLastTask',
   updateCars = 'updateCars',
+  updatePaginationCars = 'updatePaginationCars',
+  changeNumberPage = 'changeNumberPage',
 }

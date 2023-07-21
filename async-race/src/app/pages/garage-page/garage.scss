@@ -1,20 +1,19 @@
+@import '/src/styles/animated';
+
 .garage {
   width: 100%;
-  padding: 1rem;
+  padding: 1rem 0 1rem 1rem;
 
   .car-svg {
-    width: 6rem;
-    height: 3rem;
+    width: 100%;
+    height: 100%;
     fill: inherit;
-
-    &__body {
-      box-shadow: 10px 15px 25px #00000059;
-    }
   }
 }
 
 .inputs-container {
-  width: 35%;
+  width: 30%;
+  min-width: 30rem;
 }
 
 .change-form {
@@ -23,6 +22,15 @@
   }
 }
 
+
 .garage-list {
+  position: relative;
   min-height: 35rem;
+
+  &__car-container {
+    position: relative;
+    width: 6rem;
+    height: 3rem;
+    transition: left .3s;
+  }
 }

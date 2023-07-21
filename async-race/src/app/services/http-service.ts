@@ -1,7 +1,9 @@
 import { urlServiceString } from '../constants/http-service-constants'
+import { instanceRandomCars } from './random-cars-service'
+import type { CarEngine } from '../types/cat-engine-type'
 import type { Car } from '../types/car-type'
 import { emitter } from './event-emitter'
-import { instanceRandomCars } from './random-cars-service'
+import { maxItemsInList } from '../constants/list-constants'
 
 export class HttpService {
   private serverUrl = urlServiceString
@@ -11,10 +13,25 @@ export class HttpService {
     this.nameCars.generateRandomCar()
   }
 
+  public async getCar(id: number): Promise<Car> {
+    const getCar = await fetch(`${this.serverUrl}/garage/${id}`)
+    const getCarJson = await getCar.json()
+    return getCarJson
+  }
+
   public async getCars(): Promise<Car[]> {
     const getCars = await fetch(`${this.serverUrl}/garage`)
     const getCarsJson = await getCars.json()
     return getCarsJson
+  }
+
+  public async getPaginationCars(
+    numberPage: number | string,
+    maxItems: number | string = maxItemsInList,
+  ): Promise<{ arrayCars: Car[]; totalItems: string | null }> {
+    const getCars = await fetch(`${this.serverUrl}/garage?_page=${numberPage}&_limit=${maxItems}`)
+    const arrayCars = await getCars.json()
+    return { arrayCars, totalItems: getCars.headers.get('X-Total-Count') }
   }
 
   public async addCar(object: Omit<Car, 'id'>): Promise<void> {
@@ -47,6 +64,21 @@ export class HttpService {
       },
       body: JSON.stringify(object),
     })
+  }
+
+  public async changeStatusEngine(id: number, status: 'started' | 'stopped'): Promise<CarEngine> {
+    const statusEngine = await fetch(`${this.serverUrl}/engine?id=${id}&status=${status}`, {
+      method: 'PATCH',
+    })
+    return statusEngine.json()
+  }
+
+  public async isEngineWork(id: number): Promise<boolean> {
+    const statusEngine = await fetch(`${this.serverUrl}/engine?id=${id}&status=drive`, {
+      method: 'PATCH',
+    })
+
+    return statusEngine?.status !== 500
   }
 }
 

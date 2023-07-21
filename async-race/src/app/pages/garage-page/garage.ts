@@ -18,7 +18,7 @@ export class Garage extends BaseComponent {
   })
 
   private createForm = new GarageForm('garage-form', 'Create Car', this.inputsContainer.element)
-  private changeForm = new GarageForm('change-form', 'Change Car', this.inputsContainer.element)
+  private changeForm = new GarageForm('change-form change-form_hide', 'Change Car', this.inputsContainer.element)
   private buttonRace = new Button('button-race button', 'Race', this.inputsContainer.element)
   private buttonReset = new Button('button-reset button', 'Reset', this.inputsContainer.element)
   private buttonGenerateCar = new Button('button-generate-car button', 'Generate Car', this.inputsContainer.element)
@@ -42,19 +42,35 @@ export class Garage extends BaseComponent {
       },
       parent,
     })
-    this.changeLogo()
-    this.hideChangeForm()
+    this.buttonReset.disableButton()
     this.createForm.buttonSubmit.setEventListener('click', this.appendCar)
     this.changeForm.buttonSubmit.setEventListener('click', this.changeCar)
     this.buttonGenerateCar.setEventListener('click', this.appendCars)
-    emitter.subscribe(EmitterEnum.updateCars, this.changeLogo)
+    this.buttonRace.setEventListener('click', this.startRace)
+    this.buttonReset.setEventListener('click', this.resetRace)
+    emitter.subscribe(EmitterEnum.changeLogo, this.changeLogo)
+    emitter.subscribe(EmitterEnum.changeNumberPage, this.resetRace)
     emitter.subscribe(EmitterEnum.selectCar, this.selectCar)
     emitter.subscribe(EmitterEnum.selectCar, this.showChangeForm)
+    emitter.subscribe(EmitterEnum.lockGaragePaginationButtons, this.paginationGarage.disableAllPaginationButtons)
+    emitter.subscribe(EmitterEnum.unlockGaragePaginationButtons, this.paginationGarage.checkButtons)
   }
 
-  private changeLogo = async (): Promise<void> => {
-    const array = await httpService.getCars()
-    this.logo.innerText = `Garage(${array.length} cars)`
+  private startRace = (): void => {
+    this.garageList.resetRace()
+    this.buttonRace.disableButton()
+    this.buttonReset.turnOnButton()
+    this.garageList.startRace()
+  }
+
+  private resetRace = (): void => {
+    this.buttonRace.turnOnButton()
+    this.buttonReset.disableButton()
+    this.garageList.resetRace()
+  }
+
+  private changeLogo = (numberCars: string): void => {
+    this.logo.innerText = `Garage(${numberCars} cars)`
   }
 
   private appendCar = async (): Promise<void> => {
@@ -84,6 +100,14 @@ export class Garage extends BaseComponent {
     if (!this.garageState.changeCar) {
       return
     }
+
+    const getCarFromServer = await httpService.getCar(this.garageState.changeCar)
+    if (!getCarFromServer.name) {
+      this.hideChangeForm()
+      this.garageState.changeCar = null
+      return
+    }
+
     const nameCar = this.changeForm.text || instanceRandomCars.generateRandomCar().name
     await httpService.changeCar({ name: nameCar, color: this.changeForm.color }, this.garageState.changeCar)
     this.garageState.changeCar = null

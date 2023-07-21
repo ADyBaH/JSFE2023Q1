@@ -12,4 +12,16 @@ export class Button extends BaseComponent {
       parent,
     })
   }
+
+  public disableButton(): void {
+    if (this.element instanceof HTMLButtonElement) {
+      this.element.disabled = true
+    }
+  }
+
+  public turnOnButton(): void {
+    if (this.element instanceof HTMLButtonElement) {
+      this.element.disabled = false
+    }
+  }
 }

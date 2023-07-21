@@ -1,5 +1,5 @@
 export enum EmitterEnum {
-  changeLevel = 'changeLevel',
+  changeLogo = 'changeLogo',
   changeElementsOnState = 'changeElementsOnState',
   resetLevels = 'resetLevels',
   setupWin = 'setupWin',
@@ -10,4 +10,7 @@ export enum EmitterEnum {
   updatePaginationCars = 'updatePaginationCars',
   changeNumberPage = 'changeNumberPage',
   selectCar = 'selectCar',
+  startRace = 'startRace',
+  lockGaragePaginationButtons = 'lockGaragePaginationButtons',
+  unlockGaragePaginationButtons = 'unlockGaragePaginationButtons',
 }

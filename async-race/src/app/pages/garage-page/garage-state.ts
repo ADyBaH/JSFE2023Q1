@@ -5,4 +5,5 @@ export const garageState: GarageState = {
   maxPage: 1,
   minPage: 1,
   changeCar: null,
+  arrayCars: null,
 }

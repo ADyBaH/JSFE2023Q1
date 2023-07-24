@@ -9,6 +9,6 @@ export class NotFound extends BaseComponent {
       },
       parent,
     })
-    this.innerHTML = '<h1>Not Found</h1>'
+    this.innerHTML = '<h1>Not Found Page</h1>'
   }
 }

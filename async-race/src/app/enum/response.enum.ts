@@ -1,4 +1,4 @@
 export enum ResponseEnum {
-  Error404 = 404,
-  Error500 = 500,
+  'NOT-FOUND' = 404,
+  'SERVER-ERROR' = 500,
 }

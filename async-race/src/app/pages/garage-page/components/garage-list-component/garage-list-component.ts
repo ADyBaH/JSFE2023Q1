@@ -114,7 +114,7 @@ export class GarageListComponent extends BaseComponent {
 
     this.animationId = requestAnimationFrame(move)
     const response = await httpService.isEngineWork(this.statusCar.id)
-    if (response.status === ResponseEnum.Error500) {
+    if (response.status === ResponseEnum['SERVER-ERROR']) {
       this.car.addClass('fire')
       this.statusCar.isFinished = false
       throw Error('Engine broken')

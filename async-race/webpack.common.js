@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyPlugin = require('copy-webpack-plugin')
 const path = require('path')
 
@@ -48,12 +49,13 @@ module.exports = {
       chunks: ['app'],
     }),
     new CopyPlugin({ patterns: [{ from: './src/assets/favicon', to: './' }] }),
+    new MiniCssExtractPlugin()
   ],
 
   module: {
     rules: [
       { test: /\.ts?$/i, use: ['ts-loader'] },
-      { test: /\.(css|s[ac]ss)$/i, use: ['style-loader', 'css-loader', 'sass-loader'] },
+      { test: /\.(css|s[ac]ss)$/i, use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'] },
       { test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|webp|mp3)$/i, type: 'asset' },
     ],
   },

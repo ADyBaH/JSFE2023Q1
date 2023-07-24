@@ -1,8 +1,14 @@
 import { BaseComponent } from 'src/app/components/base-component'
+import { defaultString } from '../../constants/default-string'
+import { defaultColor } from '../../constants/default-color'
+import './garage-form.scss'
 
 export class GarageForm extends BaseComponent {
   private fieldset = new BaseComponent({
     tag: 'fieldset',
+    attribute: {
+      className: 'garage-form__fieldset',
+    },
     parent: this.element,
   })
 
@@ -18,6 +24,7 @@ export class GarageForm extends BaseComponent {
       },
       parent,
     })
+
     this.inputText = new BaseComponent({
       tag: 'input',
       attribute: {
@@ -46,12 +53,13 @@ export class GarageForm extends BaseComponent {
       },
       parent: this.fieldset.element,
     })
+
     this.fieldset.element.insertAdjacentHTML('beforeend', `<legend class="${className}__legend">${legendName}</legend>`)
   }
 
   public set color(value: string) {
     if (this.inputColor.element instanceof HTMLInputElement) {
-      this.inputColor.element.value = `#${value}`
+      this.inputColor.element.value = value
     }
   }
 
@@ -59,7 +67,7 @@ export class GarageForm extends BaseComponent {
     if (this.inputColor.element instanceof HTMLInputElement) {
       return this.inputColor.element.value
     }
-    return ''
+    return defaultColor
   }
 
   public set text(value: string) {
@@ -72,6 +80,6 @@ export class GarageForm extends BaseComponent {
     if (this.inputText.element instanceof HTMLInputElement) {
       return this.inputText.element.value
     }
-    return ''
+    return defaultString
   }
 }

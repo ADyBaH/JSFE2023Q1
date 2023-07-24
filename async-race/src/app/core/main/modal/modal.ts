@@ -1,5 +1,5 @@
 import { BaseComponent } from '../../../shared/base-component'
-import { EmitterEnum } from '../../../enum/emitter-enum'
+import { EmitterEnum } from '../../../enum/emitter.enum'
 import { emitter } from '../../../services/event-emitter'
 import './modal.scss'
 

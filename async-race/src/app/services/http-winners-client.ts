@@ -1,9 +1,9 @@
 import { BASE_PATH } from '../constants/http-service-constants'
 import type { WinnersType } from '../types/winners-type'
-import { HttpMethods } from '../enum/http-methods-enum'
+import { HttpMethods } from '../enum/http-methods.enum'
 import { HttpHeadersJson } from './constants/http-headers-constants'
 import { emitter } from './event-emitter'
-import { EmitterEnum } from '../enum/emitter-enum'
+import { EmitterEnum } from '../enum/emitter.enum'
 
 export class HttpWinnersClient {
   private serverUrl = BASE_PATH

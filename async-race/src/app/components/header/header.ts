@@ -1,4 +1,6 @@
+import { ButtonsTextEnum } from 'src/app/enum/buttons-text-enum'
 import { BaseComponent } from '../base-component'
+import { Button } from '../button'
 import './header.scss'
 
 export class Header extends BaseComponent {
@@ -10,25 +12,8 @@ export class Header extends BaseComponent {
     parent: this.element,
   })
 
-  private navigationButtonGarage = new BaseComponent({
-    tag: 'button',
-    attribute: {
-      className: 'button',
-      type: 'button',
-      textContent: 'Garage',
-    },
-    parent: this.navigation.element,
-  })
-
-  private navigationButtonWinners = new BaseComponent({
-    tag: 'button',
-    attribute: {
-      className: 'button',
-      type: 'button',
-      textContent: 'Winners',
-    },
-    parent: this.navigation.element,
-  })
+  private navigationButtonGarage = new Button('navigation-button', ButtonsTextEnum.Garage, this.navigation.element)
+  private navigationButtonWinners = new Button('navigation-button', ButtonsTextEnum.Winners, this.navigation.element)
 
   constructor(root: HTMLElement) {
     super({ tag: 'header', attribute: { className: 'header' }, parent: root })

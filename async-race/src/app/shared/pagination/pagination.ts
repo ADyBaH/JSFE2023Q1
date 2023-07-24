@@ -7,7 +7,7 @@ import { Button } from '../button'
 import './pagination.scss'
 
 export class Pagination extends BaseComponent {
-  private state
+  private paginationState
   private emitterEvent
 
   private decreaseCountPage = new Button(
@@ -30,7 +30,7 @@ export class Pagination extends BaseComponent {
 
   constructor(state: PaginationStateModel, parent: HTMLElement, emitterEvent: string) {
     super({ attribute: { className: 'pagination-container' }, parent })
-    this.state = state
+    this.paginationState = state
     this.emitterEvent = emitterEvent
 
     this.changeCurrentPageLogo()
@@ -41,8 +41,8 @@ export class Pagination extends BaseComponent {
   }
 
   public checkButtonsForEndPages = (): void => {
-    paginationDictionary[`${this.state.maxPage <= this.state.currentPage}`](this.increaseCountPage)
-    paginationDictionary[`${this.state.minPage >= this.state.currentPage}`](this.decreaseCountPage)
+    paginationDictionary[`${this.paginationState.maxPage <= this.paginationState.currentPage}`](this.increaseCountPage)
+    paginationDictionary[`${this.paginationState.minPage >= this.paginationState.currentPage}`](this.decreaseCountPage)
   }
 
   public disablePaginationButtons = (): void => {
@@ -51,12 +51,12 @@ export class Pagination extends BaseComponent {
   }
 
   private changeCurrentPageLogo = (): void => {
-    this.currentPageLogo.innerText = `Page #${this.state.currentPage}`
+    this.currentPageLogo.innerText = `Page #${this.paginationState.currentPage}`
   }
 
   private changeNumberPage = (value: number): void => {
     this.increaseCountPage.setDisableStatus(false)
-    this.state.currentPage += value
+    this.paginationState.currentPage += value
     this.checkButtonsForEndPages()
 
     this.changeCurrentPageLogo()

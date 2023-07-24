@@ -31,7 +31,7 @@ export class GarageListComponent extends BaseComponent {
   constructor({ name, color, id }: CarModel, parent: HTMLElement) {
     super({ attribute: { className: 'garage-list__component' }, parent })
 
-    this.buttonStop.disableButton()
+    this.buttonStop.setDisableStatus(true)
 
     this.nameCar = new BaseComponent({
       tag: 'span',
@@ -77,11 +77,11 @@ export class GarageListComponent extends BaseComponent {
   }
 
   public startCar = async (): Promise<StatusCarModel | null> => {
-    this.buttonStart.disableButton()
+    this.buttonStart.setDisableStatus(true)
 
     const { distance, velocity } = await httpService.changeStatusEngine(this.statusCar.id, StatusEngine.Started)
 
-    this.buttonStop.turnOnButton()
+    this.buttonStop.setDisableStatus(false)
 
     return this.animateCar(distance / velocity)
   }
@@ -123,12 +123,12 @@ export class GarageListComponent extends BaseComponent {
   }
 
   public resetCar = async (): Promise<void> => {
-    this.buttonStop.disableButton()
+    this.buttonStop.setDisableStatus(true)
     this.car.removeClass('fire')
     cancelAnimationFrame(this.animationId)
     this.animationId = 0
     this.car.element.style.left = initialCarPosition
     await httpService.changeStatusEngine(this.statusCar.id, StatusEngine.Stopped)
-    this.buttonStart.turnOnButton()
+    this.buttonStart.setDisableStatus(false)
   }
 }

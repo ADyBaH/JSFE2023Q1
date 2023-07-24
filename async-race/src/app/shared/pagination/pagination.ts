@@ -35,7 +35,7 @@ export class Pagination extends BaseComponent {
 
     this.updateLogo()
 
-    this.decreaseCountPage.disableButton()
+    this.decreaseCountPage.setDisableStatus(true)
     this.increaseCountPage.setEventListener('click', this.increaseNumberPage)
     this.decreaseCountPage.setEventListener('click', this.decreaseNumberPage)
   }
@@ -46,8 +46,8 @@ export class Pagination extends BaseComponent {
   }
 
   public disableAllPaginationButtons = (): void => {
-    this.increaseCountPage.disableButton()
-    this.decreaseCountPage.disableButton()
+    this.increaseCountPage.setDisableStatus(true)
+    this.decreaseCountPage.setDisableStatus(true)
   }
 
   private updateLogo = (): void => {
@@ -55,7 +55,7 @@ export class Pagination extends BaseComponent {
   }
 
   private increaseNumberPage = (): void => {
-    this.decreaseCountPage.turnOnButton()
+    this.decreaseCountPage.setDisableStatus(false)
     this.state.currentPage += 1
     this.checkButtons()
 
@@ -64,7 +64,7 @@ export class Pagination extends BaseComponent {
   }
 
   private decreaseNumberPage = (): void => {
-    this.increaseCountPage.turnOnButton()
+    this.increaseCountPage.setDisableStatus(false)
     this.state.currentPage -= 1
     this.checkButtons()
 

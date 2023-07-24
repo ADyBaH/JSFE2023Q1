@@ -57,7 +57,7 @@ export class Garage extends BaseComponent {
       parent,
     })
 
-    this.buttonReset.disableButton()
+    this.buttonReset.setDisableStatus(true)
     this.changeForm.addClass('change-form_hide')
 
     this.buttonRace.setEventListener('click', this.startRace)
@@ -77,14 +77,14 @@ export class Garage extends BaseComponent {
 
   private startRace = (): void => {
     this.garageList.resetRace()
-    this.buttonRace.disableButton()
-    this.buttonReset.turnOnButton()
+    this.buttonRace.setDisableStatus(true)
+    this.buttonReset.setDisableStatus(false)
     this.garageList.startRace()
   }
 
   private resetRace = (): void => {
-    this.buttonRace.turnOnButton()
-    this.buttonReset.disableButton()
+    this.buttonRace.setDisableStatus(false)
+    this.buttonReset.setDisableStatus(true)
     this.garageList.resetRace()
   }
 

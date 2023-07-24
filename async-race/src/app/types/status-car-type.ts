@@ -1,6 +1,9 @@
+import type { BaseComponent } from '../components/base-component'
+
 export type StatusCar = {
   id: number
   time: number
-  finished: boolean
-  isEngineWork: boolean
+  isFinished: boolean
+  carName: BaseComponent
+  carColor: string
 }

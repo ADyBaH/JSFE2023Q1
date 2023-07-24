@@ -1,5 +1,6 @@
 import { paginationDictionary } from 'src/app/dictionary/pagination-dictionary'
 import type { PaginationState } from 'src/app/types/pagination-state-type'
+import { ButtonsTextEnum } from 'src/app/enum/buttons-text-enum'
 import { emitter } from 'src/app/services/event-emitter'
 import { BaseComponent } from '../base-component'
 import { Button } from '../button'
@@ -9,7 +10,11 @@ export class Pagination extends BaseComponent {
   private state
   private emitterEvent
 
-  private decreaseCountPage = new Button('pagination-container__button-increase', '⬅', this.element)
+  private decreaseCountPage = new Button(
+    'pagination-container__button-increase',
+    ButtonsTextEnum.ArrowLeft,
+    this.element,
+  )
 
   private counterLogo = new BaseComponent({
     tag: 'span',
@@ -17,7 +22,11 @@ export class Pagination extends BaseComponent {
     parent: this.element,
   })
 
-  private increaseCountPage = new Button('pagination-container__button-increase', '➡', this.element)
+  private increaseCountPage = new Button(
+    'pagination-container__button-increase',
+    ButtonsTextEnum.ArrowRight,
+    this.element,
+  )
 
   constructor(state: PaginationState, parent: HTMLElement, emitterEvent: string) {
     super({ attribute: { className: 'pagination-container' }, parent })

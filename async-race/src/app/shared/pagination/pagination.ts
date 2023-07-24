@@ -16,7 +16,7 @@ export class Pagination extends BaseComponent {
     this.element,
   )
 
-  private counterLogo = new BaseComponent({
+  private currentPageLogo = new BaseComponent({
     tag: 'span',
     attribute: { className: 'pagination-container__logo' },
     parent: this.element,
@@ -33,7 +33,7 @@ export class Pagination extends BaseComponent {
     this.state = state
     this.emitterEvent = emitterEvent
 
-    this.updateLogo()
+    this.changeCurrentPageLogo()
 
     this.decreaseCountPage.setDisableStatus(true)
     this.increaseCountPage.setEventListener('click', () => this.changeNumberPage(1))
@@ -50,8 +50,8 @@ export class Pagination extends BaseComponent {
     this.decreaseCountPage.setDisableStatus(true)
   }
 
-  private updateLogo = (): void => {
-    this.counterLogo.innerText = `Page #${this.state.currentPage}`
+  private changeCurrentPageLogo = (): void => {
+    this.currentPageLogo.innerText = `Page #${this.state.currentPage}`
   }
 
   private changeNumberPage = (value: number): void => {
@@ -59,7 +59,7 @@ export class Pagination extends BaseComponent {
     this.state.currentPage += value
     this.checkButtons()
 
-    this.updateLogo()
+    this.changeCurrentPageLogo()
     emitter.emit(this.emitterEvent)
   }
 }

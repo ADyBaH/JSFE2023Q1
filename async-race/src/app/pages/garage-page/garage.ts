@@ -70,7 +70,7 @@ export class Garage extends BaseComponent {
     emitter.subscribe(EmitterEnum.SelectCar, this.selectCar)
     emitter.subscribe(EmitterEnum.SelectCar, this.showChangeForm)
     emitter.subscribe(EmitterEnum.ChangeNumberGaragePage, this.resetRace)
-    emitter.subscribe(EmitterEnum.UnlockGaragePaginationButtons, this.paginationGarage.checkButtons)
+    emitter.subscribe(EmitterEnum.UnlockGaragePaginationButtons, this.paginationGarage.checkButtonsForEndPages)
     emitter.subscribe(EmitterEnum.LockGaragePaginationButtons, this.paginationGarage.disablePaginationButtons)
     emitter.subscribe(EmitterEnum.HideChangeCarForm, this.hideChangeForm)
   }

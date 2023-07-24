@@ -40,7 +40,7 @@ export class Pagination extends BaseComponent {
     this.decreaseCountPage.setEventListener('click', () => this.changeNumberPage(-1))
   }
 
-  public checkButtons = (): void => {
+  public checkButtonsForEndPages = (): void => {
     paginationDictionary[`${this.state.maxPage <= this.state.currentPage}`](this.increaseCountPage)
     paginationDictionary[`${this.state.minPage >= this.state.currentPage}`](this.decreaseCountPage)
   }
@@ -57,7 +57,7 @@ export class Pagination extends BaseComponent {
   private changeNumberPage = (value: number): void => {
     this.increaseCountPage.setDisableStatus(false)
     this.state.currentPage += value
-    this.checkButtons()
+    this.checkButtonsForEndPages()
 
     this.changeCurrentPageLogo()
     emitter.emit(this.emitterEvent)

@@ -42,8 +42,6 @@ module.exports = {
   },
 
   plugins: [
-    // new StylelintPlugin({ extensions: ['scss'] }),
-    // new ESLintPlugin({ extensions: ['ts'] }),
     new HtmlWebpackPlugin({
       templateContent: getTemplate(),
       fileName: 'index.html',

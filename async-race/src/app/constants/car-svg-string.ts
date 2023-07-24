@@ -1,5 +1,4 @@
 export const carSvgString = `
-<?xml version="1.0" standalone="no"?>
 <svg class="car-svg" version="1.0" xmlns="http://www.w3.org/2000/svg"
  width="1280.000000pt" height="640.000000pt" viewBox="0 0 1280.000000 640.000000"
  preserveAspectRatio="xMidYMid meet">

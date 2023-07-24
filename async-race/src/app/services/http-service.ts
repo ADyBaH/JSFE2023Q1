@@ -1,5 +1,5 @@
-import { urlServiceString } from '../constants/http-service-constants'
 import { HttpHeadersJson } from './constants/http-headers-constants'
+import { BASE_PATH } from '../constants/http-service-constants'
 import type { StatusEngine } from '../enum/status-engine-enum'
 import { maxItemsInList } from '../constants/list-constants'
 import { instanceRandomCars } from './random-cars-service'
@@ -10,7 +10,7 @@ import type { CarModel } from '../models/car.model'
 import { emitter } from './event-emitter'
 
 export class HttpService {
-  private serverUrl = urlServiceString
+  private serverUrl = BASE_PATH
 
   public async getCar(id: number): Promise<CarModel> {
     const getCar = await fetch(`${this.serverUrl}/garage/${id}`)

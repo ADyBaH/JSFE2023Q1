@@ -12,7 +12,7 @@ import { ResponseEnum } from 'src/app/enum/response-enum'
 import type { CarModel } from 'src/app/models/car.model'
 import { thousandMilliseconds } from '../../constants/thousand-milliseconds'
 import { initialCarPosition } from '../../constants/initial-car-position'
-import { defaultTime } from '../../constants/default-time'
+import { initialRaceTime } from '../../constants/initial-race-time'
 import { maxDistanceRace } from '../../constants/max-distance-race'
 import { carWidth } from '../../constants/width-car'
 import './garage-list-component.scss'
@@ -53,7 +53,7 @@ export class GarageListComponent extends BaseComponent {
 
     this.statusCar = {
       id,
-      time: defaultTime,
+      time: initialRaceTime,
       isFinished: true,
       carName: this.nameCar,
       carColor: color,

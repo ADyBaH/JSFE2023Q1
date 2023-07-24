@@ -55,7 +55,7 @@ module.exports = {
   module: {
     rules: [
       { test: /\.ts?$/i, use: ['ts-loader'] },
-      { test: /\.(css|s[ac]ss)$/i, use: ['style-loader', MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'] },
+      { test: /\.(css|s[ac]ss)$/i, use: ['style-loader', 'css-loader', 'sass-loader'] },
       { test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif|webp|mp3)$/i, type: 'asset' },
     ],
   },

@@ -11,7 +11,7 @@ import { Button } from 'src/app/components/button'
 import { ResponseEnum } from 'src/app/enum/response-enum'
 import type { CarModel } from 'src/app/models/car.model'
 import { thousandMilliseconds } from '../../constants/thousand-milliseconds'
-import { defaultValueLeft } from '../../constants/default-value-left'
+import { initialCarPosition } from '../../constants/initial-car-position'
 import { defaultTime } from '../../constants/default-time'
 import { maxRange } from '../../constants/max-range'
 import { carWidth } from '../../constants/width-car'
@@ -127,7 +127,7 @@ export class GarageListComponent extends BaseComponent {
     this.car.removeClass('fire')
     cancelAnimationFrame(this.animationId)
     this.animationId = 0
-    this.car.element.style.left = defaultValueLeft
+    this.car.element.style.left = initialCarPosition
     await httpService.changeStatusEngine(this.statusCar.id, StatusEngine.Stopped)
     this.buttonStart.turnOnButton()
   }

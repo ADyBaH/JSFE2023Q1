@@ -1,3 +1,4 @@
+import { httpWinnersClient } from 'src/app/services/http-winners-client'
 import { BaseComponent } from 'src/app/components/base-component'
 import { ButtonsTextEnum } from 'src/app/enum/buttons-text-enum'
 import { carSvgString } from 'src/app/constants/car-svg-string'
@@ -69,7 +70,9 @@ export class GarageListComponent extends BaseComponent {
 
   public removeCar = async (): Promise<void> => {
     await httpService.removeCar(this.statusCar.id)
+    await httpWinnersClient.removeWinner(this.statusCar.id)
     emitter.emit(EmitterEnum.UpdateCars)
+    emitter.emit(EmitterEnum.GenerateWinners)
   }
 
   private selectCar = (): void => {

@@ -45,9 +45,12 @@ export class HttpWinnersClient {
   }
 
   public async removeWinner(id: number): Promise<void> {
-    await fetch(`${this.serverUrl}/winners/${id}`, {
-      method: HttpMethods.Delete,
-    })
+    const winner = await this.getWinner(id)
+    if (winner) {
+      await fetch(`${this.serverUrl}/winners/${id}`, {
+        method: HttpMethods.Delete,
+      })
+    }
   }
 
   public addWinner = async (result: Omit<WinnersType, 'wins'>): Promise<void> => {

@@ -43,6 +43,11 @@
   &__color {
     @extend %button-style;
   }
+
+  &_hide {
+    display: none;
+    height: 0%;
+  }
 }
 
 .buttons-container {

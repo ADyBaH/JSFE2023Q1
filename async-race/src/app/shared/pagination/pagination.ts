@@ -1,6 +1,6 @@
 import { paginationDictionary } from 'src/app/dictionary/pagination-dictionary'
 import type { PaginationStateModel } from 'src/app/models/pagination-state.model'
-import { ButtonsTextEnum } from 'src/app/enum/buttons-text-enum'
+import { buttonsTextConstants } from 'src/app/constants/buttons-text-enum'
 import { emitter } from 'src/app/services/event-emitter'
 import { BaseComponent } from '../base-component'
 import { Button } from '../button'
@@ -12,7 +12,7 @@ export class Pagination extends BaseComponent {
 
   private decreaseCountPage = new Button(
     'pagination-container__button-increase',
-    ButtonsTextEnum.ArrowLeft,
+    buttonsTextConstants.ArrowLeft,
     this.element,
   )
 
@@ -24,7 +24,7 @@ export class Pagination extends BaseComponent {
 
   private increaseCountPage = new Button(
     'pagination-container__button-increase',
-    ButtonsTextEnum.ArrowRight,
+    buttonsTextConstants.ArrowRight,
     this.element,
   )
 

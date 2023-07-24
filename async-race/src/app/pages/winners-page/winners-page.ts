@@ -1,6 +1,6 @@
 import { Pagination } from 'src/app/shared/pagination/pagination'
 import { BaseComponent } from 'src/app/shared/base-component'
-import { ButtonsTextEnum } from 'src/app/enum/buttons-text-enum'
+import { buttonsTextConstants } from 'src/app/constants/buttons-text-enum'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter-enum'
 import { Button } from 'src/app/shared/button'
@@ -26,8 +26,8 @@ export class Winners extends BaseComponent {
   private headersUl
   private arrayUlHeaders
 
-  private buttonWinsSort = new Button('winners__li-header winsDown', ButtonsTextEnum.Wins)
-  private buttonTimeSort = new Button('winners__li-header', ButtonsTextEnum.Time)
+  private buttonWinsSort = new Button('winners__li-header winsDown', buttonsTextConstants.Wins)
+  private buttonTimeSort = new Button('winners__li-header', buttonsTextConstants.Time)
 
   private container
 

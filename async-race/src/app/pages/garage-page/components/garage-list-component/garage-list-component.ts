@@ -1,6 +1,6 @@
 import { httpWinnersClient } from 'src/app/services/http-winners-client'
 import { BaseComponent } from 'src/app/shared/base-component'
-import { ButtonsTextEnum } from 'src/app/enum/buttons-text-enum'
+import { buttonsTextConstants } from 'src/app/constants/buttons-text-enum'
 import { carSvgString } from 'src/app/constants/car-svg-string'
 import type { StatusCarModel } from 'src/app/models/status-car.model'
 import { StatusEngine } from 'src/app/enum/status-engine-enum'
@@ -20,10 +20,10 @@ import './garage-list-component.scss'
 export class GarageListComponent extends BaseComponent {
   private car
   private nameCar
-  private buttonStart = new Button('garage-list__button', ButtonsTextEnum.Start, this.element)
-  private buttonStop = new Button('garage-list__button', ButtonsTextEnum.Stop, this.element)
-  private buttonSelect = new Button('garage-list__button', ButtonsTextEnum.Select, this.element)
-  private buttonRemove = new Button('garage-list__button', ButtonsTextEnum.Remove, this.element)
+  private buttonStart = new Button('garage-list__button', buttonsTextConstants.Start, this.element)
+  private buttonStop = new Button('garage-list__button', buttonsTextConstants.Stop, this.element)
+  private buttonSelect = new Button('garage-list__button', buttonsTextConstants.Select, this.element)
+  private buttonRemove = new Button('garage-list__button', buttonsTextConstants.Remove, this.element)
   private roadContainer
   private animationId: number = 0
   private statusCar: StatusCarModel

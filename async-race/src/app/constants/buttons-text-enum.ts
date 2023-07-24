@@ -1,0 +1,15 @@
+export const buttonsTextConstants = {
+  GenerateCar: 'Generate Car',
+  Winners: 'Winners',
+  Start: 'Start ▶',
+  Garage: 'Garage',
+  Select: 'Select',
+  Remove: 'Remove',
+  ArrowRight: '➡',
+  Stop: 'Stop ⏹',
+  Reset: 'Reset',
+  ArrowLeft: '⬅',
+  Race: 'Race',
+  Wins: 'Wins',
+  Time: 'Time',
+}

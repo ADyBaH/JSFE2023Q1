@@ -1,7 +1,7 @@
 import { instanceRandomCars } from 'src/app/services/random-cars-service'
 import { Pagination } from 'src/app/shared/pagination/pagination'
 import { BaseComponent } from 'src/app/shared/base-component'
-import { ButtonsTextEnum } from 'src/app/enum/buttons-text-enum'
+import { buttonsTextConstants } from 'src/app/constants/buttons-text-enum'
 import { httpService } from 'src/app/services/http-service'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter-enum'
@@ -29,11 +29,11 @@ export class Garage extends BaseComponent {
     parent: this.inputsContainer.element,
   })
 
-  private buttonRace = new Button('button-race', ButtonsTextEnum.Race, this.buttonsContainer.element)
-  private buttonReset = new Button('button-reset', ButtonsTextEnum.Reset, this.buttonsContainer.element)
+  private buttonRace = new Button('button-race', buttonsTextConstants.Race, this.buttonsContainer.element)
+  private buttonReset = new Button('button-reset', buttonsTextConstants.Reset, this.buttonsContainer.element)
   private buttonGenerateCar = new Button(
     'button-generate-car',
-    ButtonsTextEnum.GenerateCar,
+    buttonsTextConstants.GenerateCar,
     this.buttonsContainer.element,
   )
 

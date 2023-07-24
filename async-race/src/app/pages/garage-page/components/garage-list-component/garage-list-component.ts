@@ -13,7 +13,7 @@ import type { CarModel } from 'src/app/models/car.model'
 import { thousandMilliseconds } from '../../constants/thousand-milliseconds'
 import { initialCarPosition } from '../../constants/initial-car-position'
 import { defaultTime } from '../../constants/default-time'
-import { maxRange } from '../../constants/max-range'
+import { maxDistanceRace } from '../../constants/max-distance-race'
 import { carWidth } from '../../constants/width-car'
 import './garage-list-component.scss'
 
@@ -99,15 +99,15 @@ export class GarageListComponent extends BaseComponent {
       }
 
       const passedTime = timeMove - startTime
-      const passedDistance = Math.round(passedTime * (maxRange / time))
+      const passedDistance = Math.round(passedTime * (maxDistanceRace / time))
 
-      this.car.element.style.left = `calc(${Math.min(passedDistance, maxRange)}% - ${
-        (carWidth / maxRange) * passedDistance
+      this.car.element.style.left = `calc(${Math.min(passedDistance, maxDistanceRace)}% - ${
+        (carWidth / maxDistanceRace) * passedDistance
       }px)`
 
       this.statusCar.time = Number((passedTime / thousandMilliseconds).toFixed(2))
 
-      if (passedDistance < maxRange && this.statusCar.isFinished) {
+      if (passedDistance < maxDistanceRace && this.statusCar.isFinished) {
         this.animationId = requestAnimationFrame(move)
       }
     }

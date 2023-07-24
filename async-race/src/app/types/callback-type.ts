@@ -1,1 +1,1 @@
-export type CallbackType = <T>(args: T) => T | void | boolean
+export type EmitterCallbackType = <T>(args: T) => T | void | boolean

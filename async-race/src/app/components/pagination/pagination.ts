@@ -1,5 +1,5 @@
 import { paginationDictionary } from 'src/app/dictionary/pagination-dictionary'
-import type { PaginationState } from 'src/app/types/pagination-state-type'
+import type { PaginationStateModel } from 'src/app/models/pagination-state.model'
 import { ButtonsTextEnum } from 'src/app/enum/buttons-text-enum'
 import { emitter } from 'src/app/services/event-emitter'
 import { BaseComponent } from '../base-component'
@@ -28,7 +28,7 @@ export class Pagination extends BaseComponent {
     this.element,
   )
 
-  constructor(state: PaginationState, parent: HTMLElement, emitterEvent: string) {
+  constructor(state: PaginationStateModel, parent: HTMLElement, emitterEvent: string) {
     super({ attribute: { className: 'pagination-container' }, parent })
     this.state = state
     this.emitterEvent = emitterEvent

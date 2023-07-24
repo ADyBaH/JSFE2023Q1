@@ -1,6 +1,6 @@
 import namesCarsData from 'src/assets/data/name-cars.json'
 import type { NameCarsType } from '../types/names-cars-type'
-import type { Car } from '../types/car-type'
+import type { CarModel } from '../models/car.model'
 import { numbersRandomCars } from './constants/random-cars-constants'
 
 class RandomCars {
@@ -14,14 +14,14 @@ class RandomCars {
     return `#${Math.floor(Math.random() * 16777215).toString(16)}`
   }
 
-  public generateRandomCar(): Omit<Car, 'id'> {
+  public generateRandomCar(): Omit<CarModel, 'id'> {
     return {
       name: `${this.getRandomName(this.namesCars.arrayNames)} ${this.getRandomName(this.namesCars.arraySubNames)}`,
       color: this.getRandomColor(),
     }
   }
 
-  public generateRandomCars(): Omit<Car, 'id'>[] {
+  public generateRandomCars(): Omit<CarModel, 'id'>[] {
     return Array.from({ length: numbersRandomCars }, () => ({
       name: `${this.getRandomName(this.namesCars.arrayNames)} ${this.getRandomName(this.namesCars.arraySubNames)}`,
       color: this.getRandomColor(),

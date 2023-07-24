@@ -1,4 +1,4 @@
-export type UlElementType = {
+export interface UlElementModel {
   id: number
   parent: HTMLElement
   name: string

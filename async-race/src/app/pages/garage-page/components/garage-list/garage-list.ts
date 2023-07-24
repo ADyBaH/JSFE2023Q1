@@ -1,6 +1,6 @@
 import { BaseComponent } from 'src/app/components/base-component'
 import { maxItemsInList } from 'src/app/constants/list-constants'
-import type { StatusCar } from 'src/app/types/status-car-type'
+import type { StatusCarModel } from 'src/app/models/status-car.model'
 import { httpService } from 'src/app/services/http-service'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter-enum'
@@ -40,7 +40,7 @@ export class GarageList extends BaseComponent {
     emitter.emit(EmitterEnum.UnlockGaragePaginationButtons)
   }
 
-  private getTextForModal(cars: StatusCar): string {
+  private getTextForModal(cars: StatusCarModel): string {
     return `${cars.carName.innerHTML} won first to ${cars.time} seconds.`
   }
 

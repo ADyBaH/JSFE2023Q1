@@ -3,22 +3,22 @@ import { HttpHeadersJson } from './constants/http-headers-constants'
 import type { StatusEngine } from '../enum/status-engine-enum'
 import { maxItemsInList } from '../constants/list-constants'
 import { instanceRandomCars } from './random-cars-service'
-import type { CarEngine } from '../types/cat-engine-type'
+import type { CarEngine } from '../types/car-engine-type'
 import { HttpMethods } from '../enum/http-methods-enum'
 import { EmitterEnum } from '../enum/emitter-enum'
-import type { Car } from '../types/car-type'
+import type { CarModel } from '../models/car.model'
 import { emitter } from './event-emitter'
 
 export class HttpService {
   private serverUrl = urlServiceString
 
-  public async getCar(id: number): Promise<Car> {
+  public async getCar(id: number): Promise<CarModel> {
     const getCar = await fetch(`${this.serverUrl}/garage/${id}`)
     const getCarJson = await getCar.json()
     return getCarJson
   }
 
-  public async getCars(): Promise<Car[]> {
+  public async getCars(): Promise<CarModel[]> {
     const getCars = await fetch(`${this.serverUrl}/garage`)
     const getCarsJson = await getCars.json()
     return getCarsJson
@@ -26,13 +26,13 @@ export class HttpService {
 
   public async getPaginationCars(
     numberPage: number | string,
-  ): Promise<{ arrayCars: Car[]; totalItems: string | null }> {
+  ): Promise<{ arrayCars: CarModel[]; totalItems: string | null }> {
     const getCars = await fetch(`${this.serverUrl}/garage?_page=${numberPage}&_limit=${maxItemsInList}`)
     const arrayCars = await getCars.json()
     return { arrayCars, totalItems: getCars.headers.get('X-Total-Count') }
   }
 
-  public async addCar(object: Omit<Car, 'id'>): Promise<void> {
+  public async addCar(object: Omit<CarModel, 'id'>): Promise<void> {
     await fetch(`${this.serverUrl}/garage`, {
       method: HttpMethods.Post,
       headers: {
@@ -44,7 +44,7 @@ export class HttpService {
 
   public async addCars(): Promise<void> {
     Promise.all(
-      instanceRandomCars.generateRandomCars().map(async (randomCarObject: Omit<Car, 'id'>) => {
+      instanceRandomCars.generateRandomCars().map(async (randomCarObject: Omit<CarModel, 'id'>) => {
         await this.addCar(randomCarObject)
       }),
     ).then(() => emitter.emit(EmitterEnum.UpdateCars))
@@ -56,7 +56,7 @@ export class HttpService {
     })
   }
 
-  public async changeCar(object: Omit<Car, 'id'>, id: number): Promise<void> {
+  public async changeCar(object: Omit<CarModel, 'id'>, id: number): Promise<void> {
     await fetch(`${this.serverUrl}/garage/${id}`, {
       method: HttpMethods.Put,
       headers: HttpHeadersJson,

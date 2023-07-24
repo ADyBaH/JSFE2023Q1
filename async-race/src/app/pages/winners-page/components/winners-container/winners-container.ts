@@ -4,7 +4,7 @@ import { BaseComponent } from 'src/app/components/base-component'
 import { httpService } from 'src/app/services/http-service'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter-enum'
-import type { PaginationState } from 'src/app/types/pagination-state-type'
+import type { PaginationStateModel } from 'src/app/models/pagination-state.model'
 import type { SortType } from 'src/app/types/sort-type'
 import { winnersSortDictionary } from 'src/app/dictionary/winners-sort-dictionary'
 import { UlElementWinner } from '../ul-component-winners/ul-element-winners'
@@ -12,9 +12,9 @@ import { maxItemsOnPage } from '../../constants/max-items-on-page'
 import './winners-container.scss'
 
 export class WinnersContainers extends BaseComponent {
-  private paginationState: PaginationState & SortType
+  private paginationState: PaginationStateModel & SortType
 
-  constructor(parent: HTMLElement, state: PaginationState & SortType) {
+  constructor(parent: HTMLElement, state: PaginationStateModel & SortType) {
     super({
       attribute: {
         className: 'winners__container',

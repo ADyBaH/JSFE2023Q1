@@ -1,4 +1,4 @@
-import type { UlElementType } from 'src/app/types/ul-element-type'
+import type { UlElementModel } from 'src/app/models/ul-element.model'
 import { BaseComponent } from 'src/app/components/base-component'
 import { carSvgString } from 'src/app/constants/car-svg-string'
 import { LiElement } from '../../elements/li-element'
@@ -13,7 +13,7 @@ export class UlElementWinner extends BaseComponent {
   private wins
   private time
 
-  constructor({ parent, id, name, wins, time, color }: UlElementType) {
+  constructor({ parent, id, name, wins, time, color }: UlElementModel) {
     super({
       tag: 'ul',
       attribute: {

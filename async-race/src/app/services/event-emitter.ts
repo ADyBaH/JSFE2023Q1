@@ -1,4 +1,4 @@
-import type { CallbackType } from '../types/callback-type'
+import type { EmitterCallbackType } from '../types/callback-type'
 
 class EventEmitter<Str, Arguments> {
   private listeners = new Map()
@@ -25,7 +25,7 @@ class EventEmitter<Str, Arguments> {
       return false
     }
 
-    eventsArray.forEach((listener: CallbackType) => listener(eventArgument))
+    eventsArray.forEach((listener: EmitterCallbackType) => listener(eventArgument))
     return true
   }
 

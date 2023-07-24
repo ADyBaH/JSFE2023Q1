@@ -2,14 +2,14 @@ import { httpWinnersClient } from 'src/app/services/http-winners-client'
 import { BaseComponent } from 'src/app/components/base-component'
 import { ButtonsTextEnum } from 'src/app/enum/buttons-text-enum'
 import { carSvgString } from 'src/app/constants/car-svg-string'
-import type { StatusCar } from 'src/app/types/status-car-type'
+import type { StatusCarModel } from 'src/app/models/status-car.model'
 import { StatusEngine } from 'src/app/enum/status-engine-enum'
 import { httpService } from 'src/app/services/http-service'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter-enum'
 import { Button } from 'src/app/components/button'
 import { ResponseEnum } from 'src/app/enum/response-enum'
-import type { Car } from 'src/app/types/car-type'
+import type { CarModel } from 'src/app/models/car.model'
 import { thousandMilliseconds } from '../../constants/thousand-milliseconds'
 import { defaultValueLeft } from '../../constants/default-value-left'
 import { defaultTime } from '../../constants/default-time'
@@ -26,9 +26,9 @@ export class GarageListComponent extends BaseComponent {
   private buttonRemove = new Button('garage-list__button', ButtonsTextEnum.Remove, this.element)
   private roadContainer
   private animationId: number = 0
-  private statusCar: StatusCar
+  private statusCar: StatusCarModel
 
-  constructor({ name, color, id }: Car, parent: HTMLElement) {
+  constructor({ name, color, id }: CarModel, parent: HTMLElement) {
     super({ attribute: { className: 'garage-list__component' }, parent })
 
     this.buttonStop.disableButton()
@@ -76,7 +76,7 @@ export class GarageListComponent extends BaseComponent {
     emitter.emit(EmitterEnum.SelectCar, this.statusCar)
   }
 
-  public startCar = async (): Promise<StatusCar | null> => {
+  public startCar = async (): Promise<StatusCarModel | null> => {
     this.buttonStart.disableButton()
 
     const { distance, velocity } = await httpService.changeStatusEngine(this.statusCar.id, StatusEngine.Started)
@@ -90,7 +90,7 @@ export class GarageListComponent extends BaseComponent {
     this.resetCar()
   }
 
-  private animateCar = async (time: number): Promise<StatusCar | null> => {
+  private animateCar = async (time: number): Promise<StatusCarModel | null> => {
     let startTime: number = 0
 
     const move = (timeMove: number): void => {

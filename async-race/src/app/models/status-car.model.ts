@@ -1,6 +1,6 @@
 import type { BaseComponent } from '../components/base-component'
 
-export type StatusCar = {
+export interface StatusCarModel {
   id: number
   time: number
   isFinished: boolean

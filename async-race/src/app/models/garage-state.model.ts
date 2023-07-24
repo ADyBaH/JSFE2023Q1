@@ -1,10 +1,10 @@
 import type { GarageListComponent } from '../pages/garage-page/components/garage-list-component/garage-list-component'
-import type { StatusCar } from './status-car-type'
+import type { StatusCarModel } from './status-car.model'
 
-export type GarageState = {
+export interface GarageStateModel {
   currentPage: number
   maxPage: number
   minPage: number
-  changeCar: StatusCar | null
+  changeCar: StatusCarModel | null
   arrayCars: GarageListComponent[] | null
 }

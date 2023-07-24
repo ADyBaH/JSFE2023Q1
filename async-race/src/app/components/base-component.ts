@@ -1,8 +1,8 @@
-import type { BaseComponentInterface } from '../models/base-component-interface'
+import type { BaseComponentModel } from '../models/base-component.model'
 
 export class BaseComponent {
   public element
-  constructor({ tag = 'div', attribute, parent }: BaseComponentInterface) {
+  constructor({ tag = 'div', attribute, parent }: BaseComponentModel) {
     this.element = document.createElement(tag)
     Object.assign(this.element, attribute)
     if (parent) {

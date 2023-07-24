@@ -1,7 +1,7 @@
 import { defaultValuesState } from 'src/app/constants/state-constants'
-import type { GarageState } from 'src/app/types/garage-state-type'
+import type { GarageStateModel } from 'src/app/models/garage-state.model'
 
-export const garageState: GarageState = {
+export const garageState: GarageStateModel = {
   currentPage: defaultValuesState.currentPage,
   maxPage: defaultValuesState.maxPage,
   minPage: defaultValuesState.minPage,

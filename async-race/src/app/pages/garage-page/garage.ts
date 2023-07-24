@@ -6,7 +6,7 @@ import { httpService } from 'src/app/services/http-service'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter-enum'
 import { Button } from 'src/app/components/button'
-import type { StatusCar } from 'src/app/types/status-car-type'
+import type { StatusCarModel } from 'src/app/models/status-car.model'
 import { defaultGarageLogo } from './constants/default-garage-logo'
 import { GarageList } from './components/garage-list/garage-list'
 import { GarageForm } from './components/form/garage-form'
@@ -102,7 +102,7 @@ export class Garage extends BaseComponent {
     await httpService.addCars()
   }
 
-  private selectCar = (car: StatusCar): void => {
+  private selectCar = (car: StatusCarModel): void => {
     this.garageState.changeCar = car
     this.changeForm.text = this.garageState.changeCar.carName.innerText
     this.changeForm.color = this.garageState.changeCar.carColor

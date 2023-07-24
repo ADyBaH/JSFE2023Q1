@@ -9,16 +9,39 @@ export class Modal extends BaseComponent {
 
     this.innerHTML = `
     <div class="modal__win-block">
-    <h2 class="modal__win-block_logo">
-    Congratulation!
-    </h2>
-    <p class="modal__win-block_paragraph">
-    You completed last task.
-    </p>
+      <h2 class="modal__win-block_logo">
+        Congratulation!
+      </h2>
+      <p class="modal__win-block_paragraph">
+        You completed last task.
+      </p>
     </div>
     `
 
-    emitter.subscribe(EmitterEnum.showModal, () => this.toggle('modal_hidden'))
-    this.setEventListener('click', () => this.toggle('modal_hidden'))
+    emitter.subscribe(EmitterEnum.showModal, this.showModal)
+    this.setEventListener('click', () => this.addClass('modal_hidden'))
+  }
+
+  private showModal = (text: string): void => {
+    this.innerHTML = `
+    <div class="modal__win-block">
+      <h2 class="modal__win-block_logo">
+        Congratulation!
+      </h2>
+      <p class="modal__win-block_paragraph">
+        ${text}
+      </p>
+    </div>
+    `
+    this.removeClass('modal_hidden')
+
+    const timer = setTimeout(() => {
+      this.addClass('modal_hidden')
+      this.clearTimer(timer)
+    }, 5000)
+  }
+
+  private clearTimer(timer: NodeJS.Timeout): void {
+    clearTimeout(timer)
   }
 }

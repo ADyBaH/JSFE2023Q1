@@ -6,6 +6,7 @@ export enum EmitterEnum {
   AppendWinner = 'appendWinner',
   GenerateWinners = 'generateWinners',
   UpdateWinnersLogo = 'updateWinnersLogo',
+  HideChangeCarForm = 'hideChangeCarForm',
   ChangeNumberGaragePage = 'changeNumberGaragePage',
   ChangeNumberWinnersPage = 'changeNumberWinnersPage',
   LockGaragePaginationButtons = 'lockGaragePaginationButtons',

@@ -23,6 +23,7 @@ export class GarageList extends BaseComponent {
   private generateGarageComponents = async (): Promise<void> => {
     this.removeAllChildren()
 
+    emitter.emit(EmitterEnum.HideChangeCarForm)
     emitter.emit(EmitterEnum.LockGaragePaginationButtons)
 
     const { arrayCars, totalItems } = await httpService.getPaginationCars(this.garageState.currentPage)

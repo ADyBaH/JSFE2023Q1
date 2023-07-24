@@ -1,7 +1,7 @@
 import { BaseComponent } from './base-component'
 
 export class Button extends BaseComponent {
-  constructor(className: string, textContent: string, parent: HTMLElement) {
+  constructor(className: string, textContent: string, parent?: HTMLElement) {
     super({
       tag: 'button',
       attribute: {

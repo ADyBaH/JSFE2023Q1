@@ -1,0 +1,11 @@
+.garage-list {
+  position: relative;
+  min-height: 30rem;
+
+  &__car-container {
+    position: relative;
+    width: 6rem;
+    height: 3rem;
+    transition: left 0.3s;
+  }
+}

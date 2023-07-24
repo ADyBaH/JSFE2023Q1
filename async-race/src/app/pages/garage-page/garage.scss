@@ -1,36 +1,32 @@
-@import '/src/styles/animated';
+@import 'src/styles/animated';
+@import 'src/styles/variables';
+@import 'src/styles/themes';
 
 .garage {
-  width: 100%;
-  padding: 1rem 0 1rem 1rem;
+  padding: 0 1rem;
 
   .car-svg {
     width: 100%;
     height: 100%;
     fill: inherit;
   }
+
+  &__logo {
+    @extend %text-logo-with-shadow;
+
+    text-align: center;
+  }
 }
 
 .inputs-container {
   width: 30%;
-  min-width: 30rem;
+  min-width: 25rem;
+  height: 10rem;
+  margin: 0 auto;
 }
 
 .change-form {
   &_hide {
     display: none;
-  }
-}
-
-
-.garage-list {
-  position: relative;
-  min-height: 35rem;
-
-  &__car-container {
-    position: relative;
-    width: 6rem;
-    height: 3rem;
-    transition: left .3s;
   }
 }

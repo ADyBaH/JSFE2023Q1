@@ -22,6 +22,11 @@ $desktop-padding: 30px;
     box-shadow: inset 10px 15px 25px #00000059;
   }
 
+  &:disabled {
+    background: linear-gradient(#747474, #b3b2b2, #b4b3b3);
+    border: 2px solid #747474;
+  }
+
   @media (any-hover: hover) {
     &:hover {
       border-radius: 1rem;

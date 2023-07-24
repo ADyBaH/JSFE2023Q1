@@ -1,0 +1,20 @@
+@import 'src/styles/variables';
+@import 'src/styles/themes';
+
+.pagination-container {
+  margin-bottom: 1rem;
+  text-align: center;
+  
+  .button {
+    @extend %button-style;
+
+    color: var(--bg-article-color);
+  }
+
+  &__logo {
+    @extend %text-logo-with-shadow;
+
+    margin: 0 1rem;
+    font-size: 1.3rem;
+  }
+}

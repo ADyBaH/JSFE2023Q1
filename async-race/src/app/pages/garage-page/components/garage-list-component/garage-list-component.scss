@@ -1,0 +1,31 @@
+@import 'src/styles/variables';
+@import 'src/styles/themes';
+
+.garage-list {
+  .button {
+    @extend %button-style;
+
+    margin: 1rem 1rem 1rem 0;
+    color: var(--bg-article-color);
+  }
+
+  &__name-car {
+    @extend %text-logo-with-shadow;
+  }
+
+  &__road-container {
+    position: relative;
+    background-color: var(--skill-bar-color-percent);
+    border-radius: 0.3rem;
+
+    &::after {
+      content: '🏁';
+
+      position: absolute;
+      top: 0.5rem;
+      right: 4rem;
+
+      font-size: 2rem;
+    }
+  }
+}

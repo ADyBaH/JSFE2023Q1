@@ -1,3 +1,41 @@
+@import 'src/styles/variables';
+@import 'src/styles/themes';
+
 .winners {
+  align-items: center;
+  height: 49rem;
   text-align: center;
+
+  &__logo {
+    @extend %text-logo-with-shadow;
+
+    text-align: center;
+  }
+
+  &__ul-headers {
+    margin: 0;
+  }
+
+  &__li-header {
+    @extend %text-logo-with-shadow;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+    border: .3rem solid var(--text-color);
+  }
+
+  .button {
+    all: unset;
+    cursor: pointer;
+  }
+
+  .wins-up::after,
+  .time-up::after {
+    content: '⬆';
+  }
+
+  .wins-down::after,
+  .time-down::after {
+    content: '⬇';
+  }
 }

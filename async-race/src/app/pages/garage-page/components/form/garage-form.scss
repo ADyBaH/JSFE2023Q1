@@ -1,0 +1,59 @@
+@import 'src/styles/variables';
+@import 'src/styles/themes';
+
+.garage-form {
+  @extend %text-logo-with-shadow;
+
+  &__fieldset {
+    display: flex;
+    justify-content: center;
+    border-radius: 1rem;
+  }
+
+  &__legend {
+    text-align: center;
+  }
+
+  &__button {
+    @extend %button-style;
+
+    color: var(--bg-article-color);
+  }
+
+  &__color {
+    @extend %button-style;
+  }
+}
+
+.change-form {
+  &__fieldset {
+    border-radius: 1rem;
+  }
+
+  &__legend {
+    text-align: center;
+  }
+
+  &__button {
+    @extend %button-style;
+
+    color: var(--bg-article-color);
+  }
+
+  &__color {
+    @extend %button-style;
+  }
+}
+
+.buttons-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+
+  .button {
+    @extend %button-style;
+
+    color: var(--bg-article-color);
+  }
+}

@@ -55,7 +55,7 @@ export class Winners extends BaseComponent {
     this.arrayUlHeaders[4].appendElement(this.buttonTimeSort.element)
 
     emitter.subscribe(EmitterEnum.UpdateWinnersLogo, this.updateLogo)
-    emitter.subscribe(EmitterEnum.LockWinnersPaginationButtons, this.paginationWinners.disableAllPaginationButtons)
+    emitter.subscribe(EmitterEnum.LockWinnersPaginationButtons, this.paginationWinners.disablePaginationButtons)
     emitter.subscribe(EmitterEnum.UnlockWinnersPaginationButtons, this.paginationWinners.checkButtons)
 
     this.buttonWinsSort.setEventListener('click', this.sortWins)

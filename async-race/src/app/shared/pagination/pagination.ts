@@ -45,7 +45,7 @@ export class Pagination extends BaseComponent {
     paginationDictionary[`${this.state.minPage >= this.state.currentPage}`](this.decreaseCountPage)
   }
 
-  public disableAllPaginationButtons = (): void => {
+  public disablePaginationButtons = (): void => {
     this.increaseCountPage.setDisableStatus(true)
     this.decreaseCountPage.setDisableStatus(true)
   }

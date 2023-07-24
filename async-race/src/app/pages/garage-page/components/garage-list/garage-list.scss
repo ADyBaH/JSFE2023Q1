@@ -8,4 +8,10 @@
     height: 3rem;
     transition: left 0.3s;
   }
+
+  .fire::after {
+    content: '🔥';
+    position: absolute;
+    right: 0.5rem;
+  }
 }

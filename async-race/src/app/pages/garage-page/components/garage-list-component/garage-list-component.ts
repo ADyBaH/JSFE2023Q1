@@ -8,6 +8,7 @@ import { httpService } from 'src/app/services/http-service'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter-enum'
 import { Button } from 'src/app/components/button'
+import { ResponseEnum } from 'src/app/enum/response-enum'
 import type { Car } from 'src/app/types/car-type'
 import { thousandMilliseconds } from '../../constants/thousand-milliseconds'
 import { defaultValueLeft } from '../../constants/default-value-left'
@@ -89,7 +90,7 @@ export class GarageListComponent extends BaseComponent {
     this.resetCar()
   }
 
-  private animateCar = async (time: number): Promise<StatusCar> => {
+  private animateCar = async (time: number): Promise<StatusCar | null> => {
     let startTime: number = 0
 
     const move = (timeMove: number): void => {
@@ -112,13 +113,18 @@ export class GarageListComponent extends BaseComponent {
     }
 
     this.animationId = requestAnimationFrame(move)
-    this.statusCar.isFinished = await httpService.isEngineWork(this.statusCar.id)
-
+    const response = await httpService.isEngineWork(this.statusCar.id)
+    if (response.status === ResponseEnum.Error500) {
+      this.car.addClass('fire')
+      this.statusCar.isFinished = false
+      throw Error('Engine broken')
+    }
     return this.statusCar
   }
 
   public resetCar = async (): Promise<void> => {
     this.buttonStop.disableButton()
+    this.car.removeClass('fire')
     cancelAnimationFrame(this.animationId)
     this.animationId = 0
     this.car.element.style.left = defaultValueLeft

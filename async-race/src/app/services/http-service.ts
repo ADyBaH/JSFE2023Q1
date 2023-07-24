@@ -7,7 +7,6 @@ import type { CarEngine } from '../types/cat-engine-type'
 import { HttpMethods } from '../enum/http-methods-enum'
 import { EmitterEnum } from '../enum/emitter-enum'
 import type { Car } from '../types/car-type'
-import { ResponseEnum } from '../enum/response-enum'
 import { emitter } from './event-emitter'
 
 export class HttpService {
@@ -72,12 +71,10 @@ export class HttpService {
     return statusEngine.json()
   }
 
-  public async isEngineWork(id: number): Promise<boolean> {
-    const statusEngine = await fetch(`${this.serverUrl}/engine?id=${id}&status=drive`, {
+  public async isEngineWork(id: number): Promise<Response> {
+    return fetch(`${this.serverUrl}/engine?id=${id}&status=drive`, {
       method: HttpMethods.Patch,
     })
-
-    return statusEngine?.status !== ResponseEnum.Error404 && statusEngine?.status !== ResponseEnum.Error500
   }
 }
 

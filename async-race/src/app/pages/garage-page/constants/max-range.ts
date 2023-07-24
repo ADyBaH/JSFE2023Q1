@@ -1,1 +1,1 @@
-export const maxRange = 95
+export const maxRange = 100

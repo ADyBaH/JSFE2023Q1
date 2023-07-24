@@ -1,6 +1,6 @@
 import { ButtonsTextEnum } from 'src/app/enum/buttons-text-enum'
-import { BaseComponent } from '../base-component'
-import { Button } from '../button'
+import { BaseComponent } from '../../shared/base-component'
+import { Button } from '../../shared/button'
 import './header.scss'
 
 export class Header extends BaseComponent {

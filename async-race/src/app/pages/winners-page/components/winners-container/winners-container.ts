@@ -1,6 +1,6 @@
 import type { WinnersCarType } from 'src/app/types/winners-car-type'
 import { httpWinnersClient } from 'src/app/services/http-winners-client'
-import { BaseComponent } from 'src/app/components/base-component'
+import { BaseComponent } from 'src/app/shared/base-component'
 import { httpService } from 'src/app/services/http-service'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter-enum'

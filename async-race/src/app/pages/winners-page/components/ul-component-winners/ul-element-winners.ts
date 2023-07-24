@@ -1,5 +1,5 @@
 import type { UlElementModel } from 'src/app/models/ul-element.model'
-import { BaseComponent } from 'src/app/components/base-component'
+import { BaseComponent } from 'src/app/shared/base-component'
 import { carSvgString } from 'src/app/constants/car-svg-string'
 import { LiElement } from '../../elements/li-element'
 import './ul-element-winners.scss'

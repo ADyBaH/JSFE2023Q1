@@ -1,4 +1,4 @@
-import { BaseComponent } from 'src/app/components/base-component'
+import { BaseComponent } from 'src/app/shared/base-component'
 import { maxItemsInList } from 'src/app/constants/list-constants'
 import type { StatusCarModel } from 'src/app/models/status-car.model'
 import { httpService } from 'src/app/services/http-service'

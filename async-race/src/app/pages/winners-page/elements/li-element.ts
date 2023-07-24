@@ -1,4 +1,4 @@
-import { BaseComponent } from 'src/app/components/base-component'
+import { BaseComponent } from 'src/app/shared/base-component'
 
 export class LiElement extends BaseComponent {
   constructor(attribute: Record<string, string>, parent: HTMLElement) {

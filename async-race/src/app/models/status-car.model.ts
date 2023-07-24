@@ -1,4 +1,4 @@
-import type { BaseComponent } from '../components/base-component'
+import type { BaseComponent } from '../shared/base-component'
 
 export interface StatusCarModel {
   id: number

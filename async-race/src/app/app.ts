@@ -1,8 +1,8 @@
-import { BaseComponent } from './components/base-component'
-import { Footer } from './components/footer/footer'
-import { Header } from './components/header/header'
-import { Main } from './components/main/main'
-import { Modal } from './components/main/modal/modal'
+import { BaseComponent } from './shared/base-component'
+import { Footer } from './core/footer/footer'
+import { Header } from './core/header/header'
+import { Main } from './core/main/main'
+import { Modal } from './core/main/modal/modal'
 
 class App {
   private root = new BaseComponent({

@@ -1,4 +1,4 @@
-import type { Button } from '../components/button'
+import type { Button } from '../shared/button'
 
 export const paginationDictionary = {
   true: (buttonInstance: Button): void => buttonInstance.disableButton(),

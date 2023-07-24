@@ -1,11 +1,19 @@
 import { BaseComponent } from 'src/app/components/base-component'
-import { Button } from 'src/app/components/button'
+import { ButtonsTextEnum } from 'src/app/enum/buttons-text-enum'
 import { carSvgString } from 'src/app/constants/car-svg-string'
-import { EmitterEnum } from 'src/app/enum/emitter-enum'
-import { emitter } from 'src/app/services/event-emitter'
-import { httpService } from 'src/app/services/http-service'
 import type { StatusCar } from 'src/app/types/status-car-type'
+import { StatusEngine } from 'src/app/enum/status-engine-enum'
+import { httpService } from 'src/app/services/http-service'
+import { emitter } from 'src/app/services/event-emitter'
+import { EmitterEnum } from 'src/app/enum/emitter-enum'
+import { Button } from 'src/app/components/button'
 import type { Car } from 'src/app/types/car-type'
+import { thousandMilliseconds } from '../../constants/thousand-milliseconds'
+import { defaultValueLeft } from '../../constants/default-value-left'
+import { defaultTime } from '../../constants/default-time'
+import { maxRange } from '../../constants/max-range'
+import { carWidth } from '../../constants/width-car'
+import './garage-list-component.scss'
 
 export class GarageListComponent extends BaseComponent {
   private car
@@ -20,18 +28,12 @@ export class GarageListComponent extends BaseComponent {
 
   constructor({ name, color, id }: Car, parent: HTMLElement) {
     super({ attribute: { className: 'garage-list__component' }, parent })
-    this.statusCar = {
-      id,
-      time: 0,
-      finished: false,
-      isEngineWork: true,
-    }
 
-    this.buttonStart = new Button('garage-list__button', 'Start ▶', this.element)
-    this.buttonStop = new Button('garage-list__button', 'Stop ⏹', this.element)
+    this.buttonStart = new Button('garage-list__button', ButtonsTextEnum.Start, this.element)
+    this.buttonStop = new Button('garage-list__button', ButtonsTextEnum.Stop, this.element)
     this.buttonStop.disableButton()
-    this.buttonSelect = new Button('garage-list__button', 'Select', this.element)
-    this.buttonRemove = new Button('garage-list__button', 'Remove', this.element)
+    this.buttonSelect = new Button('garage-list__button', ButtonsTextEnum.Select, this.element)
+    this.buttonRemove = new Button('garage-list__button', ButtonsTextEnum.Remove, this.element)
 
     this.nameCar = new BaseComponent({
       tag: 'span',
@@ -51,6 +53,14 @@ export class GarageListComponent extends BaseComponent {
 
     this.car.element.style.fill = color
 
+    this.statusCar = {
+      id,
+      time: defaultTime,
+      isFinished: true,
+      carName: this.nameCar,
+      carColor: color,
+    }
+
     this.buttonRemove.setEventListener('click', this.removeCar)
     this.buttonSelect.setEventListener('click', this.selectCar)
     this.buttonStart.setEventListener('click', this.startCar)
@@ -59,70 +69,79 @@ export class GarageListComponent extends BaseComponent {
 
   public removeCar = async (): Promise<void> => {
     await httpService.removeCar(this.statusCar.id)
-    emitter.emit(EmitterEnum.updateCars)
+    emitter.emit(EmitterEnum.UpdateCars)
   }
 
   private selectCar = (): void => {
-    emitter.emit(EmitterEnum.selectCar, this.statusCar.id)
+    emitter.emit(EmitterEnum.SelectCar, this.statusCar)
   }
 
-  public startCar = async (): Promise<void> => {
-    const { distance, velocity } = await httpService.changeStatusEngine(this.statusCar.id, 'started')
+  public startCar = async (): Promise<StatusCar | null> => {
+    const { distance, velocity } = await httpService.changeStatusEngine(this.statusCar.id, StatusEngine.Started)
 
     this.buttonStart.disableButton()
     this.buttonStop.turnOnButton()
-    this.animateCar(distance / velocity)
+
+    return this.animateCar(distance / velocity)
   }
 
   private stopCar = async (): Promise<void> => {
-    await httpService.changeStatusEngine(this.statusCar.id, 'stopped')
+    await httpService.changeStatusEngine(this.statusCar.id, StatusEngine.Stopped)
+
     this.buttonStop.disableButton()
     this.buttonStart.turnOnButton()
+
     if (this.animationId !== null) {
       cancelAnimationFrame(this.animationId)
     }
+
     this.resetCar()
   }
 
-  private animateCar = async (time: number): Promise<void> => {
+  private animateCar = async (time: number): Promise<StatusCar | null> => {
     let startTime: number = 0
 
-    const interval = setInterval(async () => {
-      this.statusCar.isEngineWork = await httpService.isEngineWork(this.statusCar.id)
-    }, 1000)
-
-    const move = (timeMove: number): void => {
+    const move = async (timeMove: number): Promise<void> => {
       if (!startTime) {
         startTime = timeMove
       }
 
       const passedTime = timeMove - startTime
-      const passedDistance = Math.round(passedTime * (100 / time))
+      const passedDistance = Math.round(passedTime * (maxRange / time))
 
-      this.car.element.style.left = `calc(${Math.min(passedDistance, 100)}% - ${
-        (this.car.element.clientWidth / 100) * passedDistance
+      this.car.element.style.left = `calc(${Math.min(passedDistance, maxRange)}% - ${
+        (carWidth / maxRange) * passedDistance
       }px)`
 
-      this.statusCar.time = Math.round(passedTime / 1000)
-      if (passedDistance < 100 && this.statusCar.isEngineWork) {
+      this.statusCar.time = Number((passedTime / thousandMilliseconds).toFixed(2))
+      if (passedDistance < maxRange && this.statusCar.isFinished) {
         this.animationId = requestAnimationFrame(move)
         return
       }
-      clearInterval(interval)
       this.buttonStart.turnOnButton()
-      this.buttonStop.disableButton()
-      this.statusCar.finished = true
     }
 
     this.animationId = requestAnimationFrame(move)
+    this.statusCar.isFinished = await httpService.isEngineWork(this.statusCar.id)
+
+    await httpService.changeStatusEngine(this.statusCar.id, StatusEngine.Stopped)
+    if (!this.statusCar.isFinished) {
+      throw Error()
+    }
+    if (this.statusCar.isFinished) {
+      return this.statusCar
+    }
+    return null
   }
 
-  public resetCar = (): void => {
+  public resetCar = async (): Promise<void> => {
     if (this.animationId !== null) {
       cancelAnimationFrame(this.animationId)
     }
     this.animationId = null
-    this.car.element.style.left = '0%'
-    httpService.changeStatusEngine(this.statusCar.id, 'stopped')
+    this.car.element.style.left = defaultValueLeft
+    this.buttonStop.disableButton()
+    this.buttonStart.turnOnButton()
+    await httpService.changeStatusEngine(this.statusCar.id, StatusEngine.Stopped)
   }
 }

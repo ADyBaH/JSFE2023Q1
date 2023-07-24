@@ -18,7 +18,7 @@ export class Modal extends BaseComponent {
     </div>
     `
 
-    emitter.subscribe(EmitterEnum.showModal, this.showModal)
+    emitter.subscribe(EmitterEnum.ShowModal, this.showModal)
     this.setEventListener('click', () => this.addClass('modal_hidden'))
   }
 

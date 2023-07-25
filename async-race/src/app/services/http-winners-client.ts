@@ -60,11 +60,15 @@ export class HttpWinnersClient {
     })
   }
 
+  private getNewResult(time: number, wins: number, newResult: Omit<WinnersType, 'wins'>): Omit<WinnersType, 'id'> {
+    return { time: time > newResult.time ? newResult.time : time, wins: wins + 1 }
+  }
+
   public async updateWinner({ id, time, wins }: WinnersType, newResult: Omit<WinnersType, 'wins'>): Promise<void> {
     await fetch(`${this.serverUrl}/winners/${id}`, {
       method: HttpMethods.PUT,
       headers: HttpHeadersJson,
-      body: JSON.stringify({ time: time > newResult.time ? newResult.time : time, wins: wins + 1 }),
+      body: JSON.stringify(this.getNewResult(time, wins, newResult)),
     })
   }
 }

@@ -1,12 +1,12 @@
-import type { WinnersCarType } from 'src/app/types/winners-car-type'
+import { winnersSortDictionary } from 'src/app/dictionary/winners-sort-dictionary'
+import type { PaginationStateModel } from 'src/app/models/pagination-state.model'
 import { httpWinnersClient } from 'src/app/services/http-winners-client'
-import { BaseComponent } from 'src/app/shared/base-component'
 import { httpGarageClient } from 'src/app/services/http-garage-client'
+import type { WinnersCarType } from 'src/app/types/winners-car-type'
+import { BaseComponent } from 'src/app/shared/base-component'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter.enum'
-import type { PaginationStateModel } from 'src/app/models/pagination-state.model'
 import type { SortType } from 'src/app/types/sort-type'
-import { winnersSortDictionary } from 'src/app/dictionary/winners-sort-dictionary'
 import { UlElementWinner } from '../ul-component-winners/ul-element-winners'
 import { maxItemsOnPage } from '../../constants/max-items-on-page'
 import './winners-container.scss'
@@ -27,6 +27,14 @@ export class WinnersContainers extends BaseComponent {
     this.generateWinners()
   }
 
+  private getSortDirection(): number {
+    return this.paginationState.sortDirection.split('-')[1] === 'up' ? 1 : -1
+  }
+
+  private getNameSort(): 'wins' | 'time' {
+    return this.paginationState.sortDirection.split('-')[0] === 'wins' ? 'wins' : 'time'
+  }
+
   private getWinners = async (): Promise<WinnersCarType[]> => {
     emitter.emit(EmitterEnum.LockWinnersPaginationButtons)
 
@@ -38,7 +46,7 @@ export class WinnersContainers extends BaseComponent {
     const arrayCars = await Promise.all(arrayWinners.map(async (winner) => httpGarageClient.getCarById(winner.id)))
     const arrayWinnerCars = arrayCars.map((car, index) => ({ ...car, ...arrayWinners[index] }))
 
-    return winnersSortDictionary[this.paginationState.sortDirection](arrayWinnerCars)
+    return winnersSortDictionary[this.getNameSort()](arrayWinnerCars, this.getSortDirection())
   }
 
   private generateWinners = async (): Promise<void> => {

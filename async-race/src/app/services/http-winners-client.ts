@@ -38,10 +38,9 @@ export class HttpWinnersClient {
       emitter.emit(EmitterEnum.GenerateWinners)
       return
     }
-    if (getCar) {
-      await this.updateWinner(getCar, result)
-      emitter.emit(EmitterEnum.GenerateWinners)
-    }
+
+    await this.updateWinner(getCar, result)
+    emitter.emit(EmitterEnum.GenerateWinners)
   }
 
   public async removeWinner(id: number): Promise<void> {

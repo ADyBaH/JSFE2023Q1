@@ -9,7 +9,7 @@ import { EmitterEnum } from '../enum/emitter.enum'
 import type { CarModel } from '../models/car.model'
 import { emitter } from './event-emitter'
 
-export class HttpService {
+export class HttpGarageClient {
   private serverUrl = BASE_PATH
 
   public async getCar(id: number): Promise<CarModel> {
@@ -78,4 +78,4 @@ export class HttpService {
   }
 }
 
-export const httpService = new HttpService()
+export const httpGarageClient = new HttpGarageClient()

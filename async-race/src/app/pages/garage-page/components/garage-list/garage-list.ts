@@ -1,7 +1,7 @@
 import { BaseComponent } from 'src/app/shared/base-component'
 import { maxItemsInList } from 'src/app/constants/list-constants'
 import type { StatusCarModel } from 'src/app/models/status-car.model'
-import { httpService } from 'src/app/services/http-service'
+import { httpGarageClient } from 'src/app/services/http-garage-client'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter.enum'
 import { GarageListComponent } from '../garage-list-component/garage-list-component'
@@ -26,7 +26,7 @@ export class GarageList extends BaseComponent {
     emitter.emit(EmitterEnum.HideChangeCarForm)
     emitter.emit(EmitterEnum.LockGaragePaginationButtons)
 
-    const { arrayCars, totalItems } = await httpService.getPaginationCars(this.garageState.currentPage)
+    const { arrayCars, totalItems } = await httpGarageClient.getPaginationCars(this.garageState.currentPage)
 
     if (totalItems === null) {
       return

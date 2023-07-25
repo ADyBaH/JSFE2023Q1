@@ -4,7 +4,7 @@ import { buttonsTextConstants } from 'src/app/constants/buttons-text-enum'
 import { carSvgString } from 'src/app/constants/car-svg-string'
 import type { StatusCarModel } from 'src/app/models/status-car.model'
 import { StatusEngine } from 'src/app/enum/status-engine.enum'
-import { httpService } from 'src/app/services/http-service'
+import { httpGarageClient } from 'src/app/services/http-garage-client'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter.enum'
 import { Button } from 'src/app/shared/button'
@@ -66,7 +66,7 @@ export class GarageListComponent extends BaseComponent {
   }
 
   public removeCar = async (): Promise<void> => {
-    await httpService.removeCar(this.statusCar.id)
+    await httpGarageClient.removeCar(this.statusCar.id)
     await httpWinnersClient.removeWinner(this.statusCar.id)
     emitter.emit(EmitterEnum.UpdateCars)
     emitter.emit(EmitterEnum.GenerateWinners)
@@ -79,7 +79,7 @@ export class GarageListComponent extends BaseComponent {
   public startCar = async (): Promise<StatusCarModel | null> => {
     this.buttonStart.setDisableStatus(true)
 
-    const { distance, velocity } = await httpService.changeStatusEngine(this.statusCar.id, StatusEngine.Started)
+    const { distance, velocity } = await httpGarageClient.changeStatusEngine(this.statusCar.id, StatusEngine.Started)
 
     this.buttonStop.setDisableStatus(false)
 
@@ -113,7 +113,7 @@ export class GarageListComponent extends BaseComponent {
     }
 
     this.animationId = requestAnimationFrame(move)
-    const response = await httpService.isEngineWork(this.statusCar.id)
+    const response = await httpGarageClient.isEngineWork(this.statusCar.id)
     if (response.status === ResponseEnum['SERVER-ERROR']) {
       this.car.addClass('fire')
       this.statusCar.isFinished = false
@@ -128,7 +128,7 @@ export class GarageListComponent extends BaseComponent {
     cancelAnimationFrame(this.animationId)
     this.animationId = 0
     this.car.element.style.left = initialCarPosition
-    await httpService.changeStatusEngine(this.statusCar.id, StatusEngine.Stopped)
+    await httpGarageClient.changeStatusEngine(this.statusCar.id, StatusEngine.Stopped)
     this.buttonStart.setDisableStatus(false)
   }
 }

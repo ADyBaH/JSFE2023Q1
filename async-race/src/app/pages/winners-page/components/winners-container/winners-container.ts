@@ -1,7 +1,7 @@
 import type { WinnersCarType } from 'src/app/types/winners-car-type'
 import { httpWinnersClient } from 'src/app/services/http-winners-client'
 import { BaseComponent } from 'src/app/shared/base-component'
-import { httpService } from 'src/app/services/http-service'
+import { httpGarageClient } from 'src/app/services/http-garage-client'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter.enum'
 import type { PaginationStateModel } from 'src/app/models/pagination-state.model'
@@ -35,7 +35,7 @@ export class WinnersContainers extends BaseComponent {
     this.paginationState.maxPage = getAllWinners.length / maxItemsOnPage
     const arrayWinners = await httpWinnersClient.getPaginationWinners(this.paginationState.currentPage)
 
-    const arrayCars = await Promise.all(arrayWinners.map(async (winner) => httpService.getCar(winner.id)))
+    const arrayCars = await Promise.all(arrayWinners.map(async (winner) => httpGarageClient.getCar(winner.id)))
     const arrayWinnerCars = arrayCars.map((car, index) => ({ ...car, ...arrayWinners[index] }))
 
     return winnersSortDictionary[this.paginationState.sortDirection](arrayWinnerCars)

@@ -2,7 +2,7 @@ import { instanceRandomCars } from 'src/app/services/random-cars-service'
 import { Pagination } from 'src/app/shared/pagination/pagination'
 import { BaseComponent } from 'src/app/shared/base-component'
 import { buttonsTextConstants } from 'src/app/constants/buttons-text-enum'
-import { httpService } from 'src/app/services/http-service'
+import { httpGarageClient } from 'src/app/services/http-garage-client'
 import { emitter } from 'src/app/services/event-emitter'
 import { EmitterEnum } from 'src/app/enum/emitter.enum'
 import { Button } from 'src/app/shared/button'
@@ -94,12 +94,12 @@ export class Garage extends BaseComponent {
 
   private appendCar = async (): Promise<void> => {
     const nameCar = this.createForm.text || instanceRandomCars.generateRandomCar().name
-    await httpService.addCar({ name: nameCar, color: this.createForm.color })
+    await httpGarageClient.addCar({ name: nameCar, color: this.createForm.color })
     emitter.emit(EmitterEnum.UpdateCars)
   }
 
   private appendCars = async (): Promise<void> => {
-    await httpService.addCars()
+    await httpGarageClient.addCars()
   }
 
   private selectCar = (car: StatusCarModel): void => {
@@ -121,7 +121,7 @@ export class Garage extends BaseComponent {
       return
     }
 
-    const getCarFromServer = await httpService.getCar(this.garageState.changeCar.id)
+    const getCarFromServer = await httpGarageClient.getCar(this.garageState.changeCar.id)
     if (!getCarFromServer.name) {
       this.hideChangeForm()
       this.garageState.changeCar = null
@@ -129,7 +129,7 @@ export class Garage extends BaseComponent {
     }
 
     const nameCar = this.changeForm.text || getCarFromServer.name
-    await httpService.changeCar({ name: nameCar, color: this.changeForm.color }, this.garageState.changeCar.id)
+    await httpGarageClient.changeCar({ name: nameCar, color: this.changeForm.color }, this.garageState.changeCar.id)
     this.garageState.changeCar = null
     this.hideChangeForm()
     emitter.emit(EmitterEnum.UpdateCars)

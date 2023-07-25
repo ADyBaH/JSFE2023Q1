@@ -14,14 +14,14 @@ export class HttpGarageClient {
 
   public async getCar(id: number): Promise<CarModel> {
     const getCar = await fetch(`${this.serverUrl}/garage/${id}`)
-    const getCarJson = await getCar.json()
-    return getCarJson
+    const arrayCars = await getCar.json()
+    return arrayCars
   }
 
   public async getCars(): Promise<CarModel[]> {
     const getCars = await fetch(`${this.serverUrl}/garage`)
-    const getCarsJson = await getCars.json()
-    return getCarsJson
+    const arrayCars = await getCars.json()
+    return arrayCars
   }
 
   public async getPaginationCars(
@@ -35,9 +35,7 @@ export class HttpGarageClient {
   public async addCar(object: Omit<CarModel, 'id'>): Promise<void> {
     await fetch(`${this.serverUrl}/garage`, {
       method: HttpMethods.POST,
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: HttpHeadersJson,
       body: JSON.stringify(object),
     })
   }

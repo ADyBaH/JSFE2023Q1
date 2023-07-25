@@ -34,7 +34,7 @@ export class HttpService {
 
   public async addCar(object: Omit<CarModel, 'id'>): Promise<void> {
     await fetch(`${this.serverUrl}/garage`, {
-      method: HttpMethods.Post,
+      method: HttpMethods.POST,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -52,13 +52,13 @@ export class HttpService {
 
   public async removeCar(id: number): Promise<void> {
     await fetch(`${this.serverUrl}/garage/${id}`, {
-      method: HttpMethods.Delete,
+      method: HttpMethods.DELETE,
     })
   }
 
   public async changeCar(object: Omit<CarModel, 'id'>, id: number): Promise<void> {
     await fetch(`${this.serverUrl}/garage/${id}`, {
-      method: HttpMethods.Put,
+      method: HttpMethods.PUT,
       headers: HttpHeadersJson,
       body: JSON.stringify(object),
     })
@@ -66,14 +66,14 @@ export class HttpService {
 
   public async changeStatusEngine(id: number, status: StatusEngine.Started | StatusEngine.Stopped): Promise<CarEngine> {
     const statusEngine = await fetch(`${this.serverUrl}/engine?id=${id}&status=${status}`, {
-      method: HttpMethods.Patch,
+      method: HttpMethods.PATCH,
     })
     return statusEngine.json()
   }
 
   public async isEngineWork(id: number): Promise<Response> {
     return fetch(`${this.serverUrl}/engine?id=${id}&status=drive`, {
-      method: HttpMethods.Patch,
+      method: HttpMethods.PATCH,
     })
   }
 }

@@ -48,14 +48,14 @@ export class HttpWinnersClient {
     const winner = await this.getWinner(id)
     if (winner) {
       await fetch(`${this.serverUrl}/winners/${id}`, {
-        method: HttpMethods.Delete,
+        method: HttpMethods.DELETE,
       })
     }
   }
 
   public addWinner = async (result: Omit<WinnersType, 'wins'>): Promise<void> => {
     await fetch(`${this.serverUrl}/winners`, {
-      method: HttpMethods.Post,
+      method: HttpMethods.POST,
       headers: HttpHeadersJson,
       body: JSON.stringify({ ...result, wins: 1 }),
     })
@@ -63,7 +63,7 @@ export class HttpWinnersClient {
 
   public async updateWinner({ id, time, wins }: WinnersType, newResult: Omit<WinnersType, 'wins'>): Promise<void> {
     await fetch(`${this.serverUrl}/winners/${id}`, {
-      method: HttpMethods.Put,
+      method: HttpMethods.PUT,
       headers: HttpHeadersJson,
       body: JSON.stringify({ time: time > newResult.time ? newResult.time : time, wins: wins + 1 }),
     })

@@ -121,7 +121,7 @@ export class Garage extends BaseComponent {
       return
     }
 
-    const getCarFromServer = await httpGarageClient.getCar(this.garageState.changeCar.id)
+    const getCarFromServer = await httpGarageClient.getCarById(this.garageState.changeCar.id)
     if (!getCarFromServer.name) {
       this.hideChangeForm()
       this.garageState.changeCar = null

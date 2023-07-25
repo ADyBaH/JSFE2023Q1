@@ -35,7 +35,7 @@ export class WinnersContainers extends BaseComponent {
     this.paginationState.maxPage = getAllWinners.length / maxItemsOnPage
     const arrayWinners = await httpWinnersClient.getPaginationWinners(this.paginationState.currentPage)
 
-    const arrayCars = await Promise.all(arrayWinners.map(async (winner) => httpGarageClient.getCar(winner.id)))
+    const arrayCars = await Promise.all(arrayWinners.map(async (winner) => httpGarageClient.getCarById(winner.id)))
     const arrayWinnerCars = arrayCars.map((car, index) => ({ ...car, ...arrayWinners[index] }))
 
     return winnersSortDictionary[this.paginationState.sortDirection](arrayWinnerCars)

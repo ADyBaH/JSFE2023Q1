@@ -12,7 +12,7 @@ import { emitter } from './event-emitter'
 export class HttpGarageClient {
   private serverUrl = BASE_PATH
 
-  public async getCar(id: number): Promise<CarModel> {
+  public async getCarById(id: number): Promise<CarModel> {
     const getCar = await fetch(`${this.serverUrl}/garage/${id}`)
     const arrayCars = await getCar.json()
     return arrayCars
@@ -24,7 +24,7 @@ export class HttpGarageClient {
     return arrayCars
   }
 
-  public async getPaginationCars(
+  public async getCurrentPage(
     numberPage: number | string,
   ): Promise<{ arrayCars: CarModel[]; totalItems: string | null }> {
     const getCars = await fetch(`${this.serverUrl}/garage?_page=${numberPage}&_limit=${maxItemsInList}`)

@@ -26,7 +26,7 @@ export class GarageList extends BaseComponent {
     emitter.emit(EmitterEnum.HideChangeCarForm)
     emitter.emit(EmitterEnum.LockGaragePaginationButtons)
 
-    const { arrayCars, totalItems } = await httpGarageClient.getPaginationCars(this.garageState.currentPage)
+    const { arrayCars, totalItems } = await httpGarageClient.getCurrentPage(this.garageState.currentPage)
 
     if (totalItems === null) {
       return

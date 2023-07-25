@@ -12,7 +12,7 @@ export class HttpWinnersClient {
     emitter.subscribe(EmitterEnum.AppendWinner, this.checkWinner)
   }
 
-  public async getWinner(id: number): Promise<WinnersType | undefined> {
+  public async getWinnerById(id: number): Promise<WinnersType | undefined> {
     const arrayWinners = await this.getWinners()
     return arrayWinners.find((winner) => winner.id === id)
   }
@@ -31,7 +31,7 @@ export class HttpWinnersClient {
   }
 
   public checkWinner = async (result: Omit<WinnersType, 'wins'>): Promise<void> => {
-    const getCar = await this.getWinner(result.id)
+    const getCar = await this.getWinnerById(result.id)
 
     if (!getCar) {
       await this.addWinner(result)
@@ -44,7 +44,7 @@ export class HttpWinnersClient {
   }
 
   public async removeWinner(id: number): Promise<void> {
-    const winner = await this.getWinner(id)
+    const winner = await this.getWinnerById(id)
     if (winner) {
       await fetch(`${this.serverUrl}/winners/${id}`, {
         method: HttpMethods.DELETE,

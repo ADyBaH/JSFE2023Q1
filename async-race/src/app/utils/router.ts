@@ -19,9 +19,9 @@ export class Router {
 
     if (this.pages[path]) {
       this.mainElement.replaceChildren(this.pages[path].element)
+      return
     }
-    if (!this.pages[path]) {
-      this.mainElement.replaceChildren(this.pages.notFound.element)
-    }
+
+    this.mainElement.replaceChildren(this.pages.notFound.element)
   }
 }

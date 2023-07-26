@@ -1,4 +1,4 @@
-import type { GarageListComponent } from '../pages/garage-page/components/garage-list-component/garage-list-component'
+import type { GarageListComponent } from '../garage/components/garage-list-component/garage-list-component'
 import type { StatusCarModel } from './status-car.model'
 
 export interface GarageStateModel {

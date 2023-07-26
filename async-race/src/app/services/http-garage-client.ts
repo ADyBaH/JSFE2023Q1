@@ -1,7 +1,7 @@
 import { HttpHeadersJson } from './constants/http-headers-constants'
 import { BASE_PATH } from '../constants/http-service-constants'
 import type { StatusEngine } from '../enum/status-engine.enum'
-import { maxItemsInList } from '../constants/list-constants'
+import { maxItemsInList } from '../garage/constants/list-constants'
 import { instanceRandomCars } from './random-cars-service'
 import type { CarEngine } from '../types/car-engine-type'
 import { HttpMethods } from '../enum/http-methods.enum'

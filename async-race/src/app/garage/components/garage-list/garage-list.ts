@@ -1,5 +1,5 @@
 import { BaseComponent } from 'src/app/shared/base-component'
-import { maxItemsInList } from 'src/app/constants/list-constants'
+import { maxItemsInList } from 'src/app/garage/constants/list-constants'
 import type { StatusCarModel } from 'src/app/models/status-car.model'
 import { httpGarageClient } from 'src/app/services/http-garage-client'
 import { emitter } from 'src/app/services/event-emitter'
